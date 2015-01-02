@@ -5,6 +5,6 @@
 
 <ul>
   <% @events.each do |event| %>
-    <li><%=link_to event.name, products_url(subdomain: event.slack) %></li>
+    <li><%=link_to event.name, root_url(subdomain: event.slack) %></li>
   <% end %>
 </ul>
