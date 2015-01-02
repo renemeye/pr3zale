@@ -4,9 +4,11 @@ class Ability
   def initialize(user)
     can :read, Product
     can :read, Event
+    can :read, Image
 
     can :manage, Event, :owner_id => user.id
     can :manage, Product, :event => {:owner_id => user.id}
+    can :manage, Image, :event => {:owner_id => user.id}
 
 
     #can :update, :products

@@ -49,3 +49,16 @@
     </div>
   </div>
 <% end %>
+
+<h3>Images</h3>
+
+<%= form_for(Image.new({:imageable => @product}),
+html: { multipart: true, class: "dropzone"},
+data:{:imageable_type => @product.class.name, :imageable_id => @product.id}) do |f|  %>
+<%= f.hidden_field :imageable_id %>
+<%= f.hidden_field :imageable_type %>
+<div class="fallback">
+  <%= f.file_field :image %><br>
+  <%= f.submit "Upload" %>
+</div>
+<% end %>

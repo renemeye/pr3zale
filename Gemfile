@@ -46,7 +46,8 @@ gem 'cancan'
 #gem 'redcarpet'
 
 #File upload/image process
-#gem "paperclip"
+gem "paperclip", "~> 4.2"
+gem 'dropzonejs-rails'
 
 
 # Use unicorn as the app server

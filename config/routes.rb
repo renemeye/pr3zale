@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :events
+  resources :images
 
   resources :products, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
 

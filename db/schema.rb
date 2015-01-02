@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101232318) do
+ActiveRecord::Schema.define(version: 20150102202144) do
 
   create_table "events", force: true do |t|
     t.string   "name",                           null: false
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20150101232318) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slack",             default: "", null: false
+  end
+
+  create_table "images", force: true do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "products", force: true do |t|
