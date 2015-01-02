@@ -1,0 +1,10 @@
+
+<div class="page-header">
+  <h1>Current Events</h1>
+</div>
+
+<ul>
+  <% @events.each do |event| %>
+    <li><%=link_to event.name, products_url(subdomain: event.slack) %></li>
+  <% end %>
+</ul>

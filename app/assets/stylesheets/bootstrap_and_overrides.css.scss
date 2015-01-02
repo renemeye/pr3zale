@@ -1,0 +1,29 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+  =require twitter-bootstrap-static/fontawesome
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  */
+
+  $navbar-height: 50px;
+
+  body {
+    padding-top: $navbar-height + 10px;
+  }
+
+  .page-header {
+    a.btn {
+      float: right;
+    }
+
+    a.btn + a.btn {
+      margin-right: 8px;
+    }
+  }
+
+  input[type="radio"], input[type="checkbox"] {
+    width: initial;
+    height: initial;
+    margin-top: 7px;
+  }
