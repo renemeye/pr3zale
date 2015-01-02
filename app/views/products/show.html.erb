@@ -1,3 +1,13 @@
+<div class="row">
+  <%@product.images.each do |image|%>
+    <div class="col-xs-6 col-md-3">
+      <%= link_to image.image.url do
+        image_tag image.image.url, class: "thumbnail"
+      end %>
+    </div>
+  <% end %>
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <p>
