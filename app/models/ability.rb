@@ -2,9 +2,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, :all
+    can :read, Product
+    can :read, Event
 
-    
+    can :manage, Event, :owner_id => user.id
+    can :manage, Product, :event => {:owner_id => user.id}
+
+
     #can :update, :products
 
     # Define abilities for the passed in user here. For example:

@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   respond_to :html
 
@@ -37,9 +37,6 @@ class EventsController < ApplicationController
   end
 
   private
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
     def event_params
       params.require(:event).permit(:name, :short_description, :description, :owner_id)

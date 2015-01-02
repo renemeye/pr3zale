@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :through => :event
 
   respond_to :html
 

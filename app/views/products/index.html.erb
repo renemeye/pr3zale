@@ -1,6 +1,6 @@
 
 <div class="page-header">
-  <%= link_to 'New Product', new_product_path, :class => "btn btn-primary" %>
+  <%= link_to 'New Product', new_product_path, :class => "btn btn-primary" if can? :create, Product.new(:event => @event) %>
   <h1>All the products for <%= @event.name %></h1>
 </div>
 
@@ -13,7 +13,7 @@
         <th>Tax</th>
         <th>Description</th>
         <th>Quantity</th>
-        <% if can? :update, Product %>
+        <% if can? :update, Product.new(:event => @event) %>
           <th colspan="3"></th>
         <% else %>
           <th colspan="1"></th>
