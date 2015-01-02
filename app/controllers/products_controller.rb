@@ -13,15 +13,16 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.event = @event
     respond_with(@product)
   end
 
   def edit
-    authorize! :update, @product
   end
 
   def create
     @product = Product.new(product_params)
+    @product.event = @event
     @product.save
     respond_with(@product)
   end

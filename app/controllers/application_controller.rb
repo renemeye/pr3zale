@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :load_event
 
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
   private
 
   def load_event
