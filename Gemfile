@@ -49,6 +49,8 @@ gem 'cancan'
 gem "paperclip", "~> 4.2"
 gem 'dropzonejs-rails'
 
+#Versioning
+gem 'paper_trail'
 
 # Use unicorn as the app server
 # gem 'unicorn'
