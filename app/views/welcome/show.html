@@ -4,3 +4,21 @@
 </div>
 
 <%= @event.description %>
+
+<h2>Vorverkauf</h2>
+<hr>
+<% if current_user %>
+  [INSERT: Tabelle mit gekauft und bezahlt und so]
+<% else %>
+
+<div class="col-sm-6">
+  <h3>Account anlegen</h3>
+  <%= link_to "Hier", new_user_registration_path %>
+</div>
+
+<div class="col-sm-6">
+  <h3>Einloggen</h3>
+  <%= link_to "Hier", new_user_session_path %>
+</div>
+
+<% end %>
