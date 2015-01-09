@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transfer_token: MyString
+  validation_token: MyString
+  state: MyString
+  event_id: 
+  user_id: 
+
+two:
+  transfer_token: MyString
+  validation_token: MyString
+  state: MyString
+  event_id: 
+  user_id: 

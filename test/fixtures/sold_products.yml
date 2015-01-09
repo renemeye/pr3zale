@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 
+  state: MyString
+  transaction_id: 
+
+two:
+  product_id: 
+  state: MyString
+  transaction_id: 
