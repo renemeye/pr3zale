@@ -4,18 +4,19 @@ Rails.application.routes.draw do
   post '/deny_cookies'  => 'cookie_policy#deny'
 
   resources :events
-  resources :images, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
+  resources :images,                                      constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
   resources :orders, only: [:new, :edit, :show, :create], constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
-
-  resources :products, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
+  resources :products,                                    constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
 
   devise_for :users
+
+  get '/' => 'welcome#show',                              constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
+  root :to => "welcome#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  get '/' => 'welcome#show', :constraints => lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
-  root :to => "welcome#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
