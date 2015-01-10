@@ -10,27 +10,28 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 preload_images = ->
-  image_drop = Dropzone.forElement("#new_image")
-  imageable_type = $(image_drop.element).data("imageable-type")
-  imageable_id = $(image_drop.element).data("imageable-id")
+  if $("#new_image").length > 0
+    image_drop = Dropzone.forElement("#new_image")
+    imageable_type = $(image_drop.element).data("imageable-type")
+    imageable_id = $(image_drop.element).data("imageable-id")
 
-  $.get "/images.json",
-  image:
-    imageable_type: imageable_type
-    imageable_id: imageable_id
-  , (data) ->
-    $(data).each ->
-      # Create the mock file:
-      mockFile =
-        name: this.image_file_name
-        size: this.size
-        id: this.id
+    $.get "/images.json",
+    image:
+      imageable_type: imageable_type
+      imageable_id: imageable_id
+    , (data) ->
+      $(data).each ->
+        # Create the mock file:
+        mockFile =
+          name: this.image_file_name
+          size: this.size
+          id: this.id
 
-      # Call the default addedfile event handler
-      image_drop.emit "addedfile", mockFile
+        # Call the default addedfile event handler
+        image_drop.emit "addedfile", mockFile
 
-      # And optionally show the thumbnail of the file:
-      image_drop.emit "thumbnail", mockFile, this.url
+        # And optionally show the thumbnail of the file:
+        image_drop.emit "thumbnail", mockFile, this.url
 
 ready = ->
   Dropzone.autoDiscover = false
