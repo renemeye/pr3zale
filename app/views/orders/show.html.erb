@@ -1,0 +1,40 @@
+<div class="col-sm-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Order</h3>
+    </div>
+    <div class="panel-body">
+      <dl class="dl-horizontal">
+        <dt>Ordered at:</dt>
+        <dd><%= @order.created_at.to_s(:pretty) %></dd>
+        <dt>Paid:</dt>
+        <dd> ? </dd>
+      </dl>
+    </div>
+  </div>
+</div>
+<div class="col-sm-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">Ordered products</div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table class="table">
+
+          <% @order.sold_products.each do |sold_product| %>
+            <tr>
+              <td><%=link_to sold_product.name, product_path(sold_product.product) %></td>
+              <td><b><%=sold_product.price %> €</b> <i>(incl. <%=sold_product.tax %>% tax)</i></td>
+            </tr>
+          <% end %>
+
+
+        </table>
+      </div>
+    </div>
+    <div class="panel-footer">&nbsp;<b class="pull-right">Sum: <%=@order.sum %>€</b></div>
+  </div>
+</div>
+
+
+<%# link_to 'Edit', edit_product_path(@product) %>
+<%# link_to 'Back', products_path %>

@@ -10,6 +10,10 @@ class OrdersController < ApplicationController
     respond_with(@order)
   end
 
+  def show
+    respond_with(@order)
+  end
+
   private
 
     def order_params
