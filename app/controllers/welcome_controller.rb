@@ -5,5 +5,8 @@ class WelcomeController < ApplicationController
   end
 
   def show
+    if current_user
+      @orders=current_user.orders.on_event(@event)
+    end
   end
 end

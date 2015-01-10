@@ -8,7 +8,9 @@
 <h2>Vorverkauf</h2>
 <hr>
 <% if current_user %>
-  [INSERT: Tabelle mit gekauft und bezahlt und so]
+
+  <%= render partial:"orders/root_table" %>
+
 <% else %>
 
 <div class="col-sm-6">

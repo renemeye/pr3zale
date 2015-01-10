@@ -24,4 +24,9 @@ class ApplicationController < ActionController::Base
       @event = Event.find_by_slack!(request.subdomain)
     end
   end
+
+  def current_event
+    @current_user ||= load_event
+  end
+  helper_method :current_event
 end
