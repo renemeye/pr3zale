@@ -60,3 +60,5 @@ gem 'paper_trail'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'modernizr-rails'

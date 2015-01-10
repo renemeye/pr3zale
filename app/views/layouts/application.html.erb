@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
   <meta charset="utf-8">
   <title>Presale for EH15</title>
@@ -14,6 +14,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag :modernizr %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -56,6 +57,10 @@
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container">
+      <div class="alert alert-danger no-js-warning" role="alert">
+        Warning! Your JavaScript is disabled. You will need to have JavaScript enabled in order to use this page.
+      </div>
+
       <% flash.each do |name, msg| %>
       <%= content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do %>
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
