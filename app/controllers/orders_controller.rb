@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.event = @event
+    @order.user = current_user
     @order.save
     respond_with(@order)
   end
