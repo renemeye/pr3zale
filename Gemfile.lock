@@ -91,6 +91,8 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     rack (1.5.2)
+    rack-policy (0.4.1)
+      rack (~> 1.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.6)
@@ -167,6 +169,7 @@ DEPENDENCIES
   modernizr-rails
   paper_trail
   paperclip (~> 4.2)
+  rack-policy
   rails (= 4.1.6)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

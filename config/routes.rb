@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  post '/allow_cookies' => 'cookie_policy#allow'
+  post '/deny_cookies'  => 'cookie_policy#deny'
+
   resources :events
   resources :images, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
   resources :orders, only: [:new, :edit, :show, :create], constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}

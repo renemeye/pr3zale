@@ -57,6 +57,17 @@
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container">
+      <% unless cookies_accepted? %>
+      <div class="alert alert-info" role="alert">
+        <h5>EU cookie policy</h5>
+        We are using cookies to store your session and login information between multiple page loads. Cookies are very small files stored in your browser and are used by most websites to store information between page loads.
+
+        In order to fullfill the eu-cookie-policy we have to inform you about that and ask if we are allowed to use them. For technical reasons you can only use this page after you accepted cookies.
+        <br>
+        <br>
+        <a href="<%=allow_cookies_path%>" class="btn btn-primary" data-method="post">Accept cookies</a> <a href="<%=deny_cookies_path%>" class="btn btn-danger" data-method="post">Deny cookies</a>
+      </div>
+      <% end %>
       <div class="alert alert-danger no-js-warning" role="alert">
         Warning! Your JavaScript is disabled. You will need to have JavaScript enabled in order to use this page.
       </div>

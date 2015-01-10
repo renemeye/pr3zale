@@ -62,3 +62,6 @@ gem 'paper_trail'
 # gem 'debugger', group: [:development, :test]
 
 gem 'modernizr-rails'
+
+#Deal with EU-Cookie policy
+gem 'rack-policy'
