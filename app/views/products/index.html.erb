@@ -56,8 +56,8 @@
     </table>
   </div>
 
-  <%=text_field_tag "order[state]", "Hallo" %>
-
-  <%= submit_tag "Buy Products >" %>
+  <% if can? :create, Order %>
+    <%= submit_tag "Buy Products >" %>
+  <% end %>
 
 <% end %>
