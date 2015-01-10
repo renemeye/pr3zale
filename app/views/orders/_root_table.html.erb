@@ -1,24 +1,26 @@
-<div class="col-sm-6">
-  <div class="panel panel-default">
-    <div class="panel-heading">Your orders</div>
-    <div class="panel-body">
-      <div class="table-responsive">
-        <table class="table">
-          <tr>
-            <th>Products</th>
-            <th>Sum</th>
-            <th>Paid?</th>
-          </tr>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Your orders</div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th>Products</th>
+              <th>Sum</th>
+              <th>Paid?</th>
+            </tr>
 
-          <% @orders.each do |order| %>
-          <tr>
-            <td><%=link_to order, order %></td>
-            <td><b><%=order.sum %> €</b></td>
-            <td><b> ? </b></td>
-          </tr>
-          <% end %>
+            <% @orders.each do |order| %>
+            <tr>
+              <td><%=link_to order, order %></td>
+              <td><b><%=order.sum %> €</b></td>
+              <td><b> ? </b></td>
+            </tr>
+            <% end %>
 
-        </table>
+          </table>
+        </div>
       </div>
     </div>
   </div>
