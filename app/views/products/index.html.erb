@@ -34,7 +34,15 @@
             <td><%= product.description %></td>
             <% if can? :create, Order %>
             <td>
-              <%= number_field_tag "order[sold_products_attributes][][product_id]", product.id %>
+              <div class="selling" data-product-id="<%=product.id%>" data-name="order[sold_products_attributes][][product_id]">
+                <div class="btn btn-default btn-xs less-products"><span class="fa fa-minus"></span></div>
+
+                <span class="sells">&nbsp;</span>
+
+                <div class="btn btn-default btn-xs more-products"><span class="fa fa-plus"></span></div>
+              </div>
+
+              <% number_field_tag "order[sold_products_attributes][][product_id]", product.id %>
             </td>
             <% end %>
             <td><%= link_to 'Show', product %></td>
