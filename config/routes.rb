@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   resources :events
-  resources :images
+  resources :images, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
+  resources :orders, only: [:new, :edit, :show, :create], constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
 
   resources :products, constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
 

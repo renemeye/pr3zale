@@ -6,9 +6,12 @@ class Ability
     can :read, Event
     can :read, Image
 
-    can :manage, Event, :owner_id => user.id
-    can :manage, Product, :event => {:owner_id => user.id}
-    can :manage, Image, :event => {:owner_id => user.id}
+    unless user.nil?
+      can :create, Order
+      can :manage, Event, :owner_id => user.id
+      can :manage, Product, :event => {:owner_id => user.id}
+      can :manage, Image, :event => {:owner_id => user.id}
+    end
 
 
     #can :update, :products

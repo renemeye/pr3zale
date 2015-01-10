@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109215825) do
+ActiveRecord::Schema.define(version: 20150110021636) do
 
   create_table "events", force: true do |t|
     t.string   "name",                           null: false
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(version: 20150109215825) do
     t.datetime "image_updated_at"
   end
 
+  create_table "orders", force: true do |t|
+    t.string   "transfer_token"
+    t.string   "validation_token"
+    t.string   "state"
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["event_id"], name: "index_orders_on_event_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+
   create_table "products", force: true do |t|
     t.string   "name"
     t.float    "price"
@@ -50,26 +63,13 @@ ActiveRecord::Schema.define(version: 20150109215825) do
   create_table "sold_products", force: true do |t|
     t.integer  "product_id"
     t.string   "state"
-    t.integer  "transaction_id"
+    t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "sold_products", ["order_id"], name: "index_sold_products_on_order_id"
   add_index "sold_products", ["product_id"], name: "index_sold_products_on_product_id"
-  add_index "sold_products", ["transaction_id"], name: "index_sold_products_on_transaction_id"
-
-  create_table "transactions", force: true do |t|
-    t.string   "transfer_token"
-    t.string   "validation_token"
-    t.string   "state"
-    t.integer  "event_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "transactions", ["event_id"], name: "index_transactions_on_event_id"
-  add_index "transactions", ["user_id"], name: "index_transactions_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
