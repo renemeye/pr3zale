@@ -8,7 +8,11 @@
         <dt>Ordered at:</dt>
         <dd><%= @order.created_at.to_s(:pretty) %></dd>
         <dt>Paid:</dt>
-        <dd> ? </dd>
+        <dd>
+          <% if @order.reserved? %><span class="label label-warning">Reserved</span><% end %>
+          <% if @order.paid? %><span class="label label-success"><span class="fa fa-check"></span> Paid</span><% end %>
+          <% if @order.canceled? %><span class="label label-danger">Canceled</span><% end %>
+        </dd>
       </dl>
     </div>
   </div>

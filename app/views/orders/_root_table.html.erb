@@ -15,7 +15,11 @@
             <tr>
               <td><%=link_to order, order %></td>
               <td><b><%=order.sum %> €</b></td>
-              <td><b> ? </b></td>
+              <td>
+                <% if order.reserved? %><span class="label label-warning">Reserved</span><% end %>
+                <% if order.paid? %><span class="label label-success"><span class="fa fa-check"></span> Paid</span> <%=link_to "Download Tickets", order %><% end %>
+                <% if order.canceled? %><span class="label label-danger">Canceled</span><% end %>
+              </td>
             </tr>
             <% end %>
 

@@ -65,3 +65,5 @@ gem 'modernizr-rails'
 
 #Deal with EU-Cookie policy
 gem 'rack-policy'
+
+gem 'state_machine'
