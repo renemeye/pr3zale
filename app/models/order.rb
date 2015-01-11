@@ -16,10 +16,6 @@ class Order < ActiveRecord::Base
 
   #states: :reseverd, :paid, :canceled
   state_machine initial: :reserved do
-    event :reserve do
-      transition :all => :reserved
-    end
-
     event :purchase do
       transition :reserved => :paid
     end
@@ -27,5 +23,18 @@ class Order < ActiveRecord::Base
     event :cancel do
       transition :reserved => :canceled
     end
+
+    after_transition any => :paid do |order, transition|
+      order.sold_products.each do |sold_product|
+        sold_product.purchase
+      end
+    end
+
+    after_transition any => :canceled do |order, transition|
+      order.sold_products.each do |sold_product|
+        sold_product.cancel
+      end
+    end
+
   end
 end

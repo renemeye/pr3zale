@@ -21,4 +21,21 @@ class SoldProduct < ActiveRecord::Base
   def former_product
     self.product.version_at(self.created_at)
   end
+
+  #states: :reserved, :downloadable, :issued, :canceled
+  state_machine initial: :reserved do
+    event :purchase do
+      transition :reserved => :downloadable, if: lambda {|sold_product| sold_product.order.paid?}
+    end
+
+    event :cancel do
+      transition :reserved => :canceled, if: lambda {|sold_product| sold_product.order.canceled?}
+    end
+
+    event :use do
+      transition :downloadable => :issued
+    end
+
+  end
+
 end

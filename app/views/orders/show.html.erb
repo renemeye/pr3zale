@@ -28,6 +28,12 @@
             <tr>
               <td><%=link_to sold_product.name, product_path(sold_product.product) %></td>
               <td><b><%=sold_product.price %> €</b> <i>(incl. <%=sold_product.tax %>% tax)</i></td>
+              <td>
+                <% if sold_product.reserved? %><span class="label label-warning">Reserved</span><% end %>
+                <% if sold_product.downloadable? %><span class="label label-success"><span class="fa fa-check"></span> Downloadable</span><% end %>
+                <% if sold_product.canceled? %><span class="label label-danger">Canceled</span><% end %>
+                <% if sold_product.issued? %><span class="label label-danger">Already used</span><% end %>
+              </td>
             </tr>
           <% end %>
 
