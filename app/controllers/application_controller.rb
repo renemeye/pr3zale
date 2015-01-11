@@ -25,8 +25,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_event
-    @current_user ||= load_event
-  end
-  helper_method :current_event
+  # def current_event
+  #   @current_user ||= load_event
+  # end
+  # helper_method :current_event
 end
