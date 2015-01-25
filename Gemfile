@@ -74,4 +74,4 @@ gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 
 #Send mails on heroku
-#gem 'postmark-rails'
+gem 'postmark-rails'
