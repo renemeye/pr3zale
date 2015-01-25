@@ -41,10 +41,21 @@
                 <% number_field_tag "order[sold_products_attributes][][product_id]", product.id %>
               </td>
             <% end %>
-            <td><%= product.name %></td>
+            <td><%= link_to product.name, product %></td>
             <td><%= product.price %></td>
             <td><%= product.tax %></td>
-            <td><%= product.description %></td>
+            <td>
+              <% if product.images.length > 0 %>
+                <span class="product-previews">
+                  <% product.images.each do |image| %>
+                    <%=link_to product do
+                      image_tag(image.image.url(:thumb), height: "50px")
+                    end %>
+                  <% end %>
+                </span>
+              <% end %>
+              <%= product.description %>
+            </td>
             <td><%= link_to 'Show', product %></td>
             <% if can? :update, product %>
               <td><%= link_to 'Edit', edit_product_path(product) %></td>

@@ -27,11 +27,12 @@
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
-
-<p>
-  <strong>Quantity:</strong>
-  <%= @product.quantity %>
-</p>
+<% if can? :edit, @product %>
+  <p>
+    <strong>Quantity:</strong>
+    <%= @product.quantity %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

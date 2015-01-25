@@ -11,6 +11,9 @@
 
   <%= render partial:"orders/root_table" %>
 
+  <%=link_to "Get stuff >", products_url, {class:"btn btn-primary"} %>
+  <br/><br/>
+
 <% else %>
 
 <div class="col-sm-6">
@@ -22,5 +25,7 @@
   <h3>Einloggen</h3>
   <%= link_to "Hier", new_user_session_path %>
 </div>
+
+<%=link_to "Get stuff >", products_url, {class:"btn btn-primary"} %>
 
 <% end %>
