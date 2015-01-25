@@ -73,5 +73,8 @@ gem 'state_machine'
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 
+#Images to S3:
+gem 'aws-sdk', group: :production
+
 #Send mails on heroku
 gem 'postmark-rails'
