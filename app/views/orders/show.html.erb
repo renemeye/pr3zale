@@ -7,14 +7,50 @@
       <dl class="dl-horizontal">
         <dt>Ordered at:</dt>
         <dd><%= @order.created_at.to_s(:pretty) %></dd>
-        <dt>Paid:</dt>
+        <dt>State:</dt>
         <dd>
           <% if @order.reserved? %><span class="label label-warning">Reserved</span><% end %>
           <% if @order.paid? %><span class="label label-success"><span class="fa fa-check"></span> Paid</span><% end %>
           <% if @order.canceled? %><span class="label label-danger">Canceled</span><% end %>
         </dd>
+
+        <% if @order.can_cancel? %>
+        <br>
+        <dt>Cancel now:</dt>
+        <dd>
+          <button class="btn btn-danger btn-sm">Cancel now</button>
+        </dd>
+        <% end %>
       </dl>
     </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Payment</h3>
+    </div>
+
+    <% unless @event.payment_iban.blank? or @event.payment_bic.blank? %>
+
+      <div class="panel-body">
+        <p class="well">
+        Please transfer exactly <strong><%= number_to_currency @order.sum %></strong> to us with a SEPA-Transaction to
+          <dl class="dl-horizontal">
+            <dt>IBAN:</dt>
+            <dd><%= @event.payment_iban %></dd>
+            <dt>BIC:</dt>
+            <dd><%= @event.payment_bic %></dd>
+            <dt>REFERENCE:</dt>
+            <dd><%= @order.transfer_token %></dd>
+          </dl>
+        </div>
+      </p>
+    <% else %>
+    <div class="panel-body">
+      <p class="well">
+        At the moment payment is not possible. You will receive an E-Mail with further information as we start.
+      </p>
+    </div>
+    <% end %>
   </div>
 </div>
 <div class="col-sm-6">

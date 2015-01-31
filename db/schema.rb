@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110021636) do
+ActiveRecord::Schema.define(version: 20150131203033) do
 
   create_table "events", force: true do |t|
     t.string   "name",                           null: false
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20150110021636) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slack",             default: "", null: false
+    t.string   "payment_iban"
+    t.string   "payment_bic"
   end
 
   create_table "images", force: true do |t|
