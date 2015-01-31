@@ -9,6 +9,7 @@ class Ability
     unless user.nil?
       can :create, Order
       can :read, Order, :user_id => user.id
+      can :destroy, Order, :user_id => user.id
       can :manage, Event, :owner_id => user.id
       can :manage, Product, :event => {:owner_id => user.id}
       can :manage, Image, :event => {:owner_id => user.id}
