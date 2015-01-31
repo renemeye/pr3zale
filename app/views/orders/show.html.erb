@@ -1,7 +1,7 @@
 <div class="col-sm-6">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Order</h3>
+      <h3 class="panel-title">Order #<%=@order.id%></h3>
     </div>
     <div class="panel-body">
       <dl class="dl-horizontal">
@@ -33,7 +33,7 @@
 
       <div class="panel-body">
         <p class="well">
-        Please transfer exactly <strong><%= number_to_currency @order.sum %></strong> to us with a SEPA-Transaction to
+        In order to finish the checkout process, transfer exactly <strong><%= number_to_currency @order.sum %></strong> to us with a SEPA-Transaction.
           <dl class="dl-horizontal">
             <dt>IBAN:</dt>
             <dd><%= @event.payment_iban %></dd>
