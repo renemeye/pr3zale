@@ -8,7 +8,9 @@ ready = ->
     $sells = $selling.find(".sells")
     form_name = $selling.data("name")
     product_id = $selling.data("product-id")
-    $sells.append("<span class='product fa fa-ticket'><input name='#{form_name}' type='hidden' value='#{product_id}'></span>")
+    max_pieces = $selling.data("max-pieces")
+    unless max_pieces != false && $sells.find(".product").length >= max_pieces
+      $sells.append("<span class='product fa fa-ticket'><input name='#{form_name}' type='hidden' value='#{product_id}'></span>")
   $(".less-products").click ->
     $this = $(this)
     $sells = $this.closest(".selling").find(".sells")

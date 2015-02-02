@@ -27,10 +27,20 @@
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
+
+
 <% if can? :edit, @product %>
   <p>
     <strong>Quantity:</strong>
     <%= @product.quantity %>
+  </p>
+  <p>
+    <strong>Available for purchase:</strong>
+    <%= @product.available_count %>
+  </p>
+  <p>
+    <strong>Issued:</strong>
+    <%= @product.issued.count %>
   </p>
 <% end %>
 

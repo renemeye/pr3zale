@@ -12,8 +12,12 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.event = @event
     @order.user = current_user
-    @order.save
-    respond_with(@order)
+    if @order.save
+      respond_with(@order)
+    else
+      flash[:error] = "Some of the requested products are sold out."
+      redirect_to products_path
+    end
   end
 
   def show

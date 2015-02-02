@@ -1,6 +1,11 @@
 class SoldProduct < ActiveRecord::Base
   belongs_to :product
   belongs_to :order
+  before_create :able_to_sell_product?
+
+  def able_to_sell_product?
+    self.product.available_count > 0
+  end
 
   def name
     former_product.name

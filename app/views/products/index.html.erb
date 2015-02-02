@@ -30,12 +30,19 @@
           <tr>
             <% if can? :create, Order %>
               <td>
-                <div class="selling" data-product-id="<%=product.id%>" data-name="order[sold_products_attributes][][product_id]">
+                <div class="selling" data-product-id="<%=product.id%>" data-name="order[sold_products_attributes][][product_id]" data-max-pieces="<%=product.low_stock_warning %>">
                   <div class="btn btn-default btn-xs less-products"><span class="fa fa-minus"></span></div>
 
                   <span class="sells">&nbsp;</span>
 
                   <div class="btn btn-default btn-xs more-products"><span class="fa fa-plus"></span></div>
+                  <% if low_stock=product.low_stock_warning %>
+                    <%  if low_stock == 0 %>
+                      <p class="text-danger">Sold out.</p>
+                    <% else %>
+                      <p class="text-danger">Only <strong><%=low_stock%></strong> left.</p>
+                    <% end %>
+                  <% end %>
                 </div>
 
                 <% number_field_tag "order[sold_products_attributes][][product_id]", product.id %>
