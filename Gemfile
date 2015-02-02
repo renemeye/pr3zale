@@ -78,3 +78,6 @@ gem 'aws-sdk', group: :production
 
 #Send mails on heroku
 gem 'postmark-rails'
+
+#QR-Code generator
+gem 'rqrcode'
