@@ -44,7 +44,7 @@ gem 'devise'
 gem 'cancan'
 
 #Markdown support
-#gem 'redcarpet'
+gem 'redcarpet'
 
 #File upload/image process
 gem "paperclip", "~> 4.2"

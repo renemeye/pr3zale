@@ -61,7 +61,7 @@
                   <% end %>
                 </span>
               <% end %>
-              <%= product.description %>
+              <%= markdown product.description %>
             </td>
             <td><%= link_to 'Show', product %></td>
             <% if can? :update, product %>
