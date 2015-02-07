@@ -1,0 +1,36 @@
+<h1>[FooBarBlubber]</h1>
+(This is your anti phishing secret)
+
+<% if @valid && @sold_product.downloadable? %>
+
+
+  <div class="alert alert-success">This is a valid Code.</div>
+  <h1><%=@sold_product.product.name %></h1>
+  <% if @sold_product.product.images.length > 0 %>
+  <div class="row">
+    <div class="col-xs-6">
+      <span class="product-previews">
+        <% @sold_product.product.images.each do |image| %>
+          <%=link_to @sold_product.product do
+            image_tag(image.image.url(:thumb))
+          end %>
+        <% end %>
+      </span>
+    </div>
+    <div class="col-xs-6">
+      <a href="<%=issue_path %>" data-method="delete" class="btn btn-primary" style="display: block;">Use it!</a>
+      <hr>
+      <a href="<%=validation_index_path%>" class="btn btn-danger"  style="display: block;">Cancel</a>
+    </div>
+  </div>
+
+  <% end %>
+
+
+<% elsif @valid && @sold_product.issued? %>
+
+  <div class="alert alert-danger">This Ticket has already been used.</div>
+
+<% else %>
+  <div class="alert alert-danger">This is not a valid Ticket.</div>
+<% end %>

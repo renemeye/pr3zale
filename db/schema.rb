@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150131203033) do
+ActiveRecord::Schema.define(version: 20150205175707) do
 
   create_table "events", force: true do |t|
     t.string   "name",                           null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20150131203033) do
     t.integer  "order_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "verification_token"
   end
 
   add_index "sold_products", ["order_id"], name: "index_sold_products_on_order_id"

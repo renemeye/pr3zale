@@ -86,6 +86,44 @@
                 <% if sold_product.canceled? %><span class="label label-danger">Canceled</span><% end %>
                 <% if sold_product.issued? %><span class="label label-danger">Already used</span><% end %>
               </td>
+              <td>
+                  <style type="text/css">
+                  table.qr {
+                    border-width: 0;
+                    border-style: none;
+                    border-color: #0000ff;
+                    border-collapse: collapse;
+                  }
+                  table.qr td {
+                    border-width: 0;
+                    border-style: none;
+                    border-color: #0000ff;
+                    border-collapse: collapse;
+                    padding: 0;
+                    margin: 0;
+                    width: 2px;
+                    height: 2px;
+                  }
+                  table.qr td.black { background-color: #000; }
+                  table.qr td.white { background-color: #fff; }
+                  </style>
+
+                  <table class="qr">
+                  <%=link_to "verify", validation_url = validation_url(:sold_product_id => sold_product.id, :verification_token => sold_product.verification_token) %>
+                  <% sold_product.qr(validation_url).modules.each_index do |x| %>
+                    <tr>
+                    <% sold_product.qr(validation_url).modules.each_index do |y| %>
+                     <% if sold_product.qr(validation_url).dark?(x,y) %>
+                      <td class="black"/>
+                     <% else %>
+                      <td class="white"/>
+                     <% end %>
+                    <% end %>
+                    </tr>
+                  <% end %>
+                  </table>
+
+              </td>
             </tr>
           <% end %>
 
