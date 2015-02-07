@@ -2,7 +2,8 @@ class ValidationController < ApplicationController
   authorize_resource :class => Event
 
   def index
-    @qr = RQRCode::QRCode.new( validation_index_url, :size => 4, :level => :h )
+    prefill_mail = current_user.email if current_user
+    @qr = RQRCode::QRCode.new( validation_index_url(:email => prefill_mail), :size => 6, :level => :h )
   end
 
   def show
