@@ -79,7 +79,7 @@
           <% @order.sold_products.each do |sold_product| %>
             <tr>
               <td><%=link_to sold_product.name, product_path(sold_product.product) %></td>
-              <td><b><%=sold_product.price %> €</b> <i>(incl. <%=sold_product.tax %>% tax)</i></td>
+              <td><b><%=sold_product.price %> EUR</b> <i>(incl. <%=sold_product.tax %>% tax)</i></td>
               <td>
                 <% if sold_product.reserved? %><span class="label label-warning">Reserved</span><% end %>
                 <% if sold_product.downloadable? %><span class="label label-success"><span class="fa fa-check"></span> Downloadable</span><% end %>
@@ -131,7 +131,7 @@
         </table>
       </div>
     </div>
-    <div class="panel-footer">&nbsp;<b class="pull-right">Sum: <%=@order.sum %>€</b></div>
+    <div class="panel-footer">&nbsp;<b class="pull-right">Sum: <%=@order.sum %>EUR</b></div>
   </div>
 </div>
 
