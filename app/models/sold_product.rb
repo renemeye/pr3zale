@@ -43,7 +43,7 @@ class SoldProduct < ActiveRecord::Base
 
   def qr(url)
     if @qr.nil?
-      for i in 1..10
+      for i in 1..15
         begin
           return @qr = RQRCode::QRCode.new(url, size: i, :level => :h )
         rescue RQRCode::QRCodeRunTimeError

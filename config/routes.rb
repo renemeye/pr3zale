@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :validation, :only => [:index], :path=>"/v", constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
   get    'v/:sold_product_id/:verification_token', :controller => :validation, :action => :show,  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}, as: :validation
   delete 'v/:sold_product_id/:verification_token', :controller => :validation, :action => :issue,  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}, as: :issue
+  resources :sold_products,              constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
 
   devise_for :users
 

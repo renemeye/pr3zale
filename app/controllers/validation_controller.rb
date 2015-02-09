@@ -23,7 +23,7 @@ class ValidationController < ApplicationController
     if sold_product && Devise.secure_compare(sold_product.verification_token, params[:verification_token]) && sold_product.can_use?
       sold_product.use
     end
-    redirect_to validation_index_path, :notice => "Successfully used '#{sold_product.product.name}';"
+    redirect_to validation_index_path, :notice => "Successfully used '#{sold_product.name}';"
   end
 
 end
