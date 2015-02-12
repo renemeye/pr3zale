@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @cooperator.user %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @cooperator.event %>
+</p>
+
+<p>
+  <strong>Nickname:</strong>
+  <%= @cooperator.nickname %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @cooperator.role %>
+</p>
+
+<%= link_to 'Edit', edit_cooperator_path(@cooperator) %> |
+<%= link_to 'Back', cooperators_path %>

@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205175707) do
+ActiveRecord::Schema.define(version: 20150212091111) do
+
+  create_table "cooperators", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.string   "nickname"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cooperators", ["event_id"], name: "index_cooperators_on_event_id"
+  add_index "cooperators", ["user_id"], name: "index_cooperators_on_user_id"
 
   create_table "events", force: true do |t|
     t.string   "name",                           null: false

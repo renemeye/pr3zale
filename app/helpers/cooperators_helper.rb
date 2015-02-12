@@ -1,0 +1,2 @@
+module CooperatorsHelper
+end

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :cooperators
+
   post '/allow_cookies' => 'cookie_policy#allow'
   post '/deny_cookies'  => 'cookie_policy#deny'
 

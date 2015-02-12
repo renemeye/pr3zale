@@ -1,0 +1,31 @@
+<h1>Listing cooperators</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Event</th>
+      <th>Nickname</th>
+      <th>Role</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cooperators.each do |cooperator| %>
+      <tr>
+        <td><%= cooperator.user %></td>
+        <td><%= cooperator.event %></td>
+        <td><%= cooperator.nickname %></td>
+        <td><%= cooperator.role %></td>
+        <td><%= link_to 'Show', cooperator %></td>
+        <td><%= link_to 'Edit', edit_cooperator_path(cooperator) %></td>
+        <td><%= link_to 'Destroy', cooperator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cooperator', new_cooperator_path %>
