@@ -1,9 +1,11 @@
 class CooperatorsController < ApplicationController
-  before_action :set_cooperator, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :event
+  load_and_authorize_resource :through => :event
 
   respond_to :html
 
   def index
+    authorize! :mange, @event
     @cooperators = Cooperator.all
     respond_with(@cooperators)
   end
@@ -14,6 +16,9 @@ class CooperatorsController < ApplicationController
 
   def new
     @cooperator = Cooperator.new
+    @possible_users = @event.users.uniq - @event.cooperators
+    @possible_roles = Cooperator.ROLES
+    @cooperator.event = @event
     respond_with(@cooperator)
   end
 
@@ -22,6 +27,7 @@ class CooperatorsController < ApplicationController
 
   def create
     @cooperator = Cooperator.new(cooperator_params)
+    @cooperator.event = @event
     @cooperator.save
     respond_with(@cooperator)
   end
@@ -37,9 +43,9 @@ class CooperatorsController < ApplicationController
   end
 
   private
-    def set_cooperator
-      @cooperator = Cooperator.find(params[:id])
-    end
+    # def set_cooperator
+    #   @cooperator = Cooperator.find(params[:id])
+    # end
 
     def cooperator_params
       params.require(:cooperator).permit(:user_id, :event_id, :nickname, :role)

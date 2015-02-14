@@ -37,6 +37,9 @@
         <ul class="nav navbar-nav">
           <li><%= link_to "Products", products_path %></li>
           <li><%= link_to "Verification", validation_index_path %></li>
+          <% if can? :manage, @event %>
+          <li><%= link_to "Cooperators", cooperators_path %></li>
+          <% end %>
         </ul>
         <% end %>
         <ul class="nav navbar-nav navbar-right">

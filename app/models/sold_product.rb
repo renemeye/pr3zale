@@ -1,6 +1,8 @@
 class SoldProduct < ActiveRecord::Base
   belongs_to :product
   belongs_to :order
+  belongs_to :event
+  belongs_to :user
   before_create :able_to_sell_product?
   before_create :ensure_verification_token
 

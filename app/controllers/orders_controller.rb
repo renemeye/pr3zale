@@ -12,6 +12,10 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.event = @event
     @order.user = current_user
+    @order.sold_products.each do |sold_product|
+      sold_product.user = current_user
+      sold_product.event = @event
+    end
     if @order.save
       respond_with(@order)
     else
