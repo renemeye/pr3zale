@@ -9,4 +9,7 @@ class Event < ActiveRecord::Base
   def is_coordiantor? (user)
     self.cooperators.coordinators.collect{|coordinator|coordinator.user}.include? user
   end
+  def is_cooperator? (user)
+    self.cooperators.collect{|cooperator|cooperator.user}.include? user
+  end
 end
