@@ -3,7 +3,7 @@
   <h1><%=@event.name%></h1>
 </div>
 
-<%= markdown @event.description %>
+<%= markdown @event.description if @event.description %>
 
 <h2>Vorverkauf</h2>
 <hr>
