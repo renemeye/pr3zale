@@ -1,12 +1,14 @@
 class ValidationController < ApplicationController
-  authorize_resource :class => Event
+  skip_authorization_check
 
   def index
+    authorize! :validate_tickets, @event
     prefill_mail = current_user.email if current_user
     @qr = RQRCode::QRCode.new( validation_index_url(:email => prefill_mail), :size => 6, :level => :h )
   end
 
   def show
+    authorize! :validate_tickets, @event
     sold_product = SoldProduct.find(params[:sold_product_id])
 
     if sold_product && Devise.secure_compare(sold_product.verification_token, params[:verification_token])
@@ -19,6 +21,7 @@ class ValidationController < ApplicationController
   end
 
   def issue
+    authorize! :validate_tickets, @event
     sold_product = SoldProduct.find(params[:sold_product_id])
     if sold_product && Devise.secure_compare(sold_product.verification_token, params[:verification_token]) && sold_product.can_use?
       sold_product.use
