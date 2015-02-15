@@ -62,6 +62,14 @@ gem 'unicorn', group: :production
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+#Testing
+gem 'rspec-rails', group: [:development, :test]
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+end
+
 gem 'modernizr-rails'
 
 #Deal with EU-Cookie policy
@@ -81,7 +89,6 @@ gem 'postmark-rails'
 
 #QR-Code generator
 gem 'rqrcode'
-
 
 #PDF Generation
 gem 'prawn'
