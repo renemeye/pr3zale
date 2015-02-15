@@ -6,14 +6,15 @@
 
   <div class="alert alert-success">This is a valid Code.</div>
   <h1><%=@sold_product.name %></h1>
-  <% if @sold_product.images.length > 0 %>
   <div class="row">
     <div class="col-xs-6">
       <span class="product-previews">
-        <% @sold_product.images.each do |image| %>
-          <%=link_to @sold_product.product do
-            image_tag(image.image.url(:thumb))
-          end %>
+        <% if @sold_product.former_product.images.length > 0 %>
+          <% @sold_product.former_product.images.each do |image| %>
+            <%=link_to @sold_product.product do
+              image_tag(image.image.url(:thumb))
+            end %>
+          <% end %>
         <% end %>
       </span>
     </div>
@@ -23,8 +24,6 @@
       <a href="<%=validation_index_path%>" class="btn btn-danger btn-block"  >Cancel</a>
     </div>
   </div>
-
-  <% end %>
 
 
 <% elsif @valid && @sold_product.issued? %>
