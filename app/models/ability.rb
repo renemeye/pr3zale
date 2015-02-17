@@ -12,6 +12,9 @@ class Ability
       can :read, SoldProduct, :order => {:user_id => user.id}, :state => "downloadable"
       can :destroy, Order, :user_id => user.id
 
+      can :manage, Product do |product|
+        user.is_coordinator? product.event
+      end
       can :manage, Event do |event|
         user.is_coordinator? event
       end
