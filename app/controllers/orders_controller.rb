@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     if @order.save
       respond_with(@order)
     else
-      flash[:error] = "Some of the requested products are sold out."
+      flash[:error] = t"orders.Some of the requested products are sold out"
       redirect_to products_path
     end
   end
