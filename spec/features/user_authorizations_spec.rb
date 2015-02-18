@@ -13,13 +13,13 @@ RSpec.describe "User authorization", :type => :feature do
     before do
       switch_to_subdomain("#{event.slack}")
 
-      visit root_path
+      visit root_path locale: "en"
       click_link "Accept cookies"
 
     end
 
     it "can see root page" do
-      visit root_path
+      visit root_path locale: "en"
       expect(page).not_to have_content(unauthorized_message)
     end
 
@@ -92,7 +92,7 @@ RSpec.describe "User authorization", :type => :feature do
 
     before do
       switch_to_subdomain("#{event.slack}")
-      visit root_path
+      visit root_path locale: "en"
       click_link "Accept cookies"
 
       visit new_user_session_path
@@ -104,7 +104,7 @@ RSpec.describe "User authorization", :type => :feature do
     end
 
     it "can see root page" do
-      visit root_path
+      visit root_path locale: "en"
       expect(page).not_to have_content(unauthorized_message)
 
     end
@@ -178,7 +178,7 @@ RSpec.describe "User authorization", :type => :feature do
 
     before do
       switch_to_subdomain("#{event.slack}")
-      visit root_path
+      visit root_path locale: "en"
       click_link "Accept cookies"
 
       visit new_user_session_path
@@ -190,7 +190,7 @@ RSpec.describe "User authorization", :type => :feature do
     end
 
     it "can see root page" do
-      visit root_path
+      visit root_path locale: "en"
       expect(page).not_to have_content(unauthorized_message)
     end
 
@@ -267,7 +267,7 @@ RSpec.describe "User authorization", :type => :feature do
 
     before do
       switch_to_subdomain("#{event.slack}")
-      visit root_path
+      visit root_path locale: "en"
       click_link "Accept cookies"
 
       visit new_user_session_path
@@ -279,7 +279,7 @@ RSpec.describe "User authorization", :type => :feature do
     end
 
     it "can see root page" do
-      visit root_path
+      visit root_path locale: "en"
       expect(page).not_to have_content(unauthorized_message)
 
     end
