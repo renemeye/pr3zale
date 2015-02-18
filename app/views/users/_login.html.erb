@@ -3,7 +3,7 @@
     <div class="col-sm-6 col-md-4 col-md-offset-4">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <strong> Sign in to continue</strong>
+          <strong><%=t"users.Sign in to continue"%></strong>
         </div>
         <div class="panel-body">
           <%= form_for(:user, :url => session_path(:user)) do |f| %>
@@ -15,7 +15,7 @@
                       <span class="input-group-addon">
                         <i class="fa fa-user"></i>
                       </span>
-                      <%= f.text_field :email, placeholder: "your email adress", autofocus: true, class:"form-control", value: params[:email] %>
+                      <%= f.text_field :email, placeholder: t("users.your email adress"), autofocus: true, class:"form-control", value: params[:email] %>
                     </div>
                   </div>
                   <div class="form-group">
@@ -23,11 +23,11 @@
                       <span class="input-group-addon">
                         <i class="fa fa-lock"></i>
                       </span>
-                      <%= f.password_field :password, placeholder: "password", class:"form-control",type:"password" %>
+                      <%= f.password_field :password, placeholder: t("users.password"), class:"form-control",type:"password" %>
                     </div>
                   </div>
                   <div class="form-group">
-                    <%= f.submit 'Sign in',class:"btn btn-lg btn-primary btn-block" %>
+                    <%= f.submit t('users.Sign in'),class:"btn btn-lg btn-primary btn-block" %>
                   </div>
                   <div class="form-group">
                       <%= f.check_box :remember_me %>
@@ -39,7 +39,7 @@
           <% end %>
         </div>
         <div class="panel-footer ">
-          Forgot your password? <%= link_to "Click here", new_password_path(:user) %>
+          <%=t"users.Forgot your password"%>? <%= link_to t("users.Click here"), new_password_path(:user) %>
         </div>
               </div>
     </div>

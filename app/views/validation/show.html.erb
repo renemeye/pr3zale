@@ -1,10 +1,10 @@
 <h1>[FooBarBlubber]</h1>
-(This is your anti phishing secret)
+(<%=t"validation.This_is_your_anti_phishing_secret" %>)
 
 <% if @valid && @sold_product.downloadable? %>
 
 
-  <div class="alert alert-success">This is a valid Code.</div>
+  <div class="alert alert-success"><%=t"validation.This is a valid Code"%>.</div>
   <h1><%=@sold_product.name %></h1>
   <div class="row">
     <div class="col-xs-6">
@@ -19,17 +19,17 @@
       </span>
     </div>
     <div class="col-xs-6">
-      <a href="<%=issue_path %>" data-method="delete" class="btn btn-primary btn-block" >Use it!</a>
+      <a href="<%=issue_path %>" data-method="delete" class="btn btn-primary btn-block" ><%=t"validation.Use it"%></a>
       <hr>
-      <a href="<%=validation_index_path%>" class="btn btn-danger btn-block"  >Cancel</a>
+      <a href="<%=validation_index_path%>" class="btn btn-danger btn-block"  ><%=t"validation.Cancel"%></a>
     </div>
   </div>
 
 
 <% elsif @valid && @sold_product.issued? %>
 
-  <div class="alert alert-danger">This Ticket has already been used.</div>
+  <div class="alert alert-danger"><%=t"validation.This Ticket has already been used"%></div>
 
 <% else %>
-  <div class="alert alert-danger">This is not a valid Ticket.</div>
+  <div class="alert alert-danger"><%=t"validation.This is not a valid Ticket"%></div>
 <% end %>

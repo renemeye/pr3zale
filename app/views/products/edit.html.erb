@@ -1,6 +1,6 @@
-<h1>Editing product</h1>
+<h1><%=t".Editing product"%></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<%= link_to t('scaffold.Show'), @product %> |
+<%= link_to t('scaffold.Back'), products_path %>

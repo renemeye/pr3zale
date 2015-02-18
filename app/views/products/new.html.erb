@@ -1,9 +1,9 @@
 <div class="page-header">
   <%= link_to products_path, :class => 'btn btn-default' do %>
   <span class="fa fa-list-alt"></span>
-  Back
+  <%=t"scaffold.Back"%>
   <% end %>
-  <h1>New product</h1>
+  <h1><%=t"products.New product"%></h1>
 </div>
 
 <%= render 'form' %>

@@ -1,24 +1,24 @@
 <div class="col-sm-6">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Order #<%=@order.id%></h3>
+      <h3 class="panel-title"><%=t".Order XX", order_no: @order.id%></h3>
     </div>
     <div class="panel-body">
       <dl class="dl-horizontal">
-        <dt>Ordered at:</dt>
-        <dd><%= @order.created_at.to_s(:pretty) %></dd>
-        <dt>State:</dt>
+        <dt><%=Order.human_attribute_name(:ordered_at)%>:</dt>
+        <dd><%= l @order.created_at, :format => :default %></dd>
+        <dt><%=Order.human_attribute_name(:state)%>:</dt>
         <dd>
-          <% if @order.reserved? %><span class="label label-warning">Reserved</span><% end %>
-          <% if @order.paid? %><span class="label label-success"><span class="fa fa-check"></span> Paid</span><% end %>
-          <% if @order.canceled? %><span class="label label-danger">Canceled</span><% end %>
+          <% if @order.reserved? %><span class="label label-warning"><%=t"orders.Reserved"%></span><% end %>
+          <% if @order.paid? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"orders.Paid"%></span><% end %>
+          <% if @order.canceled? %><span class="label label-danger"><%=t"orders.Canceled"%></span><% end %>
         </dd>
 
         <% if @order.can_cancel? %>
         <br>
-        <dt>Cancel now:</dt>
+        <dt><%=t".Cancel now"%>:</dt>
         <dd>
-          <%= link_to('Cancel this reservation', @order, :method => :delete, :class=>"btn btn-danger btn-sm", data: { confirm: 'Are you sure to cancel this reservation?' }) %>
+          <%= link_to(t('.Cancel this reservation'), @order, :method => :delete, :class=>"btn btn-danger btn-sm", data: { confirm: t('.Are you sure to cancel this reservation?') }) %>
         </dd>
         <% end %>
       </dl>
@@ -26,20 +26,20 @@
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Payment</h3>
+      <h3 class="panel-title"><%=t".Payment"%></h3>
     </div>
 
     <% if @order.canceled? %>
       <div class="panel-body">
         <p class="well">
-        A canceled order can't be paid.
+          <%=t".A canceled order can't be paid"%>
         </div>
     <% end %>
 
     <% if @order.paid? %>
       <div class="panel-body">
         <p class="well">
-        You already purchased this order.
+          <%=t".You already purchased this order"%>
         </div>
     <% end %>
 
@@ -48,13 +48,13 @@
 
         <div class="panel-body">
           <p class="well">
-          In order to finish the checkout process, transfer exactly <strong><%= number_to_currency @order.sum %></strong> to us with a SEPA-Transaction.
+            <%=t".payment_flow.html", payment_sum: number_to_currency(@order.sum) %>
             <dl class="dl-horizontal">
-              <dt>IBAN:</dt>
+              <dt><%=Order.human_attribute_name(:payment_iban)%>:</dt>
               <dd><%= @event.payment_iban %></dd>
-              <dt>BIC:</dt>
+              <dt><%=Order.human_attribute_name(:payment_bic)%>:</dt>
               <dd><%= @event.payment_bic %></dd>
-              <dt>REFERENCE:</dt>
+              <dt><%=t".REFERENCE"%>:</dt>
               <dd><%= @order.transfer_token %></dd>
             </dl>
           </div>
@@ -62,7 +62,7 @@
       <% else %>
       <div class="panel-body">
         <p class="well">
-          At the moment payment is not possible. You will receive an E-Mail with further information as we start.
+          <%=t".payment_not_started"%>
         </p>
       </div>
       <% end %>
@@ -71,7 +71,7 @@
 </div>
 <div class="col-sm-6">
   <div class="panel panel-default">
-    <div class="panel-heading">Ordered products</div>
+    <div class="panel-heading"><%=t".Ordered products"%></div>
     <div class="panel-body">
       <div class="table-responsive">
         <table class="table">
@@ -79,12 +79,12 @@
           <% @order.sold_products.each do |sold_product| %>
             <tr>
               <td><%=link_to sold_product.name, product_path(sold_product.product) %></td>
-              <td><b><%=sold_product.price %> EUR</b> <i>(incl. <%=sold_product.tax %>% tax)</i></td>
+              <td><%=t".price_incl_tax.html", price: number_to_currency( sold_product.price), tax: "#{sold_product.tax}%" %></td>
               <td>
-                <% if sold_product.reserved? %><span class="label label-warning">Reserved</span><% end %>
-                <% if sold_product.downloadable? %><span class="label label-success"><span class="fa fa-check"></span> Downloadable</span> <%=link_to "PDF Ticket", sold_product_path(sold_product,format: "pdf") %> <% end %>
-                <% if sold_product.canceled? %><span class="label label-danger">Canceled</span><% end %>
-                <% if sold_product.issued? %><span class="label label-danger">Already used</span><% end %>
+                <% if sold_product.reserved? %><span class="label label-warning"><%=t"sold_product.Reserved"%></span><% end %>
+                <% if sold_product.downloadable? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"sold_product.Downloadable"%></span> <%=link_to t(".PDF Ticket"), sold_product_path(sold_product,format: "pdf") %> <% end %>
+                <% if sold_product.canceled? %><span class="label label-danger"><%=t"sold_product.Canceled"%></span><% end %>
+                <% if sold_product.issued? %><span class="label label-danger"><%=t"sold_product.Already used"%></span><% end %>
               </td>
             </tr>
           <% end %>
@@ -93,7 +93,7 @@
         </table>
       </div>
     </div>
-    <div class="panel-footer">&nbsp;<b class="pull-right">Sum: <%=@order.sum %>EUR</b></div>
+    <div class="panel-footer">&nbsp;<b class="pull-right"><%=t".Sum"%>: <%=number_to_currency @order.sum %></b></div>
   </div>
 </div>
 

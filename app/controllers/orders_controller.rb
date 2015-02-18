@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   respond_to :html
 
   rescue_from(ActionController::ParameterMissing) do |parameter_missing_exception|
-    flash[:error] = "You must select one product at least."
+    flash[:error] = t("products.You must select one product at least")
     redirect_to "/products/"
   end
 

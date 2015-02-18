@@ -3,29 +3,34 @@
   <h1><%=@event.name%></h1>
 </div>
 
-<%= markdown @event.description if @event.description %>
+<%=markdown @event.description if @event.description %>
 
-<h2>Vorverkauf</h2>
+<h2><%=t"welcome.Presale"%></h2>
 <hr>
 <% if current_user %>
 
-  <%= render partial:"orders/root_table" %>
+  <%=render partial:"orders/root_table" %>
 
-  <%=link_to "Get stuff >", products_url, {class:"btn btn-primary"} %>
+  <%=link_to products_url, {class:"btn btn-primary"} do %>
+    <%=t("welcome.GetStuff")%> <span class="fa fa-chevron-right"></span>
+  <% end %>
   <br/><br/>
 
 <% else %>
 
 <div class="col-sm-6">
-  <h3>Account anlegen</h3>
-  <%= link_to "Hier", new_user_registration_path %>
+  <h3><%=t"welcome.CreateAccount"%></h3>
+  <%=link_to t("welcome.Here"), new_user_registration_path %>
 </div>
 
 <div class="col-sm-6">
-  <h3>Einloggen</h3>
-  <%= link_to "Hier", new_user_session_path %>
+  <h3><%=t"welcome.Login"%></h3>
+  <%=link_to t("welcome.Here"), new_user_session_path %>
 </div>
 
-<%=link_to "Get stuff >", products_url, {class:"btn btn-primary"} %>
+<br/><br/>
+<%=link_to products_url, {class:"btn btn-primary"} do %>
+  <%=t("welcome.GetStuff")%> <span class="fa fa-chevron-right"></span>
+<% end %>
 
 <% end %>

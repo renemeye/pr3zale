@@ -1,0 +1,20 @@
+de:
+  breadcrumbs:
+    application:
+      root: "Übersicht"
+    pages:
+      pages: "Seiten"
+  helpers:
+    actions: "Aktionen"
+    links:
+      back: "Zurück"
+      cancel: "Abrechen"
+      confirm: "Bist du sicher?"
+      destroy: "Löschen"
+      new: "Neu"
+      edit: "Bearbeiten"
+    titles:
+      edit: "%{model} bearbeiten"
+      save: "Speichere %{model}"
+      new: "Neu %{model}"
+      delete: "Lösche %{model}"

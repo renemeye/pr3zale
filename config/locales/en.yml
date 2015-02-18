@@ -1,23 +1,117 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      Presale for XX: "Presale for %{event}"
+      Toggle navigation: "Toggle navigation"
+      Products: "Products"
+      Verification: "Verification"
+      Cooperators: "Cooperators"
+      Login: "Login"
+      Logout: "Logout"
+      Account: "Account"
+      EU cookie policy: "EU cookie policy"
+      cookie_policy: "We are using cookies to store your session and login information between multiple page loads. Cookies are very small files stored in your browser and are used by most websites to store information between page loads. In order to fullfill the eu-cookie-policy we have to inform you about that and ask if we are allowed to use them. For technical reasons you can only use this page after you accepted cookies."
+      Accept cookies: "Accept cookies"
+      Deny cookies: "Deny cookies"
+      javascript_warning: "Warning! Your JavaScript is disabled. You will need to have JavaScript enabled in order to use this page."
+  scaffold:
+    Edit: "Edit"
+    Back: "Back"
+    Show: "Show"
+    Destroy: "Destroy"
+    Are you sure?: "Are you sure?"
+  welcome:
+    CurrentEvents: "Current Events"
+    Presale: "Presale"
+    Here: "Here"
+    GetStuff: "Get Stuff"
+    CreateAccount: "Create Account"
+    Login: "Login"
+  validation:
+    This_is_your_anti_phishing_secret: "This is your anti phising secret"
+    This is a valid Code: "This is a valid Code"
+    Use it: "Use it!"
+    Cancel: "Cancel"
+    This is not a valid Ticket: "This is not a valid Ticket"
+    This Ticket has already been used: "This Ticket has already been used"
+    Log in on your QR-Device: "Log in on your QR-Device"
+  users:
+    Sign in to continue: "Sign in to continue"
+    your email adress: "your email adress"
+    password: "password"
+    Sign in: "Sign in"
+    Forgot your password: "Forgot your password"
+    Click here: "Click here"
+    Cooperator: "Cooperator"
+    Coordinator: "Coordinator"
+  products:
+    New product: "New Product"
+    index:
+      Products for: "Products for"
+      Sold out: "Sold out."
+      Only XXX left:
+        html: "Only <strong>%{stock}</strong> left."
+      Make a reservation: "Make a reservation"
+    edit:
+      Editing product: "Editing product"
+    form:
+      Some errors prohibited this product from being saved: "Some errors prohibited this product from being saved"
+      Images: "Images"
+  orders:
+    Canceled: "Canceled"
+    Paid: "Paid"
+    Reserved: "Reserved"
+    show:
+      Order XX: "Order #%{order_no}"
+      Cancel now: "Cancel now"
+      Cancel this reservation: "Cancel this reservation"
+      Are you sure to cancel this reservation?: "Are you sure to cancel this reservation?"
+      Payment: "Payment"
+      A canceled order can't be paid: "A canceled order can't be paid."
+      You already purchased this order: "You already purchased this order."
+      Are you sure to cancel this reservation?: "Are you sure to cancel this reservation?"
+      payment_flow:
+        html: "In order to finish the checkout process, transfer exactly <strong>%{payment_sum}</strong> (or more as a donation) to us with a SEPA-Transaction."
+      REFERENCE: "REFERENCE"
+      payment_not_started: "At the moment payment is not possible. You will receive an E-Mail with further information as we start."
+      Ordered products: "Ordered products"
+      price_incl_tax:
+        html: "<strong>%{price}</strong> <i>(incl. %{tax} tax)</i>"
+      PDF Ticket: "PDF Ticket"
+      Sum: "Sum"
+    root_table:
+      Your orders: "Your orders"
+      Products: "Products"
+      Sum: "Sum"
+      Paid?: "Paid?"
+      Download Tickets: "Download Tickets"
+  sold_product:
+    Downloadable: "Downloadable"
+    Already used: "Already used"
+    Canceled: "Canceled"
+    Reserved: "Reserved"
+  activerecord:
+    attributes:
+      product:
+        name: "Name"
+        issued: "Issued"
+        available_count: "Available for Purchase"
+        quantity: "Quantity"
+        description: "Description"
+        tax: "Tax"
+        price: "Price"
+      order:
+        ordered_at: "Ordered at"
+        state: "State"
+        payment_iban: "IBAN"
+        payment_bic: "BIC"
+  number:
+    currency:
+      format:
+        delimiter: ','
+        format: ! '%n %u'
+        precision: 2
+        separator: ! '.'
+        significant: false
+        strip_insignificant_zeros: false
+        unit: €

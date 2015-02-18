@@ -9,40 +9,40 @@
 </div>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%=Product.human_attribute_name(:name)%>:</strong>
   <%= @product.name %>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @product.price %>
+  <strong><%=Product.human_attribute_name(:price)%>:</strong>
+  <%= number_to_currency @product.price %>
 </p>
 
 <p>
-  <strong>Tax:</strong>
+  <strong><%=Product.human_attribute_name(:tax)%>:</strong>
   <%= @product.tax %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @product.description %>
+  <strong><%=Product.human_attribute_name(:description)%>:</strong>
+  <div class="well"><%= markdown @product.description %></div>
 </p>
 
 
 <% if can? :edit, @product %>
   <p>
-    <strong>Quantity:</strong>
+    <strong><%=Product.human_attribute_name(:quantity)%>:</strong>
     <%= @product.quantity %>
   </p>
   <p>
-    <strong>Available for purchase:</strong>
+    <strong><%=Product.human_attribute_name(:available_count)%>:</strong>
     <%= @product.available_count %>
   </p>
   <p>
-    <strong>Issued:</strong>
+    <strong><%=Product.human_attribute_name(:issued)%>:</strong>
     <%= @product.issued.count %>
   </p>
 <% end %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to t('scaffold.Edit'), edit_product_path(@product) %> |
+<%= link_to t('scaffold.Back'), products_path %>

@@ -3,7 +3,7 @@
   <% if @product.errors.any? %>
   <div class="alert alert-danger alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h4><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h4>
+    <h4><%=t(".Some errors prohibited this product from being saved")%>:</h4>
 
     <ul>
       <% @product.errors.full_messages.each do |msg| %>
@@ -50,7 +50,7 @@
   </div>
 <% end %>
 
-<h3>Images</h3>
+<h3><%=t(".Images")%></h3>
 
 <%= form_for(Image.new({:imageable => @product}),
 html: { multipart: true, class: "dropzone"},
