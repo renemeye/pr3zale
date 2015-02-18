@@ -72,9 +72,9 @@ de:
       You already purchased this order: "Du hast diese Bestellung bereits bezahlt."
       Are you sure to cancel this reservation?: "Bist du dir sicher, dass du diese Reservierung stornieren möchtest?"
       payment_flow:
-        html: "Um den Bestellvorgang endgültig abzuschließen, musst du genau <strong>%{payment_sum}</strong> oder mehr (als Spende) an uns überweisen."
+        html: "Um den Bestellvorgang endgültig abzuschließen, überweise bitte <strong>%{payment_sum}</strong> oder mehr (als Spende) an uns."
       REFERENCE: "Verwendungszweck"
-      payment_not_started: "Im Moment kannst du deine Reservierung noch nicht bezahlten. Wir werden dich per E-Mail informieren, sobald es soweit ist."
+      payment_not_started: "Im Moment kannst Du deine Reservierung noch nicht bezahlten. Wir werden dich per E-Mail informieren, sobald es soweit ist."
       Ordered products: "Bestellte Produkte"
       price_incl_tax:
         html: "<strong>%{price}</strong> <i>(inkl. %{tax} MwSt)</i>"
@@ -91,6 +91,20 @@ de:
     Already used: "Bereits entwertet"
     Canceled: "Storniert"
     Reserved: "Reserviert"
+  order_mailer:
+    event Presale Reservation#order_id: "%{event} Vorverkauf | Reservierung Nr. %{order_id}"
+    reservation_confirmation:
+      Hello: "Hallo,"
+      you succesfully made a reservation for EVENT: "hiermit bestätigen wir dir Deine Reservierung."
+      Reservation XX: "Reservierung #%{order_no}"
+      Payment: "Bezahlung"
+      payment_flow: "Um den Bestellvorgang endgültig abzuschließen, überweise bitte %{payment_sum} oder mehr (als Spende) an uns."
+      REFERENCE: "Verwendungszweck"
+      payment_not_started: "Im Moment kannst Du deine Reservierung noch nicht bezahlten. Wir werden dich per E-Mail informieren, sobald es soweit ist."
+      Ordered products: "Reservierte Produkte"
+      price_incl_tax: "%{price} (inkl. %{tax} MwSt.)"
+      Sum: "Summe"
+      Best Regards: "liebe Grüße"
   activerecord:
     models:
       product: "Produkt"

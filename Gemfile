@@ -75,6 +75,7 @@ gem 'modernizr-rails'
 #Deal with EU-Cookie policy
 gem 'rack-policy'
 
+#State Mashine
 gem 'state_machine'
 
 #Heroku:

@@ -27,6 +27,11 @@ FactoryGirl.define do
     name "Testevent"
     slack "test"
     factory :event_with_products do
+      factory :event_with_products_and_payment_information do
+        payment_iban "A1234"
+        payment_bic "BICFOOBAR"
+      end
+
       after(:create) do |event, evaluator|
         create_list(:product, 5, event: event)
       end

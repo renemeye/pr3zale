@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
       sold_product.event = @event
     end
     if @order.save
+      OrderMailer.reservation_confirmation(current_user, @order).deliver
       respond_with(@order)
     else
       flash[:error] = t"orders.Some of the requested products are sold out"

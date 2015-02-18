@@ -1,0 +1,27 @@
+<%=t".Hello"%>
+<%=t".you succesfully made a reservation for EVENT", event:@event.name %>
+
+- <%=t".Reservation XX", order_no: @order.id%>
+- <%=Order.human_attribute_name(:ordered_at)%>: <%= l @order.created_at, :format => :default %>
+
+### <%=t".Payment"%>
+<% unless @event.payment_iban.blank? or @event.payment_bic.blank? %>
+<%=t".payment_flow", payment_sum: number_to_currency(@order.sum) %>
+
+  <%=Order.human_attribute_name(:payment_iban)%>: <%= @event.payment_iban %>
+  <%=Order.human_attribute_name(:payment_bic)%>: <%= @event.payment_bic %>
+  <%=t".REFERENCE"%>: <%= @order.transfer_token %>
+
+<% else %>
+<%=t".payment_not_started"%>
+
+<% end %>
+
+### <%=t".Ordered products"%>
+<% @order.sold_products.each do |sold_product| %>
+<%=sold_product.name %> (<%=t".price_incl_tax", price: number_to_currency( sold_product.price), tax: "#{sold_product.tax}%" %>)
+<% end %>
+------------
+<%=t".Sum"%>: <%=number_to_currency @order.sum %>
+
+<%=t".Best Regards"%>
