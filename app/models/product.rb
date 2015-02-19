@@ -17,11 +17,15 @@ class Product < ActiveRecord::Base
   end
 
   def available_count
-    self.quantity - self.sold_products.length + self.sold_products.with_state(:canceled).length
+    unless self.quantity.nil?
+      self.quantity - self.sold_products.length + self.sold_products.with_state(:canceled).length
+    else
+      return 0
+    end
   end
 
   def low_stock_warning
-    if (self.available_count.to_f / self.quantity) <= 0.15
+    if (not self.quantity.nil?) && (self.available_count.to_f / self.quantity) <= 0.15
       return self.available_count
     end
     return false
