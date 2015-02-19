@@ -24,6 +24,9 @@ class Ability
       can :manage, Cooperator do |cooperator|
         user.is_coordinator? cooperator.event
       end
+      can :manage, Image do |image|
+        user.is_coordinator? image.product.event
+      end
     end
 
 
