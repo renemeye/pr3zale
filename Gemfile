@@ -55,9 +55,10 @@ gem 'paper_trail'
 
 # Use unicorn as the app server
 gem 'unicorn', group: :production
+gem 'mysql2', group: :production
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
@@ -77,10 +78,6 @@ gem 'rack-policy'
 
 #State Mashine
 gem 'state_machine'
-
-#Heroku:
-gem 'rails_12factor', group: :production
-gem 'pg', group: :production
 
 #Images to S3:
 gem 'aws-sdk', group: :production
