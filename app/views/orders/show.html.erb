@@ -44,12 +44,14 @@
     <% end %>
 
     <% if @order.can_purchase? %>
-      <% unless @event.payment_iban.blank? or @event.payment_bic.blank? %>
+      <% unless @event.payment_iban.blank? or @event.payment_bic.blank? or @event.payment_receiver.blank? %>
 
         <div class="panel-body">
           <p class="well">
             <%=t".payment_flow.html", payment_sum: number_to_currency(@order.sum) %>
             <dl class="dl-horizontal">
+              <dt><%=Order.human_attribute_name(:payment_receiver)%>:</dt>
+              <dd><%= @event.payment_receiver %></dd>
               <dt><%=Order.human_attribute_name(:payment_iban)%>:</dt>
               <dd><%= @event.payment_iban %></dd>
               <dt><%=Order.human_attribute_name(:payment_bic)%>:</dt>

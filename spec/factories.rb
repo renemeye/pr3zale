@@ -30,6 +30,7 @@ FactoryGirl.define do
       factory :event_with_products_and_payment_information do
         payment_iban "A1234"
         payment_bic "BICFOOBAR"
+        payment_receiver "Foo Bar und Co. KG"
       end
 
       after(:create) do |event, evaluator|

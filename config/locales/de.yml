@@ -6,6 +6,7 @@ de:
       Products: "Produkte"
       Verification: "Kasse"
       Cooperators: "Helfer"
+      Event: "Veranstaltung"
       Login: "Login"
       Logout: "Logout"
       Account: "Account"
@@ -123,6 +124,7 @@ de:
         state: "Aktueller Stand"
         payment_iban: "IBAN"
         payment_bic: "BIC"
+        payment_receiver: "Empfänger"
   date:
     abbr_day_names:
     - So

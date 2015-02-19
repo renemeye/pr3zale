@@ -27,6 +27,7 @@ feature "OrderConfirmations", :type => :feature do
 
     expect(last_email).to have_content(user.email)
     expect(last_email).to have_content(event.payment_iban)
+    expect(last_email).to have_content(event.payment_receiver)
     expect(last_email).to have_content(Order.last.sold_products.first.name)
     expect(last_email).to have_content(Order.last.transfer_token)
 

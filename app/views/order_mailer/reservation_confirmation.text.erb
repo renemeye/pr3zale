@@ -8,6 +8,7 @@
 <% unless @event.payment_iban.blank? or @event.payment_bic.blank? %>
 <%=t".payment_flow", payment_sum: number_to_currency(@order.sum) %>
 
+  <%=Order.human_attribute_name(:payment_receiver)%>: <%= @event.payment_receiver %>
   <%=Order.human_attribute_name(:payment_iban)%>: <%= @event.payment_iban %>
   <%=Order.human_attribute_name(:payment_bic)%>: <%= @event.payment_bic %>
   <%=t".REFERENCE"%>: <%= @order.transfer_token %>

@@ -6,6 +6,7 @@ en:
       Products: "Products"
       Verification: "Verification"
       Cooperators: "Cooperators"
+      Event: "Event"
       Login: "Login"
       Logout: "Logout"
       Account: "Account"
@@ -122,6 +123,7 @@ en:
         state: "State"
         payment_iban: "IBAN"
         payment_bic: "BIC"
+        payment_receiver: "Receiver"
   number:
     currency:
       format:

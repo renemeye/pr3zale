@@ -42,6 +42,9 @@
           <% if can? :manage, @event %>
             <li><%= link_to t(".Cooperators"), cooperators_path %></li>
           <% end %>
+          <% if can? :manage, @event %>
+            <li><%= link_to t(".Event"), edit_event_path(@event) %></li>
+          <% end %>
         </ul>
         <% end %>
         <ul class="nav navbar-nav navbar-right">
