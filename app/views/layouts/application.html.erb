@@ -57,6 +57,7 @@
           <% if user_signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-user"></span>&nbsp;
+
               <%=current_user.email %> <%="<span class='badge'>#{t"users.Cooperator"}</span>".html_safe if current_user.is_cooperator? @event %><%="<span class='badge'>#{t"users.Coordinator"}</span>".html_safe if current_user.is_coordinator? @event %>
               <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -65,13 +66,75 @@
               </ul>
             </li>
             <% else %>
-            <li><%= link_to("<span class='fa fa-user'></span>&nbsp;#{t".Login"}".html_safe, new_user_session_path)  %></li>
+            <li><%= link_to("<span class='fa fa-user'></span>&nbsp;
+              #{t".Login"}".html_safe, new_user_session_path)  %></li>
             <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container">
+    <style>
+      #forkongithub a{
+        background:#717171;
+        color:#fff;
+        text-decoration:none;
+        font-family:arial,sans-serif;
+        text-align:center;
+        font-weight:bold;
+        padding:5px 40px;
+        font-size:0.7rem;
+        line-height:1rem;
+        position:relative;
+        transition:0.5s;
+      }
+      #forkongithub a::before,#forkongithub a::after{
+        content:"";
+        width:100%;
+        display:block;
+        position:absolute;
+        top:1px;
+        left:0;
+        height:1px;
+        background:#fff;
+      }
+      #forkongithub a::after{bottom:1px;
+        top:auto;
+      }
+      #forkongithub {
+        display: none;
+      }
+      @media screen and (min-width:800px){
+        #forkongithub:hover a {
+          box-shadow:4px 4px 10px rgba(0,0,0,0.4);
+        }
+        #forkongithub{
+          pointer-events: none;
+          position:absolute;
+          display:inline-block;
+          top:50px;
+          right:0;
+          overflow:hidden;
+          height:100px;
+          width: 100px;
+          z-index:0;
+        }
+        #forkongithub a{
+          pointer-events: initial;
+          width:200px;
+          position:absolute;
+          top:20px;
+          right:-70px;
+          transform:rotate(45deg);
+          -webkit-transform:rotate(45deg);
+          -ms-transform:rotate(45deg);
+          -moz-transform:rotate(45deg);
+          -o-transform:rotate(45deg);
+          box-shadow:4px 4px 10px rgba(0,0,0,0.6);
+        }
+      }
+      </style>
+      <span id="forkongithub"><a href="https://github.com/renemeye/pr3zale">Fork me on GitHub</a></span>
       <% unless cookies_accepted? %>
       <div class="alert alert-info" role="alert">
         <h5><%=t".EU cookie policy"%></h5>
@@ -87,7 +150,8 @@
 
       <% flash.each do |name, msg| %>
         <%= content_tag :div, :class => "alert alert-#{ name == "error" ? "danger" : "success" } alert-dismissable" do %>
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+          </button>
           <%= msg %>
         <% end %>
       <% end %>
