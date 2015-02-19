@@ -5,6 +5,8 @@ Rails.application.configure do
   config.cache_classes = true
 
   config.action_controller.relative_url_root = '/pr3zale'
+  config.root_directory = '/pr3zale'
+  config.assets.prefix = '/pr3zale/assets/'
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
