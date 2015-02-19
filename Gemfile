@@ -53,11 +53,12 @@ gem 'dropzonejs-rails'
 gem 'paper_trail'
 
 # Use unicorn as the app server
-gem 'unicorn', group: :production
-gem 'mysql2', group: :production
+# gem 'unicorn', group: :production
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
+gem 'thin', group: :production
+gem 'mysql2', group: :production
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
