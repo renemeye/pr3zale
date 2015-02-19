@@ -21,5 +21,9 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  database: pr3zale_db
+  username: pr3zale_user
+  password: yourFatSecret
+  host: localhost
+  socket: /vart/run/mysql.sock
