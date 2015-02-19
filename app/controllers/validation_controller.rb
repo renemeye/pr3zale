@@ -4,7 +4,14 @@ class ValidationController < ApplicationController
   def index
     authorize! :validate_tickets, @event
     prefill_mail = current_user.email if current_user
-    @qr = RQRCode::QRCode.new( validation_index_url(:email => prefill_mail), :size => 6, :level => :h )
+    for i in 1..15
+      begin
+        return @qr = RQRCode::QRCode.new( validation_index_url(:email => prefill_mail), :size => i, :level => :h )
+      rescue RQRCode::QRCodeRunTimeError
+        next
+      end
+      return @qr unless @qr.nil?
+    end
   end
 
   def show
