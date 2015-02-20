@@ -33,6 +33,7 @@ set :linked_files, %w{config/local_env.yml config/database.yml}
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+set :assets_prefix, 'presale/assets/'
 
 
 namespace :deploy do
