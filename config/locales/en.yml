@@ -74,7 +74,7 @@ en:
       You already purchased this order: "You already purchased this order."
       Are you sure to cancel this reservation?: "Are you sure to cancel this reservation?"
       payment_flow:
-        html: "In order to finish the checkout process, transfer exactly <strong>%{payment_sum}</strong> (or more as a donation) to us with a SEPA-Transaction."
+        html: "In order to finish the checkout process, transfer <strong>%{payment_sum}</strong> to us with a SEPA-Transaction."
       REFERENCE: "REFERENCE"
       payment_not_started: "At the moment payment is not possible. You will receive an E-Mail with further information as we start."
       Ordered products: "Ordered products"
@@ -101,7 +101,7 @@ en:
       you succesfully made a reservation for EVENT: "you succesfully made a reservation for %{event}."
       Reservation XX: "Reservation #%{order_no}"
       Payment: "Payment"
-      payment_flow: "In order to finish the checkout process, transfer exactly %{payment_sum} (or more as a donation) to us with a SEPA-Transaction."
+      payment_flow: "In order to finish the checkout process, transfer %{payment_sum} to us with a SEPA-Transaction."
       REFERENCE: "REFERENCE"
       payment_not_started: "At the moment payment is not possible. You will receive an E-Mail with further information as we start."
       Ordered products: "Ordered products"
