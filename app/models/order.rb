@@ -27,6 +27,7 @@ class Order < ActiveRecord::Base
     end
 
     after_transition any => :paid do |order, transition|
+      OrderMailer.purchase_confirmation(order.user, order).deliver
       order.sold_products.each do |sold_product|
         sold_product.purchase
       end

@@ -1,0 +1,16 @@
+<%=t".Hello"%>
+<%=t".we received your payment Thanks" %>
+
+- <%=t".Order XX", order_no: @order.id%>
+- <%=Order.human_attribute_name(:ordered_at)%>: <%= l @order.created_at, :format => :default %>
+
+<%=t".Please visit ORDER_URL to download your tickets.", order_url:order_url(@order) %>
+
+### <%=t".Ordered products"%>
+<% @order.sold_products.each do |sold_product| %>
+<%=sold_product.name %> (<%=t".price_incl_tax", price: number_to_currency( sold_product.price), tax: "#{sold_product.tax}%" %>)
+<% end %>
+------------
+<%=t".Sum"%>: <%=number_to_currency @order.sum %>
+
+<%=t".Best Regards"%>
