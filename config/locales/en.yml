@@ -52,6 +52,7 @@ en:
     Resend: Resend
     Forgot your password?: "Forgot your password?"
     Reset password: "Reset password"
+    Change your Password: "Change your Password"
   products:
     You must select one product at least: "You must select one product at least. (On the left side with +/-)"
     New product: "New Product"
