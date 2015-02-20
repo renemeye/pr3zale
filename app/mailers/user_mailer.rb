@@ -6,20 +6,19 @@ class UserMailer < Devise::Mailer
   def confirmation_instructions(record, token, opts={})
     @resource = record
     @token = token
-    # set_locale(@user)
     mail to: @resource.email, subject: t("devise.mailer.confirmation_instructions.subject")
   end
 
-  def reset_password_instructions(user)
-    @user = user
-    # set_locale(@user)
-    mail to: @user.email
+  def reset_password_instructions(record, token, opts={})
+    @resource = record
+    @token = token
+    mail to: @resource.email, subject: t("devise.mailer.reset_password_instructions.subject")
   end
 
-  def unlock_instructions(user)
-    @user = user
-    # set_locale(@user)
-    mail to: @user.email
+  def unlock_instructions(record, token, opts={})
+    @resource = record
+    @token = token
+    mail to: @resource.email, subject: t("devise.mailer.unlock_instructions.subject")
   end
 
   # private

@@ -29,7 +29,12 @@ en:
         Please click the Link below to confirm your email EMAIL on Presale: Please click the Link below to confirm your email %{email} on Presale.
         Best Regards: best regards
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "Presale | Reset password"
+        Hello EMAIL: Hello %{email},
+        Someone has requested a link to change your password You can do this through the link below: Someone has requested a link to change your password. You can do this through the link below.
+        If you didn't request this, please ignore this email: If you didn't request this, please ignore this email.
+        Your password won't change until you access the link above and create a new one: Your password won't change until you access the link above and create a new one.
+        Best Regards: best regards
       unlock_instructions:
         subject: "Unlock instructions"
     omniauth_callbacks:
