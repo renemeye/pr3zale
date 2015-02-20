@@ -63,7 +63,12 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method   = :postmark
   config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'], :api_key => ENV['POSTMARK_API_KEY'] }
-  config.action_mailer.default_url_options = { host: ENV['EMAIL_LINK_HOST'], port: ENV['EMAIL_LINK_PORT'], :protocol => ENV['EMAIL_LINK_PROTOCOL'] }
+  config.action_mailer.default_url_options = {
+    host: ENV['EMAIL_LINK_HOST'],
+    port: ENV['EMAIL_LINK_PORT'],
+    protocol: ENV['EMAIL_LINK_PROTOCOL'],
+    script_name: ENV['EMAIL_LINK_SUBPATH']
+  }
   config.action_mailer.default_options = {
     :from => ENV['EMAIL_FROM']
   }
