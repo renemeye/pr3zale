@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SoldProductPdf < Prawn::Document
   def initialize(sold_product, event, validation_url)
     super(top_margin: 70)
