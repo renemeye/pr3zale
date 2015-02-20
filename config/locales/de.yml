@@ -62,6 +62,8 @@ de:
     form:
       Some errors prohibited this product from being saved: "Aufgrund von Fehlern kann dieses Produkt nicht gespeichert werden."
       Images: "Bilder"
+    show:
+      incl tax: "inkl. %{tax}% MwSt."
   orders:
     Canceled: "Storniert"
     Paid: "Bezahlt"

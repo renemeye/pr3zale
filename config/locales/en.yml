@@ -62,6 +62,8 @@ en:
     form:
       Some errors prohibited this product from being saved: "Some errors prohibited this product from being saved"
       Images: "Images"
+    show:
+      incl tax: "incl. tax %{tax}%"
   orders:
     Canceled: "Canceled"
     Paid: "Paid"

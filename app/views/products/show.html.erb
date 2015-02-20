@@ -15,12 +15,7 @@
 
 <p>
   <strong><%=Product.human_attribute_name(:price)%>:</strong>
-  <%= number_to_currency @product.price %>
-</p>
-
-<p>
-  <strong><%=Product.human_attribute_name(:tax)%>:</strong>
-  <%= @product.tax %>
+  <%= number_to_currency @product.price %> (<%=t".incl tax", tax: @product.tax %>)
 </p>
 
 <p>
