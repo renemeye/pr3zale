@@ -48,6 +48,10 @@ en:
     password_confirmation: "Password confirmation"
     Sign up: "Sign up"
     XX characters minimum: "%{character_count} characters minimum"
+    Resend confirmation instructions: "Resend confirmation instructions"
+    Resend: Resend
+    Forgot your password?: "Forgot your password?"
+    Reset password: "Reset password"
   products:
     You must select one product at least: "You must select one product at least. (On the left side with +/-)"
     New product: "New Product"
