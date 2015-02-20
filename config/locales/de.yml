@@ -45,6 +45,9 @@ de:
     Click here: "Hier klicken"
     Cooperator: "Cooperator"
     Coordinator: "Coordinator"
+    password_confirmation: "Passwort wiederholen"
+    Sign up: "Account erstellen"
+    XX characters minimum: "Mindestens %{character_count} Zeichen"
   products:
     You must select one product at least: "Du musst mindestens ein Produkt auswählen (Mit +/- auf der linken Seite)."
     New product: "Neues Produkt"
@@ -122,6 +125,8 @@ de:
       product: "Produkt"
       order: "Bestellung"
     attributes:
+      user:
+        remember_me: "Angemeldet bleiben"
       product:
         name: "Name"
         issued: "Entwertet"

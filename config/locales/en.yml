@@ -45,6 +45,9 @@ en:
     Click here: "Click here"
     Cooperator: "Cooperator"
     Coordinator: "Coordinator"
+    password_confirmation: "Password confirmation"
+    Sign up: "Sign up"
+    XX characters minimum: "%{character_count} characters minimum"
   products:
     You must select one product at least: "You must select one product at least. (On the left side with +/-)"
     New product: "New Product"
@@ -118,7 +121,12 @@ en:
       Sum: "Sum"
       Best Regards: "Best Regards"
   activerecord:
+    models:
+      product: "Product"
+      order: "Order"
     attributes:
+      user:
+        remember_me: "Remember me"
       product:
         name: "Name"
         issued: "Issued"

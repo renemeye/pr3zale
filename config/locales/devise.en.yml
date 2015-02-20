@@ -1,7 +1,13 @@
-# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
-
 en:
   devise:
+    shared:
+      links:
+        Log in: "Log in"
+        Sign up: "Sign up"
+        Forgot your password?: "Forgot your password?"
+        Didn't receive confirmation instructions?: "Didn't receive confirmation instructions?"
+        Didn't receive unlock instructions?: "Didn't receive unlock instructions?"
+        Sign in with PROVIDER: "Sign in with %{provider}"
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
