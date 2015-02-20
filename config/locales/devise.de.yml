@@ -24,7 +24,10 @@ de:
       unconfirmed: Sie müssen Ihren Account bestätigen, bevor Sie fortfahren können.
     mailer:
       confirmation_instructions:
-        subject: Anleitung zur Bestätigung Ihres Accounts
+        subject: Presale | Bestätige Deine E-Mail-Adresse
+        Hello: "Hallo,"
+        Please click the Link below to confirm your email EMAIL on Presale: Bitte klick den Link unten um deine E-Mail-Adresse %{email} für den Vorverkauf zu bestätigen.
+        Best Regards: liebe Grüße
       reset_password_instructions:
         subject: Anleitung für das Zurücksetzen Ihres Passworts
       unlock_instructions:

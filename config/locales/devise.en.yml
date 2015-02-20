@@ -24,7 +24,10 @@ en:
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "Presale | Confirm your e-mail-address"
+        Hello: "Hello,"
+        Please click the Link below to confirm your email EMAIL on Presale: Please click the Link below to confirm your email %{email} on Presale.
+        Best Regards: best regards
       reset_password_instructions:
         subject: "Reset password instructions"
       unlock_instructions:
