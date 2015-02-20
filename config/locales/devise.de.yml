@@ -36,7 +36,11 @@ de:
         Your password won't change until you access the link above and create a new one: Dein Passwort wird sich nicht ändern, bevor du den Link oben geklickt und ein neues erstellt hast.
         Best Regards: liebe Grüße
       unlock_instructions:
-        subject: Anleitung für die Account-Freischaltung
+        subject: Presale | Account sperrung aufheben
+        Hello EMAIL,: Hallo %{email},
+        Your account has been locked due to an excessive number of unsuccessful sign in attempts.: Dein Account wurde aufgrund zu vieler fehlgeschlagener Loginversuche deaktiviert.
+        Click the link below to unlock your account: Klicke auf den Link unten um deinen Account wieder zu aktivieren:
+        Best Regards: liebe Grüße
     omniauth_callbacks:
       failure: Sie konnten nicht mit Ihrem %{kind}-Account angemeldet werden, weil "%{reason}".
       success: Sie haben sich erfolgreich mit Ihrem %{kind}-Account angemeldet.
