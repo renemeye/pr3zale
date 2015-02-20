@@ -245,7 +245,7 @@ RSpec.describe "User authorization", :type => :feature do
       end
       it "can see and issue a ticket on a validation url" do
         order.purchase
-        visit validation_path(sold_product_id: order.sold_products.first.product.id, verification_token: order.sold_products.first.verification_token)
+        visit validation_path(sold_product_id: order.sold_products.first.id, verification_token: order.sold_products.first.verification_token)
         expect(page).not_to have_content(unauthorized_message)
         click_link_or_button "Use it!"
         expect(page).to have_content("Successfully used '#{order.sold_products.first.former_product.name}';")
@@ -335,7 +335,8 @@ RSpec.describe "User authorization", :type => :feature do
       end
       it "can see and issue a ticket on a validation url" do
         order.purchase
-        visit validation_path(sold_product_id: order.sold_products.first.product.id, verification_token: order.sold_products.first.verification_token)
+        visit order_path(order)
+        visit validation_path(sold_product_id: order.sold_products.first.id, verification_token: order.sold_products.first.verification_token)
         expect(page).not_to have_content(unauthorized_message)
         click_link_or_button "Use it!"
         expect(page).to have_content("Successfully used '#{order.sold_products.first.former_product.name}';")

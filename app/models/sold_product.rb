@@ -3,6 +3,7 @@ class SoldProduct < ActiveRecord::Base
   belongs_to :order
   belongs_to :event
   belongs_to :user
+  before_create :randomize_id
   before_create :able_to_sell_product?
   before_create :ensure_verification_token
 
@@ -72,6 +73,15 @@ class SoldProduct < ActiveRecord::Base
       transition :downloadable => :issued
     end
 
+  end
+
+
+  private
+  #Creates a random ID in order to not know how much stuff is sold
+  def randomize_id
+    begin
+      self.id = SecureRandom.random_number(1_000_000_000)
+    end while SoldProduct.where(id: self.id).exists?
   end
 
 end

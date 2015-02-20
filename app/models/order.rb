@@ -7,6 +7,7 @@ class Order < ActiveRecord::Base
   scope :open_orders, -> {with_state(:reserved)}
 
   before_create :generate_transfer_token
+  before_create :randomize_id
 
   def sum
     sold_products.collect{|p|p.price}.sum
@@ -71,6 +72,13 @@ class Order < ActiveRecord::Base
       break random_token unless Order.exists?(transfer_token: random_token)
     end
     self.transfer_token += "-"+generate_check_sum(self.transfer_token)
+  end
+
+  #Creates a random ID in order to not know how much stuff is sold
+  def randomize_id
+    begin
+      self.id = SecureRandom.random_number(1_000_000_000)
+    end while Order.where(id: self.id).exists?
   end
 
 end
