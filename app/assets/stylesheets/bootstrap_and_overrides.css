@@ -5,3 +5,21 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
   */
+
+  body {
+    padding-top: 60px;
+  }
+
+  .page-header  a.btn {
+    float: right;
+  }
+
+  .page-header a.btn + .page-header a.btn {
+    margin-right: 8px;
+  }
+
+  input[type="radio"], input[type="checkbox"] {
+    width: initial;
+    height: initial;
+    margin-top: 7px;
+  }
