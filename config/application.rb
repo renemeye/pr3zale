@@ -28,5 +28,7 @@ module Pr3zale
         ENV[key.to_s] = "#{value}"
       end if File.exists?(env_file)
     end
+
+    config.assets.prefix = "#{ENV["RAILS_RELATIVE_URL_ROOT"]}/assets"
   end
 end
