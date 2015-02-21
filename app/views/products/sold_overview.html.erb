@@ -13,11 +13,17 @@
 
             <% @products.each do |product| %>
             <tr>
-              <td><%=link_to product.name, product %> (<%=number_to_currency product.price%>)</td>
-              <td><%=product.sold_products.open_orders.length %> (<%=number_to_currency product.sold_products.collect{|sold_product|sold_product.price}.sum %>)</td>
-              <td><%=product.sold_products.open_orders.group_by{|sold_product| sold_product.user.email}.collect{|email, products| "#{email} (#{products.length})"}.join ", " %></td>
+              <td><%=link_to product.name, product %> <span class="text-muted">(<%=number_to_currency product.price%>)</span></td>
+              <td><%=product.sold_products.open_orders.length %> <span class="text-muted">(<%=number_to_currency product.sold_products.open_orders.collect{|sold_product|sold_product.price}.sum %>)</span></td>
+              <td><%=product.sold_products.open_orders.group_by{|sold_product| sold_product.user.email}.collect{|email, products| "#{email} #{"(#{products.length})" if products.length > 1}"}.join ", " %></td>
             </tr>
             <% end %>
+
+            <tr>
+              <th></th>
+              <th><span style="border-top:4px double #333; padding-left: 5px; padding-right: 5px;"><%=number_to_currency @event.sold_products.open_orders.collect{|sold_product|sold_product.price}.sum %></span></th>
+              <th></th>
+            </tr>
 
           </table>
         </div>
