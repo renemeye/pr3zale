@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150220134926) do
+ActiveRecord::Schema.define(version: 20150221003317) do
 
   create_table "cooperators", force: true do |t|
     t.integer  "user_id"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150220134926) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
+    t.integer  "sort_order",  default: 0, null: false
   end
 
   add_index "products", ["event_id"], name: "index_products_on_event_id"

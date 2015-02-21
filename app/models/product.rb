@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   belongs_to :event
   has_many :images, as: :imageable, dependent: :destroy
   has_many :sold_products
+  default_scope { order('sort_order ASC') }
 
   def reserved_but_not_paid
     self.sold_products.with_state(:reserved)
