@@ -1,7 +1,7 @@
 de:
   layouts:
     application:
-      Presale for XX: "Vorverkauf für %{event}"
+      Presale for XX: "Vorverkauf | %{event}"
       Toggle navigation: "Navigation öffnen/schließen"
       Products: "Produkte"
       Verification: "Kasse"
