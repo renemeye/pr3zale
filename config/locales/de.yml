@@ -127,7 +127,7 @@ de:
       Ordered products: "Reservierte Produkte"
       price_incl_tax: "%{price} (inkl. %{tax} MwSt.)"
       Sum: "Summe"
-      Best Regards: "liebe Grüße"
+      Best Regards: "Liebe Grüße dein %{event} Orga-Team"
     purchase_confirmation:
       Hello: "Hallo,"
       we received your payment Thanks: "wir haben deine Zahlung erhalten. Vielen Dank!"
@@ -136,7 +136,7 @@ de:
       Ordered products: "Bestellte Produkte"
       price_incl_tax: "%{price} (inkl. %{tax} MwSt.)"
       Sum: "Summe"
-      Best Regards: "liebe Grüße"
+      Best Regards: "Liebe Grüße dein %{event} Orga-Team"
   activerecord:
     models:
       product: "Produkt"
