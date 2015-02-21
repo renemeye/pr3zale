@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :images,                    constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
   resources :orders,                    constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
   resources :products,                  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
+  get 'sold_overview', :controller => :products, :action => :sold_overview,                  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
   resources :validation, :only => [:index], :path=>"/v", constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
   get    'v/:sold_product_id/:verification_token', :controller => :validation, :action => :show,  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}, as: :validation
   delete 'v/:sold_product_id/:verification_token', :controller => :validation, :action => :issue,  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}, as: :issue

@@ -6,6 +6,8 @@ en:
       Products: "Products"
       Verification: "Verification"
       Cooperators: "Cooperators"
+      Orders: "Orders"
+      Sold: "Sold"
       Event: "Event"
       Login: "Login"
       Logout: "Logout"
@@ -79,6 +81,10 @@ en:
       Images: "Images"
     show:
       incl tax: "incl. tax %{tax}%"
+    sold_overview:
+      All Products: "All products"
+      open_orders: "reserved"
+      to: "from"
   orders:
     Canceled: "Canceled"
     Paid: "Paid"

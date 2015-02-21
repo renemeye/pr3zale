@@ -83,6 +83,11 @@ RSpec.describe "User authorization", :type => :feature do
         visit orders_path
         expect(page).to have_content(unauthorized_message)
       end
+
+      it "can't see sold_overview page" do
+        visit sold_overview_path
+        expect(page).to have_content(unauthorized_message)
+      end
     end
   end
 
@@ -174,6 +179,11 @@ RSpec.describe "User authorization", :type => :feature do
     describe "checking sensitive pages" do
       it "can't see orders overview page" do
         visit orders_path
+        expect(page).to have_content(unauthorized_message)
+      end
+
+      it "can't see sold_overview page" do
+        visit sold_overview_path
         expect(page).to have_content(unauthorized_message)
       end
     end
@@ -269,6 +279,11 @@ RSpec.describe "User authorization", :type => :feature do
     describe "checking sensitive pages" do
       it "can't see orders overview page" do
         visit orders_path
+        expect(page).to have_content(unauthorized_message)
+      end
+
+      it "can't see sold_overview page" do
+        visit sold_overview_path
         expect(page).to have_content(unauthorized_message)
       end
     end
@@ -367,6 +382,11 @@ RSpec.describe "User authorization", :type => :feature do
     describe "checking sensitive pages" do
       it "can see orders overview page" do
         visit orders_path
+        expect(page).not_to have_content(unauthorized_message)
+      end
+
+      it "can see sold_overview page" do
+        visit sold_overview_path
         expect(page).not_to have_content(unauthorized_message)
       end
     end

@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%=t".All Products"%></div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th><%=Product.model_name.human%></th>
+              <th><%=t".open_orders"%></th>
+              <th><%=t".to"%></th>
+            </tr>
+
+            <% @products.each do |product| %>
+            <tr>
+              <td><%=link_to product.name, product %> (<%=number_to_currency product.price%>)</td>
+              <td><%=product.sold_products.open_orders.length %> (<%=number_to_currency product.sold_products.collect{|sold_product|sold_product.price}.sum %>)</td>
+              <td><%=product.sold_products.group_by{|sold_product| sold_product.user.email}.collect{|email, products| "#{email} (#{products.length})"}.join ", " %></td>
+            </tr>
+            <% end %>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

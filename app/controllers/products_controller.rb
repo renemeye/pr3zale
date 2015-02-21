@@ -4,6 +4,12 @@ class ProductsController < ApplicationController
 
   respond_to :html
 
+  def sold_overview
+    authorize! :manage, @event
+    @products = @event.products.all
+    respond_with(@products)
+  end
+
   def index
     @products = @event.products.all
     respond_with(@products)

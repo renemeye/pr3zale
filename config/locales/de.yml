@@ -6,6 +6,8 @@ de:
       Products: "Produkte"
       Verification: "Kasse"
       Cooperators: "Helfer"
+      Orders: "Bestellungen"
+      Sold: "Verkauft"
       Event: "Veranstaltung"
       Login: "Login"
       Logout: "Logout"
@@ -79,6 +81,10 @@ de:
       Images: "Bilder"
     show:
       incl tax: "inkl. %{tax}% MwSt."
+    sold_overview:
+      All Products: "Alle Produkte"
+      open_orders: "Reserviert"
+      to: "von"
   orders:
     Canceled: "Storniert"
     Paid: "Bezahlt"
