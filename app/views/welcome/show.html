@@ -18,19 +18,20 @@
 
 <% else %>
 
-<div class="col-sm-6">
-  <h3><%=t"welcome.CreateAccount"%></h3>
-  <%=link_to t("welcome.Here"), new_user_registration_path %>
+<div class="col-sm-4">
+  <p><%=link_to t("welcome.CreateAccount"), new_user_registration_path, {class:"btn btn-primary btn-block"} %></p>
 </div>
 
-<div class="col-sm-6">
-  <h3><%=t"welcome.Login"%></h3>
-  <%=link_to t("welcome.Here"), new_user_session_path %>
+<div class="col-sm-4">
+  <p><%=link_to t("welcome.Login"), new_user_session_path , {class:"btn btn-primary btn-block"} %></p>
 </div>
 
-<br/><br/>
-<%=link_to products_url, {class:"btn btn-primary"} do %>
-  <%=t("welcome.GetStuff")%> <span class="fa fa-chevron-right"></span>
-<% end %>
+<div class="col-sm-4">
+  <p>
+    <%=link_to products_url, {class:"btn btn-primary btn-block"} do %>
+      <%=t("welcome.GetStuff")%> <span class="fa fa-chevron-right"></span>
+    <% end %>
+  </p>
+</div>
 
 <% end %>
