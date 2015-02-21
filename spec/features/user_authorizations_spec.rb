@@ -99,7 +99,7 @@ RSpec.describe "User authorization", :type => :feature do
 
       fill_in 'user_email', :with => user.email
       fill_in 'user_password', :with => "12345678"
-      click_button 'Log in'
+      click_button 'Sign in'
 
     end
 
@@ -186,7 +186,7 @@ RSpec.describe "User authorization", :type => :feature do
       fill_in 'user_email', :with => user.email
       fill_in 'user_password', :with => "12345678"
 
-      click_button 'Log in'
+      click_button 'Sign in'
     end
 
     it "can see root page" do
@@ -274,7 +274,7 @@ RSpec.describe "User authorization", :type => :feature do
 
       fill_in 'user_email', :with => user.email
       fill_in 'user_password', :with => "12345678"
-      click_button 'Log in'
+      click_button 'Sign in'
 
     end
 

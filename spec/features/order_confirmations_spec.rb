@@ -13,7 +13,7 @@ feature "OrderConfirmations", :type => :feature do
 
     fill_in 'user_email', :with => user.email
     fill_in 'user_password', :with => "12345678"
-    click_button 'Log in'
+    click_button 'Sign in'
   end
 
   it "emails user when making a reservation" do
