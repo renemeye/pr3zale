@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%=t".All orders"%></div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th><%=User.human_attribute_name(:email)%></th>
+              <th><%=t".Products"%></th>
+              <th><%=t".Sum"%></th>
+              <th><%=t".Paid?"%></th>
+            </tr>
+
+            <% @orders.each do |order| %>
+            <tr>
+              <td><%=order.user.email%></td>
+              <td><%=order %></td>
+              <td><b><%=number_to_currency order.sum %></b></td>
+              <td>
+                <% if order.reserved? %><span class="label label-warning"><%=t"orders.Reserved"%></span><% end %>
+                <% if order.paid? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"orders.Paid"%></span><% end %>
+                <% if order.canceled? %><span class="label label-danger"><%=t"orders.Canceled"%></span><% end %>
+              </td>
+            </tr>
+            <% end %>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

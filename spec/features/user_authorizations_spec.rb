@@ -77,6 +77,13 @@ RSpec.describe "User authorization", :type => :feature do
         expect(page).to have_content(unauthorized_message)
       end
     end
+
+    describe "checking sensitive pages" do
+      it "can't see orders overview page" do
+        visit orders_path
+        expect(page).to have_content(unauthorized_message)
+      end
+    end
   end
 
   #########
@@ -160,6 +167,13 @@ RSpec.describe "User authorization", :type => :feature do
       end
       it "can't see anything on a validation url" do
         visit validation_path(sold_product_id: order.sold_products.first.product.id, verification_token: order.sold_products.first.verification_token)
+        expect(page).to have_content(unauthorized_message)
+      end
+    end
+
+    describe "checking sensitive pages" do
+      it "can't see orders overview page" do
+        visit orders_path
         expect(page).to have_content(unauthorized_message)
       end
     end
@@ -251,6 +265,13 @@ RSpec.describe "User authorization", :type => :feature do
         expect(page).to have_content("Successfully used '#{order.sold_products.first.former_product.name}';")
       end
     end
+
+    describe "checking sensitive pages" do
+      it "can't see orders overview page" do
+        visit orders_path
+        expect(page).to have_content(unauthorized_message)
+      end
+    end
   end
 
   #########
@@ -340,6 +361,13 @@ RSpec.describe "User authorization", :type => :feature do
         expect(page).not_to have_content(unauthorized_message)
         click_link_or_button "Use it!"
         expect(page).to have_content("Successfully used '#{order.sold_products.first.former_product.name}';")
+      end
+    end
+
+    describe "checking sensitive pages" do
+      it "can see orders overview page" do
+        visit orders_path
+        expect(page).not_to have_content(unauthorized_message)
       end
     end
   end

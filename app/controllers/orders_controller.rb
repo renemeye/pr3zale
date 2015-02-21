@@ -8,6 +8,11 @@ class OrdersController < ApplicationController
     redirect_to "/products/"
   end
 
+  def index
+    authorize! :mange, @event
+    @orders = @event.orders
+  end
+
   def create
     @order = Order.new(order_params)
     @order.event = @event

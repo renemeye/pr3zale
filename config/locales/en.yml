@@ -108,6 +108,11 @@ en:
       Sum: "Sum"
       Paid?: "Paid?"
       Download Tickets: "Download Tickets"
+    index:
+      All orders: "All orders"
+      Products: "Products"
+      Sum: "Sum"
+      Paid?: "Paid?"
   sold_product:
     Downloadable: "Downloadable"
     Already used: "Already used"

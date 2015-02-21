@@ -108,6 +108,11 @@ de:
       Sum: "Summe"
       Paid?: "Bezahlt?"
       Download Tickets: "Tickets herunterladen"
+    index:
+      All orders: "Alle Bestellungen"
+      Products: "Produkte"
+      Sum: "Summe"
+      Paid?: "Bezahlt?"
   sold_product:
     Downloadable: "Herunterladbar"
     Already used: "Bereits entwertet"
@@ -127,7 +132,7 @@ de:
       Ordered products: "Reservierte Produkte"
       price_incl_tax: "%{price} (inkl. %{tax} MwSt.)"
       Sum: "Summe"
-      Best Regards: "Liebe Grüße dein %{event} Orga-Team"
+      Best Regards: "Liebe Grüße, dein %{event} Orga-Team"
     purchase_confirmation:
       Hello: "Hallo,"
       we received your payment Thanks: "wir haben deine Zahlung erhalten. Vielen Dank!"
