@@ -15,7 +15,7 @@
             <tr>
               <td><%=link_to product.name, product %> (<%=number_to_currency product.price%>)</td>
               <td><%=product.sold_products.open_orders.length %> (<%=number_to_currency product.sold_products.collect{|sold_product|sold_product.price}.sum %>)</td>
-              <td><%=product.sold_products.group_by{|sold_product| sold_product.user.email}.collect{|email, products| "#{email} (#{products.length})"}.join ", " %></td>
+              <td><%=product.sold_products.open_orders.group_by{|sold_product| sold_product.user.email}.collect{|email, products| "#{email} (#{products.length})"}.join ", " %></td>
             </tr>
             <% end %>
 
