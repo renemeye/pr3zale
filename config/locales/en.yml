@@ -12,11 +12,13 @@ en:
       Login: "Login"
       Logout: "Logout"
       Account: "Account"
+      javascript_warning: "Warning! Your JavaScript is disabled. You will need to have JavaScript enabled in order to use this page."
+  cookie_policy:
+    alert:
       EU cookie policy: "EU cookie policy"
       cookie_policy: "We are using cookies to store your session and login information between multiple page loads. Cookies are very small files stored in your browser and are used by most websites to store information between page loads. In order to fullfill the eu-cookie-policy we have to inform you about that and ask if we are allowed to use them. For technical reasons you can only use this page after you accepted cookies."
       Accept cookies: "Accept cookies"
       Deny cookies: "Deny cookies"
-      javascript_warning: "Warning! Your JavaScript is disabled. You will need to have JavaScript enabled in order to use this page."
   scaffold:
     Edit: "Edit"
     Back: "Back"

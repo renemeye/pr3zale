@@ -12,11 +12,13 @@ de:
       Login: "Login"
       Logout: "Logout"
       Account: "Account"
+      javascript_warning: "Achtung! Dein JavaScript is deaktiviert. Du musst JavaScript aktivieren um diese Seite zu benutzen."
+  cookie_policy:
+    alert:
       EU cookie policy: "EU Cookie Regelung"
       cookie_policy: "Wir nutzen Cookies um Session- und Logindaten zwischen mehreren Seitenladevorgang abzuspeichern. Cookies sind sehr kleine Dateien die in ihrem Browser gespeichert werden. Sie werden von den meisten Webseiten benutzt um Information zwischen mehreren Seitenladevorgängen zu speichern. Um die EU Cookie regelungen zu erfüllen müssen wir Dich darüber informieren und um erlaubnis bitten. Aus technischen gründen kannst Du diese Seite nur nach dem akzeptieren der Cookies nutzen."
       Accept cookies: "Cookies zulassen"
       Deny cookies: "Cookies ablehnen"
-      javascript_warning: "Achtung! Dein JavaScript is deaktiviert. Du musst JavaScript aktivieren um diese Seite zu benutzen."
   scaffold:
     Edit: "Bearbeiten"
     Back: "Zurück"

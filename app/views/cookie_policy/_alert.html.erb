@@ -1,0 +1,7 @@
+<div class="alert alert-info" role="alert">
+  <h5><%=t".EU cookie policy"%></h5>
+  <%=t".cookie_policy"%>
+  <br>
+  <br>
+  <a href="<%=allow_cookies_path :return_to => request.fullpath %>" class="btn btn-primary" data-method="post"><%=t".Accept cookies"%></a> <a href="<%=deny_cookies_path :return_to => request.fullpath %>" class="btn btn-danger" data-method="post"><%=t".Deny cookies"%></a>
+</div>

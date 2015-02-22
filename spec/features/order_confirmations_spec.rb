@@ -6,7 +6,7 @@ feature "OrderConfirmations", :type => :feature do
 
   before do
     switch_to_subdomain("#{event.slack}")
-    visit root_path locale: "en"
+    visit new_user_session_path locale: "en"
     click_link "Accept cookies"
 
     visit new_user_session_path

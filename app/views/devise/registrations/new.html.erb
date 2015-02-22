@@ -6,44 +6,48 @@
           <strong><%=t"users.Sign up"%></strong>
         </div>
         <div class="panel-body">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= devise_error_messages! %>
-            <fieldset>
-              <div class="row">
-                <div class="col-sm-12 col-md-10  col-md-offset-1 ">
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-user"></i>
-                      </span>
-                      <%= f.text_field :email, placeholder: t("users.your email adress"), autofocus: true, class:"form-control", value: params[:email] %>
+          <% unless cookies_accepted? %>
+            <%=render partial: "cookie_policy/alert" %>
+          <% else %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), authenticity_token: true) do |f| %>
+            <%= devise_error_messages! %>
+              <fieldset>
+                <div class="row">
+                  <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-user"></i>
+                        </span>
+                        <%= f.text_field :email, placeholder: t("users.your email adress"), autofocus: true, class:"form-control", value: params[:email] %>
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-lock"></i>
-                      </span>
-                      <%= f.password_field :password, placeholder: t("users.password"), class:"form-control",type:"password" %>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-lock"></i>
+                        </span>
+                        <%= f.password_field :password, placeholder: t("users.password"), class:"form-control",type:"password" %>
+                      </div>
+                      <% if @validatable %>
+                      <p class="help-block"><%=t"users.XX characters minimum", character_count: @minimum_password_length %></p>
+                      <% end %>
                     </div>
-                    <% if @validatable %>
-                    <p class="help-block"><%=t"users.XX characters minimum", character_count: @minimum_password_length %></p>
-                    <% end %>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-lock"></i>
-                      </span>
-                      <%= f.password_field :password_confirmation, placeholder: t("users.password_confirmation"), class:"form-control",type:"password" %>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-lock"></i>
+                        </span>
+                        <%= f.password_field :password_confirmation, placeholder: t("users.password_confirmation"), class:"form-control",type:"password" %>
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <%= f.submit t('users.Sign up'),class:"btn btn-lg btn-primary btn-block" %>
+                    <div class="form-group">
+                      <%= f.submit t('users.Sign up'),class:"btn btn-lg btn-primary btn-block" %>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </fieldset>
+              </fieldset>
+            <% end %>
           <% end %>
         </div>
         <div class="panel-footer ">

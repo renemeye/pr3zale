@@ -6,37 +6,41 @@
           <strong><%=t"users.Sign in to continue"%></strong>
         </div>
         <div class="panel-body">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <%= devise_error_messages! %>
-            <fieldset>
-              <div class="row">
-                <div class="col-sm-12 col-md-10  col-md-offset-1 ">
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-user"></i>
-                      </span>
-                      <%= f.text_field :email, placeholder: t("users.your email adress"), autofocus: true, class:"form-control", value: params[:email] %>
+          <% unless cookies_accepted? %>
+            <%=render partial: "cookie_policy/alert" %>
+          <% else %>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+              <fieldset>
+                <div class="row">
+                  <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-user"></i>
+                        </span>
+                        <%= f.text_field :email, placeholder: t("users.your email adress"), autofocus: true, class:"form-control", value: params[:email] %>
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">
-                        <i class="fa fa-lock"></i>
-                      </span>
-                      <%= f.password_field :password, placeholder: t("users.password"), class:"form-control",type:"password" %>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-lock"></i>
+                        </span>
+                        <%= f.password_field :password, placeholder: t("users.password"), class:"form-control",type:"password" %>
+                      </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <%= f.submit t('users.Sign in'),class:"btn btn-lg btn-primary btn-block" %>
-                  </div>
-                  <div class="form-group">
-                      <%= f.check_box :remember_me %>
-                      <%= f.label :remember_me %>
+                    <div class="form-group">
+                      <%= f.submit t('users.Sign in'),class:"btn btn-lg btn-primary btn-block" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </fieldset>
+              </fieldset>
+            <% end %>
           <% end %>
         </div>
         <div class="panel-footer ">
