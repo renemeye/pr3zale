@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
   accepts_nested_attributes_for :sold_products
   scope :on_event, ->(event) { where event: event }
   scope :open_orders, -> {with_state(:reserved)}
+  default_scope { order('created_at ASC') }
 
   before_create :generate_transfer_token
   before_create :randomize_id

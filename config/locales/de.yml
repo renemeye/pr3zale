@@ -121,6 +121,7 @@ de:
       Products: "Produkte"
       Sum: "Summe"
       Paid?: "Bezahlt?"
+      Number: "Nummer"
   sold_product:
     Downloadable: "Herunterladbar"
     Already used: "Bereits entwertet"

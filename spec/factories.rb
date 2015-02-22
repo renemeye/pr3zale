@@ -24,8 +24,8 @@ FactoryGirl.define do
   end
 
   factory :event do
-    name "Testevent"
-    slack "test"
+    sequence (:name) {|n| "Testevent #{n}"}
+    sequence (:slack) {|n| "test#{n}"}
     factory :event_with_products do
       factory :event_with_products_and_payment_information do
         payment_iban "A1234"
@@ -50,11 +50,11 @@ FactoryGirl.define do
   end
 
   factory :product do
-    name "T-Shirt"
+    sequence (:name) {|n| "T-shirt #{n}"}
     price 23.05
     tax 19
     description "Hello world"
-    quantity 10
+    quantity 100
     event
   end
 

@@ -6,6 +6,7 @@
         <div class="table-responsive">
           <table class="table">
             <tr>
+              <th><%=t".Number" %></th>
               <th><%=User.human_attribute_name(:email)%></th>
               <th><%=t".Products"%></th>
               <th><%=t".Sum"%></th>
@@ -14,6 +15,7 @@
 
             <% @orders.each do |order| %>
             <tr>
+              <td>#<%=order.id%></td>
               <td><%=order.user.email%></td>
               <td><%=order %></td>
               <td><b><%=number_to_currency order.sum %></b></td>

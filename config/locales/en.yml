@@ -121,6 +121,7 @@ en:
       Products: "Products"
       Sum: "Sum"
       Paid?: "Paid?"
+      Number: "Number"
   sold_product:
     Downloadable: "Downloadable"
     Already used: "Already used"
