@@ -59,6 +59,9 @@
               <dt><%=t".REFERENCE"%>:</dt>
               <dd><%= @order.transfer_token %></dd>
             </dl>
+            <% if @event.pay_until %>
+              <%=t".Please be shure to pay until DATE, so we are able to prepare everything.html", date: l(@event.pay_until)%>
+            <% end %>
           </div>
         </p>
       <% else %>

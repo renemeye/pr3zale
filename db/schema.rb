@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221003317) do
+ActiveRecord::Schema.define(version: 20150222203212) do
 
   create_table "cooperators", force: true do |t|
     t.integer  "user_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150221003317) do
     t.string   "payment_receiver"
     t.string   "company_name"
     t.text     "company_address"
+    t.date     "pay_until"
   end
 
   create_table "images", force: true do |t|

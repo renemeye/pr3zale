@@ -110,6 +110,8 @@ en:
         html: "<strong>%{price}</strong> <i>(incl. %{tax} tax)</i>"
       PDF Ticket: "PDF Ticket"
       Sum: "Sum"
+      Please be shure to pay until DATE, so we are able to prepare everything:
+        html: "Please be shure to <strong>pay until %{date}</strong>, so we are able to prepare everything."
     root_table:
       Your orders: "Your orders"
       Products: "Products"
@@ -142,6 +144,7 @@ en:
       price_incl_tax: "%{price} (incl. %{tax} tax)"
       Sum: "Sum"
       Best Regards: "Best regards your %{event} organizers"
+      Please be shure to pay until DATE, so we are able to prepare everything: "Please be shure to pay until %{date}, so we are able to prepare everything."
     purchase_confirmation:
       Hello:  "Hello,"
       we received your payment Thanks: "we received your payment. Thanks."

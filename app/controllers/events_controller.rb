@@ -39,6 +39,6 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:name, :short_description, :description, :owner_id, :payment_receiver, :payment_iban, :payment_bic, :company_name, :company_address)
+      params.require(:event).permit(:name, :short_description, :description, :owner_id, :payment_receiver, :payment_iban, :payment_bic, :pay_until, :company_name, :company_address)
     end
 end

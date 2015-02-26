@@ -110,6 +110,8 @@ de:
         html: "<strong>%{price}</strong> <i>(inkl. %{tax} MwSt)</i>"
       PDF Ticket: "PDF Ticket"
       Sum: "Summe"
+      Please be shure to pay until DATE, so we are able to prepare everything:
+        html: "Bitte stell sicher, dass du <strong>bis zum %{date}</strong> bezahlt hast, damit wir alles vorbereiten können."
     root_table:
       Your orders: "Deine Bestellungen"
       Products: "Produkte"
@@ -142,6 +144,7 @@ de:
       price_incl_tax: "%{price} (inkl. %{tax} MwSt.)"
       Sum: "Summe"
       Best Regards: "Liebe Grüße, dein %{event} Orga-Team"
+      Please be shure to pay until DATE, so we are able to prepare everything: "Bitte stell sicher, dass du bis zum %{date} bezahlt hast, damit wir alles vorbereiten können."
     purchase_confirmation:
       Hello: "Hallo,"
       we received your payment Thanks: "wir haben deine Zahlung erhalten. Vielen Dank!"

@@ -13,6 +13,10 @@
   <%=Order.human_attribute_name(:payment_bic)%>: <%= @event.payment_bic %>
   <%=t".REFERENCE"%>: <%= @order.transfer_token %>
 
+<% if @event.pay_until %>
+<%=t".Please be shure to pay until DATE, so we are able to prepare everything", date: l(@event.pay_until)%>
+<% end %>
+
 <% else %>
 <%=t".payment_not_started"%>
 

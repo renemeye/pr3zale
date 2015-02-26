@@ -33,5 +33,32 @@ feature "OrderConfirmations", :type => :feature do
 
   end
 
-  #pending "emails user when tickets are available for download"
+  it "shows please-pay-until date information user" do
+    event.pay_until = Date.today + 5.weeks
+    event.save
+
+    #Fake a reservation process
+    page.driver.browser.process_and_follow_redirects(:post, orders_path, :order => {:sold_products_attributes => [{product_id: event.products.last.id}]} )
+    expect(page).to have_content("pay until #{event.pay_until}")
+    expect(last_email).to have_content("pay until #{event.pay_until}")
+  end
+
+  it "does not show please-pay-until information if empty" do
+    event.pay_until = ""
+    event.save
+
+    #Fake a reservation process
+    page.driver.browser.process_and_follow_redirects(:post, orders_path, :order => {:sold_products_attributes => [{product_id: event.products.last.id}]} )
+    expect(page).not_to have_content("pay until")
+    expect(last_email).not_to have_content("pay until")
+  end
+  it "does not show please-pay-until information if nil" do
+    event.pay_until = nil
+    event.save
+
+    #Fake a reservation process
+    page.driver.browser.process_and_follow_redirects(:post, orders_path, :order => {:sold_products_attributes => [{product_id: event.products.last.id}]} )
+    expect(page).not_to have_content("pay until")
+    expect(last_email).not_to have_content("pay until")
+  end
 end
