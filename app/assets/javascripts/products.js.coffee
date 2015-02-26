@@ -15,6 +15,11 @@ ready = ->
     $this = $(this)
     $sells = $this.closest(".selling").find(".sells")
     $sells.find(".product:last").remove()
+  $(".sold-to").click ->
+    unless $(this).hasClass("open")
+      $(".sold-to").addClass("open")
+    else
+      $(".sold-to").removeClass("open")
 
 
 $(document).ready(ready)
