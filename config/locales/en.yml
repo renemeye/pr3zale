@@ -124,6 +124,8 @@ en:
       Sum: "Sum"
       Paid?: "Paid?"
       Number: "Number"
+      Import Payments from CSV: "Import Payments from CSV"
+      Import: "Import"
   sold_product:
     Downloadable: "Downloadable"
     Already used: "Already used"

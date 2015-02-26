@@ -39,6 +39,10 @@ class OrdersController < ApplicationController
     respond_with(@order)
   end
 
+  def import_payments_csv
+    @entries = Order.import_payments_from_csv(@event, params[:file])
+  end
+
   private
 
     def order_params

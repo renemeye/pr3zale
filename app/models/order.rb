@@ -46,7 +46,7 @@ class Order < ActiveRecord::Base
   # This is the check_digit algorithm of the german Personalausweisnummer http://de.wikipedia.org/wiki/Ausweisnummer
   # With one difference, we take a two digit check sum here
   # It works with inputs on values 0-9,A-Z an input length divisable by 3
-  def generate_check_sum(input)
+  def self.generate_check_sum(input)
     sum = 0
     for i in 0..(input.length-1)
       sum += input[i].to_i(36)*((2**(((input.length-1)-i)%3+1))-1)
@@ -57,7 +57,8 @@ class Order < ActiveRecord::Base
   end
 
   #Checks if it has a valid checksum
-  def check_transfer_token(input)
+  def self.check_transfer_token(input)
+    return false unless input.is_a? String
     parts = /^([0-9A-Z]*)-([0-9][0-9])$/.match(input)
     return false if parts.nil?
     test_string = parts[1]
@@ -72,7 +73,11 @@ class Order < ActiveRecord::Base
       random_token = SecureRandom.random_number(36**12).to_s(36).rjust(12, "0").upcase
       break random_token unless Order.exists?(transfer_token: random_token)
     end
-    self.transfer_token += "-"+generate_check_sum(self.transfer_token)
+    self.transfer_token += "-"+Order.generate_check_sum(self.transfer_token)
+  end
+
+  def self.regex_extracting_transfer_token
+    /([0-9A-Z]{12}-[0-9][0-9])/
   end
 
   #Creates a random ID in order to not know how much stuff is sold
@@ -82,4 +87,47 @@ class Order < ActiveRecord::Base
     end while Order.where(id: self.id).exists?
   end
 
+  def self.import_payments_from_csv(event, csv_file)
+
+    #Forcing CSV to be utf-8
+    tmpfile = Tempfile.new(csv_file.original_filename)
+    tmpfile.write(File.read(csv_file.path).encode('utf-8', 'binary', invalid: :replace, undef: :replace, replace: ''))
+    tmpfile.rewind
+
+    matched_entries = Array.new()
+    problem_entries = Array.new()
+    no_token_entries = Array.new()
+
+    SmarterCSV.process(tmpfile.path, col_sep: ";") do |row|
+      if check_transfer_token(match = has_transfer_token?(row[0]))
+
+        if order = event.orders.find_by_transfer_token(match)
+          row[0][:order] = order
+          matched_entries += row
+        else
+          row[0][:problem] = I18n.t"Can't find transfer token in Database."
+          problem_entries += row
+        end
+
+        # if row[0][:waehrung] == "EUR"
+        #
+        # end
+
+      else
+        no_token_entries+=row
+      end
+    end
+    return {matched_entries: matched_entries, problem_entries: problem_entries, no_token_entries: no_token_entries}
+  ensure
+    tmpfile.close if tmpfile
+    tmpfile.unlink if tmpfile
+  end
+
+  def self.has_transfer_token?(hash)
+    hash.each do |key, value|
+      match = Order.regex_extracting_transfer_token.match(value.to_s)
+      return match[1] if match
+    end
+    return false
+  end
 end

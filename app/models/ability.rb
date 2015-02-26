@@ -18,6 +18,9 @@ class Ability
       can :manage, Event do |event|
         user.is_coordinator? event
       end
+      can :import_payments_csv, Order do |order|
+        order.event.is_coordinator? user
+      end
       can :validate_tickets, Event do |event|
         user.is_cooperator? event
       end

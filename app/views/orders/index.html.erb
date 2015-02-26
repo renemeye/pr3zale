@@ -1,6 +1,21 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="panel panel-default">
+      <div class="panel-heading"><%=t".Import"%></div>
+      <div class="panel-body">
+        <%=form_tag import_payments_csv_orders_path, multipart: true do%>
+          <%= file_field_tag :file  %>
+          <%=submit_tag t".Import Payments from CSV"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%=@foo%>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
       <div class="panel-heading"><%=t".All orders"%></div>
       <div class="panel-body">
         <div class="table-responsive">

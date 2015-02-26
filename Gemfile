@@ -93,3 +93,6 @@ gem 'rqrcode'
 #PDF Generation
 gem 'prawn'
 gem 'prawn-qrcode'
+
+#CSV Import
+gem 'smarter_csv'

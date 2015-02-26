@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   resources :events
   resources :images,                    constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
-  resources :orders,                    constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
+  resources :orders,                    constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'} do
+    collection {
+      post :import_payments_csv
+    }
+  end
   resources :products,                  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
   get 'sold_overview', :controller => :products, :action => :sold_overview,                  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
   resources :validation, :only => [:index], :path=>"/v", constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}

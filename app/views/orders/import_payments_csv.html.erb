@@ -1,0 +1,99 @@
+<h1>Importergebnis</h1>
+
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%=t".matched_entries"%></div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th>buchungstag</th>
+              <th>Bezahlt</th>
+              <th><%=t".Number" %></th>
+              <th><%=User.human_attribute_name(:email)%></th>
+              <th><%=t".Products"%></th>
+              <th><%=t".Sum"%></th>
+              <th><%=t".Paid?"%></th>
+            </tr>
+
+            <% @entries[:matched_entries].each do |entry| %>
+              <tr>
+                <td><%=entry[:buchungstag]%></td>
+                <td><%=entry[:betrag]%> <%=entry[:waehrung]%></td>
+                <td>#<%=entry[:order].id%></td>
+                <td><%=entry[:order].user.email%></td>
+                <td><%=entry[:order] %></td>
+                <td><b><%=number_to_currency entry[:order].sum %></b></td>
+                <td>
+                  <% if entry[:order].reserved? %><span class="label label-warning"><%=t"orders.Reserved"%></span><% end %>
+                  <% if entry[:order].paid? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"orders.Paid"%></span><% end %>
+                  <% if entry[:order].canceled? %><span class="label label-danger"><%=t"orders.Canceled"%></span><% end %>
+                </td>
+              </tr>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%=t".problem_entries"%></div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th>buchungstag</th>
+              <th>verwendungszweck</th>
+              <th>betrag / waehrung</th>
+              <th>problem</th>
+            </tr>
+
+            <% @entries[:problem_entries].each do |entry| %>
+              <tr>
+                <td><%=entry[:buchungstag]%></td>
+                <td><%=entry[:verwendungszweck]%></td>
+                <td><%=entry[:betrag]%> <%=entry[:waehrung]%></td>
+                <td><%=entry[:problem]%></td>
+              </tr>
+            <% end %>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%=t".no_token_entries"%></div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table">
+            <tr>
+              <th>buchungstag</th>
+              <th>verwendungszweck</th>
+              <th>betrag / waehrung</th>
+            </tr>
+
+            <% @entries[:no_token_entries].each do |entry| %>
+              <tr>
+                <td><%=entry[:buchungstag]%></td>
+                <td><%=entry[:verwendungszweck]%></td>
+                <td><%=entry[:betrag]%> <%=entry[:waehrung]%></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
