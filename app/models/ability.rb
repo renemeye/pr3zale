@@ -10,6 +10,7 @@ class Ability
       can :create, Order
       can :read, Order, :user_id => user.id
       can :read, SoldProduct, :order => {:user_id => user.id}, :state => "downloadable"
+      can :read, SoldProduct, :order => {:user_id => user.id}, :state => "issued"
       can :destroy, Order, :user_id => user.id
 
       can :manage, Product do |product|
