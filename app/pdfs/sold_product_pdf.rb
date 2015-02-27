@@ -6,6 +6,7 @@ class SoldProductPdf < Prawn::Document
     @event = event
     @validation_url = validation_url
     heading
+    date
     qr_code
     product
     author
@@ -14,6 +15,10 @@ class SoldProductPdf < Prawn::Document
 
   def heading
     text "Online Ticket & Quittung \##{@sold_product.id}", style: :bold, size: 30
+  end
+
+  def date
+    text "#{I18n.l @sold_product.created_at.to_date}"
   end
 
   def qr_code
@@ -31,7 +36,7 @@ class SoldProductPdf < Prawn::Document
   end
 
   def product
-    text "#{@sold_product.name} #{ActionController::Base.helpers.number_to_currency @sold_product.price} (inkl. #{@sold_product.tax}% MwSt.)"
+    text "#{@sold_product.name} #{ActionController::Base.helpers.number_to_currency @sold_product.price} (inkl. #{ActionController::Base.helpers.number_to_currency @sold_product.tax_price} MwSt.)"
   end
 
 end

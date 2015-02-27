@@ -37,6 +37,10 @@ class SoldProduct < ActiveRecord::Base
     former_product.tax
   end
 
+  def tax_price
+    (1-(100/(former_product.tax+100))) * former_product.price
+  end
+
   def description
     former_product.description
   end
