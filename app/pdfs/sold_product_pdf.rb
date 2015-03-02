@@ -46,7 +46,7 @@ class SoldProductPdf < Prawn::Document
   end
 
   def logo
-    svg File.open(@event.bill_logo.path, "r"), :at => [-50, 550], :width => 250 if @event.bill_logo
+    svg File.open(Paperclip.io_adapters.for(@event.bill_logo).path, "r"), :at => [-50, 550], :width => 250 if @event.bill_logo
   end
 
   def date
