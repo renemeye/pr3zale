@@ -3,15 +3,15 @@ class SoldProductPdf < Prawn::Document
   #include Prawn::View
 
   def initialize(sold_product, event, validation_url)
-    super( page_size: "A4")
+    super( page_size: "A5")
     @sold_product = sold_product
     @event = event
     @validation_url = validation_url
     logo
-    move_up 120
+    move_up 45
     heading
     date
-    move_down 100
+    move_down 50
     product
 
     qr_code
@@ -20,11 +20,11 @@ class SoldProductPdf < Prawn::Document
   end
 
   def heading
-    text "Online Ticket\n& Quittung \##{@sold_product.id}", style: :bold, size: 30, align: :right
+    text "Online Ticket\n& Quittung", style: :bold, size: 23, align: :right
   end
 
   def logo
-    svg File.open("/Users/meye/Desktop/eh15v4-1.svg", "r"), :at => [-50, 780], :width => 250
+    svg File.open("/Users/meye/Desktop/eh15v4-1.svg", "r"), :at => [-50, 550], :width => 250
   end
 
   def date
@@ -32,8 +32,9 @@ class SoldProductPdf < Prawn::Document
   end
 
   def qr_code
-    move_down 300
+    move_down 200
     render_qr_code @sold_product.qr(@validation_url), :dot=>4
+    text "Nummer: #{@sold_product.id}"
     text "Token: #{@sold_product.verification_token}"
   end
 
@@ -47,8 +48,7 @@ class SoldProductPdf < Prawn::Document
 
   def product
     text "#{@sold_product.name}", size: 20
-    text " #{ActionController::Base.helpers.number_to_currency @sold_product.price} (inkl. #{ActionController::Base.helpers.number_to_currency @sold_product.tax_price} MwSt.)", size: 15
-
+    text "#{ActionController::Base.helpers.number_to_currency @sold_product.price} (inkl. #{ActionController::Base.helpers.number_to_currency @sold_product.tax_price} MwSt.)", size: 15
   end
 
 end
