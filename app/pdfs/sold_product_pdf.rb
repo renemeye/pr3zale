@@ -2,11 +2,33 @@
 class SoldProductPdf < Prawn::Document
   #include Prawn::View
 
-  def initialize(sold_product, event, validation_url)
+  def initialize(sold_products, event, host)
     super( page_size: "A5")
-    @sold_product = sold_product
+
     @event = event
-    @validation_url = validation_url
+    @host = host
+
+    if sold_products.kind_of?(Array)
+      sold_products.each do |sold_product|
+        @sold_product = sold_product
+        create_content
+        start_new_page unless sold_product == sold_products.last
+      end
+    else
+      @sold_product = sold_products
+      create_content
+    end
+
+  end
+
+  def create_content
+    @validation_url = Rails.application.routes.url_helpers.validation_url(
+      :host => @host,
+      :sold_product_id => @sold_product.id,
+      :verification_token => @sold_product.verification_token,
+      :script_name => ENV['RAILS_RELATIVE_URL_ROOT']
+    )
+
     logo
     move_up 45
     heading

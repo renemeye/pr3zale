@@ -4,14 +4,7 @@ class SoldProductsController < ApplicationController
   def show
     respond_to do |format|
       format.pdf do
-        @validation_url = Rails.application.routes.url_helpers.validation_url(
-          :host => request.host,
-          :sold_product_id => @sold_product.id,
-          :verification_token => @sold_product.verification_token,
-          :script_name => ENV['RAILS_RELATIVE_URL_ROOT']
-        )
-
-        pdf = SoldProductPdf.new(@sold_product, @event, @validation_url)
+        pdf = SoldProductPdf.new(@sold_product, @event, request.host)
         send_data pdf.render, filename: "#{@event.slack}-#{@sold_product.id}-#{@sold_product.name.parameterize}.pdf",
                               type: "application/pdf"
       end

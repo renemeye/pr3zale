@@ -31,7 +31,17 @@ class OrdersController < ApplicationController
   end
 
   def show
-    respond_with(@order)
+    respond_to do |format|
+      format.pdf do
+        raise ActionController::RoutingError.new('Not Found') unless @order.paid?
+        pdf = SoldProductPdf.new(@order.sold_products.to_a, @event, request.host)
+        send_data pdf.render, filename: "#{@event.slack}-#{@order.id}.pdf",
+                              type: "application/pdf"
+      end
+      format.html do
+        respond_with(@order)
+      end
+    end
   end
 
   def destroy

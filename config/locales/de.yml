@@ -96,6 +96,8 @@ de:
       Order XX: "Bestellung Nr. %{order_no}"
       Cancel now: "Jetzt stornieren"
       Cancel this reservation: "Diese Reservierung stornieren"
+      PDF ticket collection: "PDF Ticket Sammlung"
+      Download: "Download"
       Are you sure to cancel this reservation?: "Bist du dir sicher, dass du diese Reservierung stornieren möchtest?"
       Payment: "Bezahlung"
       A canceled order can't be paid: "Eine stornierte Bestellung kann nicht bezahlt werden."

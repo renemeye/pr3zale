@@ -14,6 +14,11 @@
           <% if @order.canceled? %><span class="label label-danger"><%=t"orders.Canceled"%></span><% end %>
         </dd>
 
+        <% if @order.paid? %>
+          <dt><%=t".Download"%>:</dt>
+          <dd><%=link_to t(".PDF ticket collection"), order_path(@order, format: "pdf") %></dd>
+        <% end %>
+
         <% if @order.can_cancel? %>
         <br>
         <dt><%=t".Cancel now"%>:</dt>
