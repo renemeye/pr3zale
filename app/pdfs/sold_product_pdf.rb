@@ -55,7 +55,7 @@ class SoldProductPdf < Prawn::Document
 
   def qr_code
     move_down 200
-    render_qr_code @sold_product.qr(@validation_url), :dot=>4
+    render_qr_code @sold_product.qr(@validation_url), :dot=>3.5
     text "Nummer: #{@sold_product.id}"
     text "Token: #{@sold_product.verification_token}"
   end
