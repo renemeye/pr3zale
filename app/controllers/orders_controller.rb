@@ -30,6 +30,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def purchase
+    respond_to do |format|
+      format.json do
+        @order.purchase
+        render json: @order
+      end
+    end
+  end
+
   def show
     respond_to do |format|
       format.pdf do

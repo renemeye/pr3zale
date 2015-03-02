@@ -10,27 +10,32 @@
           <table class="table">
             <tr>
               <th>buchungstag</th>
-              <th>Bezahlt</th>
               <th><%=t".Number" %></th>
               <th><%=User.human_attribute_name(:email)%></th>
               <th><%=t".Products"%></th>
+              <th>Bezahlt</th>
               <th><%=t".Sum"%></th>
               <th><%=t".Paid?"%></th>
             </tr>
 
             <% @entries[:matched_entries].each do |entry| %>
-              <tr>
+              <tr id="order-<%=entry[:order].id%>">
                 <td><%=entry[:buchungstag]%></td>
-                <td><%=entry[:betrag]%> <%=entry[:waehrung]%></td>
                 <td>#<%=entry[:order].id%></td>
                 <td><%=entry[:order].user.email%></td>
                 <td><%=entry[:order] %></td>
-                <td><b><%=number_to_currency entry[:order].sum %></b></td>
-                <td>
+                <% if entry[:betrag].to_f == entry[:order].sum and entry[:waehrung] == "EUR" %>
+                  <td><%=entry[:betrag]%> <%=entry[:waehrung]%></td>
+                <% else %>
+                  <td><span class="text-danger"><b><%=entry[:betrag]%> <%=entry[:waehrung]%></b></span></td>
+                <% end %>
+                <td><%=number_to_currency entry[:order].sum %></td>
+                <td class="state">
                   <% if entry[:order].reserved? %><span class="label label-warning"><%=t"orders.Reserved"%></span><% end %>
                   <% if entry[:order].paid? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"orders.Paid"%></span><% end %>
                   <% if entry[:order].canceled? %><span class="label label-danger"><%=t"orders.Canceled"%></span><% end %>
                 </td>
+                <td class="mark-button"><% if entry[:order].reserved? %><%=link_to t(".Mark as purchased"), purchase_order_path(entry[:order], format: :json), method: :post, remote: true, class: "btn btn-primary btn-xs mark-as-purchased-no-reload"%><% end %></td>
               </tr>
               </tr>
             <% end %>

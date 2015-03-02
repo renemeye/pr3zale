@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     collection {
       post :import_payments_csv
     }
+    member {
+      post :purchase
+    }
   end
   resources :products,                  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}
   get 'sold_overview', :controller => :products, :action => :sold_overview,                  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}

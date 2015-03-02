@@ -29,16 +29,17 @@
             </tr>
 
             <% @orders.each do |order| %>
-            <tr>
+            <tr id="order-<%=order.id%>">
               <td>#<%=order.id%></td>
               <td><%=order.user.email%></td>
               <td><%=order %></td>
               <td><b><%=number_to_currency order.sum %></b></td>
-              <td>
+              <td class="state">
                 <% if order.reserved? %><span class="label label-warning"><%=t"orders.Reserved"%></span><% end %>
                 <% if order.paid? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"orders.Paid"%></span><% end %>
                 <% if order.canceled? %><span class="label label-danger"><%=t"orders.Canceled"%></span><% end %>
               </td>
+              <td><% if order.reserved? %><%=link_to t(".Mark as purchased"), purchase_order_path(order, format: :json), method: :post, remote: true, class: "btn btn-primary btn-xs mark-as-purchased"%><% end %></td>
             </tr>
             <% end %>
 
