@@ -91,7 +91,7 @@ gem 'postmark-rails'
 gem 'rqrcode'
 
 #PDF Generation
-gem 'prawn'
+gem 'prawn', '~> 1.3'
 gem 'prawn-qrcode'
 gem 'prawn-svg'
 
