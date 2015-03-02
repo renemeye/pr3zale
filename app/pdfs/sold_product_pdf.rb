@@ -46,7 +46,7 @@ class SoldProductPdf < Prawn::Document
   end
 
   def logo
-    svg File.open("/Users/meye/Desktop/eh15v4-1.svg", "r"), :at => [-50, 550], :width => 250
+    svg File.open(@event.bill_logo.path, "r"), :at => [-50, 550], :width => 250 if @event.bill_logo
   end
 
   def date

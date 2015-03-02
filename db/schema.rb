@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150222203212) do
+ActiveRecord::Schema.define(version: 20150302213906) do
 
   create_table "cooperators", force: true do |t|
     t.integer  "user_id"
@@ -26,19 +26,23 @@ ActiveRecord::Schema.define(version: 20150222203212) do
   add_index "cooperators", ["user_id"], name: "index_cooperators_on_user_id"
 
   create_table "events", force: true do |t|
-    t.string   "name",                           null: false
+    t.string   "name",                                null: false
     t.text     "short_description"
     t.text     "description"
     t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slack",             default: "", null: false
+    t.string   "slack",                  default: "", null: false
     t.string   "payment_iban"
     t.string   "payment_bic"
     t.string   "payment_receiver"
     t.string   "company_name"
     t.text     "company_address"
     t.date     "pay_until"
+    t.string   "bill_logo_file_name"
+    t.string   "bill_logo_content_type"
+    t.integer  "bill_logo_file_size"
+    t.datetime "bill_logo_updated_at"
   end
 
   create_table "images", force: true do |t|

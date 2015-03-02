@@ -6,6 +6,9 @@ class Event < ActiveRecord::Base
   has_many :sold_products
   has_many :users, :through => :sold_products
 
+  has_attached_file :bill_logo
+  validates_attachment_content_type :bill_logo, :content_type => "image/svg+xml"
+
   def is_coordiantor? (user)
     self.cooperators.coordinators.collect{|coordinator|coordinator.user}.include? user
   end
