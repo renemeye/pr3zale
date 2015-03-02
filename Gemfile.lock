@@ -179,6 +179,8 @@ GEM
     prawn-qrcode (0.2.2.1)
       prawn (>= 0.11.1)
       rqrcode (>= 0.4.1)
+    prawn-svg (0.16.0)
+      prawn (>= 0.8.4)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -316,6 +318,7 @@ DEPENDENCIES
   postmark-rails
   prawn
   prawn-qrcode
+  prawn-svg
   pry-rails
   rack-policy
   rails (= 4.1.6)
