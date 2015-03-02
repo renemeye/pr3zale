@@ -82,7 +82,8 @@ gem 'rack-policy'
 gem 'state_machine'
 
 #Images to S3:
-gem 'aws-sdk', group: :production
+gem 'aws-sdk', '~> 1', group: :production
+#gem 'aws-sdk-resources', '~> 2', group: :production
 
 #Send mails on heroku
 gem 'postmark-rails'
