@@ -1,4 +1,6 @@
 de:
+  Can't find transfer token in Database: Token nicht in der DB
+  Invalid transfer token: Token ungültig
   layouts:
     application:
       Presale for XX: "Vorverkauf | %{event}"

@@ -99,13 +99,19 @@ class Order < ActiveRecord::Base
     no_token_entries = Array.new()
 
     SmarterCSV.process(tmpfile.path, col_sep: ";") do |row|
-      if check_transfer_token(match = has_transfer_token?(row[0]))
+      if match = has_transfer_token?(row[0])
 
-        if order = event.orders.find_by_transfer_token(match)
-          row[0][:order] = order
-          matched_entries += row
+        if check_transfer_token(match)
+
+          if order = event.orders.find_by_transfer_token(match)
+            row[0][:order] = order
+            matched_entries += row
+          else
+            row[0][:problem] = I18n.t"Can't find transfer token in Database."
+            problem_entries += row
+          end
         else
-          row[0][:problem] = I18n.t"Can't find transfer token in Database."
+          row[0][:problem] = I18n.t"Invalid transfer token"
           problem_entries += row
         end
 
@@ -125,7 +131,7 @@ class Order < ActiveRecord::Base
 
   def self.has_transfer_token?(hash)
     hash.each do |key, value|
-      match = Order.regex_extracting_transfer_token.match(value.to_s)
+      match = Order.regex_extracting_transfer_token.match(value.to_s.upcase.gsub(/\s+/, ""))
       return match[1] if match
     end
     return false
