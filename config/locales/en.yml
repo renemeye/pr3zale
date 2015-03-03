@@ -86,6 +86,7 @@ en:
     sold_overview:
       All Products: "All products"
       open_orders: "reserved"
+      paid_orders: "paid"
       to: "from"
   orders:
     Canceled: "Canceled"
