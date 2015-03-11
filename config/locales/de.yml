@@ -132,6 +132,9 @@ de:
       Number: "Nummer"
       Import Payments from CSV: "Zahlungsvorgänge aus CSV lesen"
       Import: "Import"
+      Mark as purchased: "Als Bezahlt markieren"
+      Transfer token: "Überweisungs Token"
+      Mark ORDER_ID as purchased?: "Bestellung #%{order_id} als bezahlt markieren?"
   sold_product:
     Downloadable: "Herunterladbar"
     Already used: "Bereits entwertet"
