@@ -96,5 +96,15 @@ gem 'prawn', '~> 1.3'
 gem 'prawn-qrcode'
 gem 'prawn-svg'
 
+#Passbook
+gem 'passbook'
+
 #CSV Import
 gem 'smarter_csv'
+
+
+#Errors
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end

@@ -114,6 +114,7 @@ de:
       price_incl_tax:
         html: "<strong>%{price}</strong> <i>(inkl. %{tax} MwSt)</i>"
       PDF Ticket: "PDF Ticket"
+      Passbook Ticket: "Passbook Ticket"
       Sum: "Summe"
       Please be shure to pay until DATE, so we are able to prepare everything:
         html: "Bitte stell sicher, dass du <strong>bis zum %{date}</strong> bezahlt hast, damit wir alles vorbereiten können."

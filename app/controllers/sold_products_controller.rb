@@ -8,6 +8,101 @@ class SoldProductsController < ApplicationController
         send_data pdf.render, filename: "#{@event.slack}-#{@sold_product.id}-#{@sold_product.name.parameterize}.pdf",
                               type: "application/pdf"
       end
+
+      format.pkpass do
+        validation_url = Rails.application.routes.url_helpers.validation_url(
+          :host => request.host,
+          :sold_product_id => @sold_product.id,
+          :verification_token => @sold_product.verification_token,
+          :script_name => ENV['RAILS_RELATIVE_URL_ROOT']
+        )
+        pass = JSON.parse("{
+              'formatVersion': 1,
+              'teamIdentifier' : '#{ENV['APPLE_TEAM_IDENTIFIER']}',
+              'passTypeIdentifier' : 'pass.eu.ucdplus.helloworld',
+              'serialNumber' : '#{@sold_product.id}',
+              'barcode' : {
+                'message' : '#{validation_url}',
+                'format' : 'PKBarcodeFormatQR',
+                'messageEncoding' : 'iso-8859-1'
+              },
+              'organizationName' : '#{@event.name}-#{@sold_product.name}',
+              'description' : '#{@sold_product.name}',
+              'logoText': '#{@event.name}',
+              'forgroundColor' : 'rgb(255,255,255)',
+              'backgroundColor' : '#251C16',
+              'eventTicket' : {
+                'headerFields' : [
+                  {
+                    'key' : 'state',
+                    'value' : '#{@sold_product.state}'
+                  }
+                ],
+                'primaryFields' : [
+                  {
+                    'key' : 'ticket',
+                    'value' : '#{@sold_product.name}'
+                  }
+                ],
+                'secondaryFields' : [
+                  {
+                    'key' : 'price',
+                    'label': 'Price',
+                    'value' : '#{ActionController::Base.helpers.number_to_currency  @sold_product.price}'
+                  }
+                ],
+                'backFields' : [
+                  {
+                    'key' : 'loc',
+                    'label' : 'LOCATION',
+                    'value' : '#{@event.event_address}'
+                  },
+                  {
+                    'key' : 'verification',
+                    'label' : 'Verification',
+                    'value' : '#{@sold_product.id}\\n#{@sold_product.verification_token}'
+                  },
+                  {
+                    'key' : 'productdescription',
+                    'label' : 'Product Description',
+                    'value' : #{@sold_product.description.to_json}
+                  },
+                  {
+                    'key' : 'terms',
+                    'label' : 'Code of Conduct',
+                    'value' : #{@event.terms.to_json}
+                  },
+                  {
+                    'key' : 'organizationName',
+                    'label' : 'Organization',
+                    'value' : '#{@event.company_name}\\n#{@event.company_address}'
+                  }
+                ]
+              }
+          }".gsub('\'','"')).to_json
+        passbook = Passbook::PKPass.new pass
+
+        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon).path, logo = File.join("public", "icon.png")
+        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon_2x).path, logo2x = File.join("public", "icon@2x.png")
+        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon).path, icon = File.join("public", "logo.png")
+        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon_2x).path, icon2x = File.join("public", "logo@2x.png")
+        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_background).path, background = File.join("public", "background.png")
+        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_background_2x).path, background2x = File.join("public", "background@2x.png")
+
+        FileUtils.cp Paperclip.io_adapters.for(@sold_product.former_product.images.first.image.styles[:thumb]).path, icon = File.join("public", "thumbnail.png") if @sold_product.former_product.images.length > 0
+
+        passbook.addFiles [
+          icon,
+          icon2x,
+          logo,
+          logo2x,
+          background,
+          background2x
+        ]
+        File.open(passbook.file(filename: ['pass', 'pkpass']).path, 'rb') do |f|
+          send_data f.read, type: 'application/vnd.apple.pkpass', filename: "pass.pkpass", :disposition => "attachment"
+        end
+      end
     end
   end
 end

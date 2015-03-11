@@ -92,9 +92,15 @@
               <td><%=t".price_incl_tax.html", price: number_to_currency( sold_product.price), tax: "#{sold_product.tax}%" %></td>
               <td>
                 <% if sold_product.reserved? %><span class="label label-warning"><%=t"sold_product.Reserved"%></span><% end %>
-                <% if sold_product.downloadable? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"sold_product.Downloadable"%></span> <br> <%=link_to t(".PDF Ticket"), sold_product_path(sold_product,format: "pdf") %> <% end %>
+                <% if sold_product.downloadable? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"sold_product.Downloadable"%></span>
+                    <br> <%=link_to t(".PDF Ticket"), sold_product_path(sold_product,format: "pdf") %>
+                    <br> <%=link_to t(".Passbook Ticket"), sold_product_path(sold_product,format: "pkpass") unless ENV['ACTIVATE_PASSBOOK'].to_s == '' %>
+                <% end %>
                 <% if sold_product.canceled? %><span class="label label-danger"><%=t"sold_product.Canceled"%></span><% end %>
-                <% if sold_product.issued? %><span class="label label-danger"><%=t"sold_product.Already used"%></span> <br> <%=link_to t(".PDF Ticket"), sold_product_path(sold_product,format: "pdf") %> <% end %>
+                <% if sold_product.issued? %><span class="label label-danger"><%=t"sold_product.Already used"%></span>
+                  <br> <%=link_to t(".PDF Ticket"), sold_product_path(sold_product,format: "pdf") %>
+                  <br> <%=link_to t(".Passbook Ticket"), sold_product_path(sold_product, format: "pkpass") unless ENV['ACTIVATE_PASSBOOK'].to_s == '' %>
+                <% end %>
               </td>
             </tr>
           <% end %>

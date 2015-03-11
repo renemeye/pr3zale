@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302213906) do
+ActiveRecord::Schema.define(version: 20150310225937) do
 
   create_table "cooperators", force: true do |t|
     t.integer  "user_id"
@@ -26,13 +26,13 @@ ActiveRecord::Schema.define(version: 20150302213906) do
   add_index "cooperators", ["user_id"], name: "index_cooperators_on_user_id"
 
   create_table "events", force: true do |t|
-    t.string   "name",                                null: false
+    t.string   "name",                                             null: false
     t.text     "short_description"
     t.text     "description"
     t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slack",                  default: "", null: false
+    t.string   "slack",                               default: "", null: false
     t.string   "payment_iban"
     t.string   "payment_bic"
     t.string   "payment_receiver"
@@ -43,6 +43,24 @@ ActiveRecord::Schema.define(version: 20150302213906) do
     t.string   "bill_logo_content_type"
     t.integer  "bill_logo_file_size"
     t.datetime "bill_logo_updated_at"
+    t.string   "passbook_icon_file_name"
+    t.string   "passbook_icon_content_type"
+    t.integer  "passbook_icon_file_size"
+    t.datetime "passbook_icon_updated_at"
+    t.string   "passbook_background_file_name"
+    t.string   "passbook_background_content_type"
+    t.integer  "passbook_background_file_size"
+    t.datetime "passbook_background_updated_at"
+    t.string   "passbook_background_2x_file_name"
+    t.string   "passbook_background_2x_content_type"
+    t.integer  "passbook_background_2x_file_size"
+    t.datetime "passbook_background_2x_updated_at"
+    t.string   "passbook_icon_2x_file_name"
+    t.string   "passbook_icon_2x_content_type"
+    t.integer  "passbook_icon_2x_file_size"
+    t.datetime "passbook_icon_2x_updated_at"
+    t.text     "terms"
+    t.text     "event_address"
   end
 
   create_table "images", force: true do |t|

@@ -114,6 +114,7 @@ en:
       price_incl_tax:
         html: "<strong>%{price}</strong> <i>(incl. %{tax} tax)</i>"
       PDF Ticket: "PDF Ticket"
+      Passbook Ticket: "Passbook Ticket"
       Sum: "Sum"
       Please be shure to pay until DATE, so we are able to prepare everything:
         html: "Please be shure to <strong>pay until %{date}</strong>, so we are able to prepare everything."

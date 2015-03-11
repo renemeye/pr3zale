@@ -24,6 +24,14 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :event_address %><br>
+    <%= f.text_area :event_address %>
+  </div>
+  <div class="field">
+    <%= f.label :terms %><br>
+    <%= f.text_area :terms %>
+  </div>
+  <div class="field">
     <%= f.label :owner_id %><br>
     <%= f.text_field :owner_id %>
   </div>
@@ -54,6 +62,26 @@
   <div class="field">
     <%= f.label :bill_logo %> (Only SVG)<br>
     <%= f.file_field :bill_logo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passbook_icon %> (Only PNG)<br>
+    <%= f.file_field :passbook_icon %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passbook_icon_2x %> (Only PNG)<br>
+    <%= f.file_field :passbook_icon_2x %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passbook_background %> (Only PNG)<br>
+    <%= f.file_field :passbook_background %>
+  </div>
+
+  <div class="field">
+    <%= f.label :passbook_background_2x %> (Only PNG)<br>
+    <%= f.file_field :passbook_background_2x %>
   </div>
 
   <div class="actions">

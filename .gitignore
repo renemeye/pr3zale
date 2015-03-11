@@ -14,3 +14,13 @@
 public/system
 config/database.yml
 config/local_env.yml
+config/passcertificate.pem
+config/passkey.pem
+config/WWDR.pem
+public/background.png
+public/background@2x.png
+public/icon.png
+public/icon@2x.png
+public/logo.png
+public/logo@2x.png
+public/thumbnail.png
