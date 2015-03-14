@@ -63,12 +63,12 @@ class OrdersController < ApplicationController
   end
 
   def remind_open_orders
-    @users = @event.orders.open_orders.where("created_at < :week", {:week => 1.week.ago}).collect{|o|o.user}.uniq
+    @users = @event.orders.open_orders.where("created_at < :ago", {:ago => 2.days.ago}).collect{|o|o.user}.uniq
     @users.each do |user|
       open_orders = user.orders.open_orders.on_event(@event)
       OrderMailer.payment_reminder(user, open_orders, @event).deliver
     end
-    redirect_to orders_path, notice: "#{@users.length} users had been reminded." #TODO: Translate 
+    redirect_to orders_path, notice: "#{@users.length} users had been reminded." #TODO: Translate
   end
 
   private
