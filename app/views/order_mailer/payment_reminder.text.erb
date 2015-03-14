@@ -1,0 +1,28 @@
+<%=t".Hello"%>
+<%=t".this is a short reminder, that you have open orders for", event:@event.name %>
+
+<% @open_orders.each do |order| %>
+
+<%=t".Reservation XX", order_no: order.id%>
+<%= "=" * t(".Reservation XX", order_no: order.id).length %>
+
+<%=Order.human_attribute_name(:ordered_at)%>: <%= l order.created_at, :format => :default %>
+<% order.sold_products.each do |sold_product| %>
+ + <%=sold_product.name %> (<%=t".price_incl_tax", price: number_to_currency( sold_product.price), tax: "#{sold_product.tax}%" %>)
+<% end %>
+
+<%=t".payment_flow", payment_sum: number_to_currency(order.sum) %>
+<%=t".REFERENCE"%>: <%= order.transfer_token %>
+<%= order_url order, subdomain: @event.slack %>
+
+<% end %>
+
+  <%=Order.human_attribute_name(:payment_receiver)%>: <%= @event.payment_receiver %>
+  <%=Order.human_attribute_name(:payment_iban)%>: <%= @event.payment_iban %>
+  <%=Order.human_attribute_name(:payment_bic)%>: <%= @event.payment_bic %>
+
+<% if @event.pay_until %>
+<%=t".Please be shure to pay until DATE, so we are able to prepare everything", date: l(@event.pay_until)%>
+<% end %>
+
+<%=t".Best Regards", event: @event.name %>

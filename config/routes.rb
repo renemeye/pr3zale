@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :orders,                    constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'} do
     collection {
       post :import_payments_csv
+      post :remind_open_orders
     }
     member {
       post :purchase

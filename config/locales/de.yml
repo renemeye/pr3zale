@@ -135,6 +135,8 @@ de:
       Mark as purchased: "Als Bezahlt markieren"
       Transfer token: "Überweisungs Token"
       Mark ORDER_ID as purchased?: "Bestellung #%{order_id} als bezahlt markieren?"
+      Remind user on open orders: "Erinnere Nutzer per E-Mail an offene Bestellungen"
+      remind open orders: "Erinnere an offene Bestellungen"
   sold_product:
     Downloadable: "Herunterladbar"
     Already used: "Bereits entwertet"
@@ -143,6 +145,7 @@ de:
   order_mailer:
     event Presale Reservation#order_id: "%{event} Vorverkauf | Reservierung Nr. %{order_id}"
     event Presale Payment confirmation#order_id: "%{event} Vorverkauf | Zahlungsbestätigung für Bestellung Nr. %{order_id}"
+    event Presale Payment reminder: "%{event} Vorverkauf | Kleine Erinnerung"
     reservation_confirmation:
       Hello: "Hallo,"
       you succesfully made a reservation for EVENT: "hiermit bestätigen wir dir Deine Reservierung."
@@ -164,6 +167,18 @@ de:
       Ordered products: "Bestellte Produkte"
       price_incl_tax: "%{price} (inkl. %{tax} MwSt.)"
       Sum: "Summe"
+      Best Regards: "Liebe Grüße dein %{event} Orga-Team"
+    payment_reminder:
+      Hello: "Hallo,"
+      this is a short reminder, that you have open orders for: Dies ist eine kleine Erinnerung daran, dass du noch offene Bestellungen für das %{event} hast. Falls du etwas doch nicht brauchst, dann storniere es bitte auf den unten verlinkten Seiten. Das erleichtert uns die Planung.
+      Reservation XX: "Reservierung  Nr. %{order_no}"
+      Ordered products: "Reservierte Produkte"
+      price_incl_tax: "%{price} (inkl. %{tax} MwSt.)"
+      Sum: "Summe"
+      Payment: "Bezahlung"
+      payment_flow: "Um diesen Bestellvorgang abzuschließen, überweise bitte %{payment_sum}."
+      REFERENCE: "Verwendungszweck"
+      Please be shure to pay until DATE, so we are able to prepare everything: "Bitte stell sicher, dass du bis zum %{date} bezahlt hast, damit wir alles vorbereiten können."
       Best Regards: "Liebe Grüße dein %{event} Orga-Team"
   activerecord:
     models:

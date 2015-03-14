@@ -135,6 +135,8 @@ en:
       Mark as purchased: "Mark as purchased"
       Transfer token: "Transfer token"
       Mark ORDER_ID as purchased?: "Mark order #%{order_id} as purchased?"
+      Remind user on open orders: "Remind user via email of their open orders"
+      remind open orders: "Remind of open orders"
   sold_product:
     Downloadable: "Downloadable"
     Already used: "Already used"
@@ -143,6 +145,7 @@ en:
   order_mailer:
     event Presale Reservation#order_id: "%{event} presale | reservation #%{order_id}"
     event Presale Payment confirmation#order_id: "%{event} presale | payment confirmation for order #%{order_id}"
+    event Presale Payment reminder: "%{event} presale | payment reminder"
     reservation_confirmation:
       Hello: "Hello,"
       you succesfully made a reservation for EVENT: "you succesfully made a reservation for %{event}."
@@ -164,6 +167,18 @@ en:
       Ordered products: "Ordered products"
       price_incl_tax: "%{price} (incl. %{tax} tax)"
       Sum: "Sum"
+      Best Regards: "Best regards your %{event} organizers"
+    payment_reminder:
+      Hello: "Hello,"
+      this is a short reminder, that you have open orders for: This is a short reminder, that you have got open orders for %{event}. If you doesn't need something, than please cancel it on the pages linked below. That simplifies our organizational stuff.
+      Reservation XX: "Reservation #%{order_no}"
+      Ordered products: "Ordered products"
+      price_incl_tax: "%{price} (incl. %{tax} tax)"
+      Sum: "Sum"
+      Payment: "Payment"
+      payment_flow: "In order to finish the checkout process, transfer %{payment_sum}."
+      REFERENCE: "REFERENCE"
+      Please be shure to pay until DATE, so we are able to prepare everything: "Please be shure to pay until %{date}, so we are able to prepare everything."
       Best Regards: "Best regards your %{event} organizers"
   activerecord:
     models:
