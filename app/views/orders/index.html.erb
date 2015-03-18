@@ -41,7 +41,7 @@
             <tr id="order-<%=order.id%>">
               <td>#<%=order.id%></td>
               <td>#<%=order.transfer_token%></td>
-              <td><%=mail_to order.user.email%></td>
+              <td><%=mail_to order.user.email if order.user %></td>
               <td><%=order %></td>
               <td><b><%=number_to_currency order.sum %></b></td>
               <td class="state">
