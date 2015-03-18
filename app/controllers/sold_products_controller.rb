@@ -19,7 +19,7 @@ class SoldProductsController < ApplicationController
         pass = JSON.parse("{
               'formatVersion': 1,
               'teamIdentifier' : '#{ENV['APPLE_TEAM_IDENTIFIER']}',
-              'passTypeIdentifier' : 'pass.eu.ucdplus.helloworld',
+              'passTypeIdentifier' : '#{ENV['PASSBOOK_PASS_TYPE_IDENTIFIER']}',
               'serialNumber' : '#{@sold_product.id}',
               'barcode' : {
                 'message' : '#{validation_url}',
