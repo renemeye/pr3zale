@@ -40,12 +40,6 @@ class SoldProductsController < ApplicationController
                 }
               ],
               'eventTicket' : {
-                'headerFields' : [
-                  {
-                    'key' : 'state',
-                    'value' : '#{@sold_product.state}'
-                  }
-                ],
                 'primaryFields' : [
                   {
                     'key' : 'ticket',
