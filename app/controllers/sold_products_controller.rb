@@ -31,6 +31,14 @@ class SoldProductsController < ApplicationController
               'logoText': '#{@event.name}',
               'forgroundColor' : 'rgb(255,255,255)',
               'backgroundColor' : '#251C16',
+              'locations' : [
+                {
+                  'latitude': 52.26955,
+                  'longitude': 10.51849,
+                  'relevantText': 'Kinder- und Jugendzentrum Mühle',
+                  'maxDistance': 200
+                }
+              ],
               'eventTicket' : {
                 'headerFields' : [
                   {
