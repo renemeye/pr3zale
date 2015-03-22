@@ -23,7 +23,7 @@ class SoldProduct < ActiveRecord::Base
   end
 
   def able_to_sell_product?
-    self.product.available_count > 0
+    self.product.available_count > 0 and not self.product.inactive
   end
 
   def name

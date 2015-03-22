@@ -75,6 +75,7 @@ de:
     index:
       Products for: "Produkte für"
       Sold out: "Ausverkauft."
+      Not available: "Nicht verfügbar."
       Only XXX left:
         html: "Nur noch <strong>%{stock}</strong> übrig."
       Make a reservation: "Reservierung aufgeben"
