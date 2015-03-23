@@ -31,6 +31,7 @@ class SoldProduct < ActiveRecord::Base
   end
 
   def price
+    return 0.0 if self.canceled?
     former_product.price
   end
 
@@ -39,6 +40,7 @@ class SoldProduct < ActiveRecord::Base
   end
 
   def tax_price
+    return 0.0 if self.canceled?
     (1-(100/(former_product.tax+100))) * former_product.price
   end
 
