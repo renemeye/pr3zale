@@ -90,6 +90,7 @@ en:
       All Products: "All products"
       open_orders: "reserved"
       paid_orders: "paid"
+      issued_orders: "issued"
       to: "from"
   orders:
     Canceled: "Canceled"

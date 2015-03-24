@@ -7,7 +7,8 @@ class SoldProduct < ActiveRecord::Base
   before_create :able_to_sell_product?
   before_create :ensure_verification_token
   scope :open_orders, -> {with_state(:reserved)}
-  scope :paid_orders, -> {with_state(:downloadable)}
+  scope :paid_orders, -> {with_state([:downloadable, :issued])}
+  scope :issued_orders, -> {with_state(:issued)}
 
   def ensure_verification_token
     if verification_token.blank?

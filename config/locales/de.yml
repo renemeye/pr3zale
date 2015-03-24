@@ -90,6 +90,7 @@ de:
       All Products: "Alle Produkte"
       open_orders: "Nur Reserviert (ohne bezahlte)"
       paid_orders: "Bereits Bezahlt"
+      issued_orders: "Davon eingelöst"
       to: "von"
   orders:
     Canceled: "Storniert"

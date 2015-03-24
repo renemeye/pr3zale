@@ -9,15 +9,15 @@
               <th><%=Product.model_name.human%></th>
               <th><%=t".open_orders"%></th>
               <th><%=t".paid_orders"%></th>
-              <th class="sold-to"><%=t".to"%></th>
+              <th><%=t".issued_orders"%></th>
             </tr>
 
             <% @products.each do |product| %>
             <tr>
               <td><%=link_to product.name, product %> <span class="text-muted">(<%=number_to_currency product.price%>)</span></td>
               <td><%=product.sold_products.open_orders.length %> <span class="text-muted">(<%=number_to_currency product.sold_products.open_orders.collect{|sold_product|sold_product.price}.sum %>)</span></td>
-              <td><%=product.sold_products.paid_orders.length %> <span class="text-muted">(<%=number_to_currency product.sold_products.paid_orders.collect{|sold_product|sold_product.price}.sum %>)</span></td>
-              <td class="sold-to"><span class="emails"><%=product.sold_products.open_orders.group_by{|sold_product| sold_product.user.email}.collect{|email, products| "#{email} #{"(#{products.length})" if products.length > 1}"}.join ", " %></span><span class="more">...</span></td>
+              <td><%=paid = product.sold_products.paid_orders.length %> <span class="text-muted">(<%=number_to_currency product.sold_products.paid_orders.collect{|sold_product|sold_product.price}.sum %>)</span></td>
+              <td><%=issued = product.sold_products.issued_orders.length %> <span class="text-muted">(<%=number_to_percentage (if paid > 0 then (issued*100.0)/paid else 0 end) %>) </span> </td>
             </tr>
             <% end %>
 
