@@ -54,6 +54,9 @@ gem 'dropzonejs-rails'
 #Versioning
 gem 'paper_trail'
 
+#Caching
+gem 'dalli'
+
 # Use unicorn as the app server
 # gem 'unicorn', group: :production
 
