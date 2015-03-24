@@ -50,7 +50,7 @@ class SoldProduct < ActiveRecord::Base
   end
 
   def former_product
-    self.product.version_at(self.created_at)
+    Rails.cache.fetch([self, "former_product"]) {self.product.version_at(self.created_at)}
   end
 
   def qr(url)
