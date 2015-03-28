@@ -18,71 +18,13 @@ class SoldProductsController < ApplicationController
           :script_name => ENV['RAILS_RELATIVE_URL_ROOT']
         )
         pass = JSON.parse("{
-              'formatVersion': 1,
-              'teamIdentifier' : '#{ENV['APPLE_TEAM_IDENTIFIER']}',
-              'passTypeIdentifier' : '#{ENV['PASSBOOK_PASS_TYPE_IDENTIFIER']}',
-              'serialNumber' : '#{@sold_product.id}',
-              'barcode' : {
-                'message' : '#{validation_url}',
-                'format' : 'PKBarcodeFormatQR',
-                'messageEncoding' : 'iso-8859-1'
-              },
-              'organizationName' : '#{@event.name}-#{@sold_product.name}',
-              'description' : '#{@sold_product.name}',
-              'logoText': '#{@event.name}',
-              'forgroundColor' : 'rgb(255,255,255)',
-              'backgroundColor' : '#251C16',
-              'locations' : [
-                {
-                  'latitude': 52.26955,
-                  'longitude': 10.51849,
-                  'relevantText': 'Kinder- und Jugendzentrum Mühle',
-                  'maxDistance': 200
-                }
-              ],
-              'eventTicket' : {
-                'primaryFields' : [
-                  {
-                    'key' : 'ticket',
-                    'value' : '#{@sold_product.name}'
-                  }
-                ],
-                'secondaryFields' : [
-                  {
-                    'key' : 'price',
-                    'label': 'Price',
-                    'value' : '#{ActionController::Base.helpers.number_to_currency  @sold_product.price}'
-                  }
-                ],
-                'backFields' : [
-                  {
-                    'key' : 'loc',
-                    'label' : 'LOCATION',
-                    'value' : '#{@event.event_address}'
-                  },
-                  {
-                    'key' : 'verification',
-                    'label' : 'Verification',
-                    'value' : '#{@sold_product.id}\\n#{@sold_product.verification_token}'
-                  },
-                  {
-                    'key' : 'productdescription',
-                    'label' : 'Product Description',
-                    'value' : #{@sold_product.description.to_json}
-                  },
-                  {
-                    'key' : 'terms',
-                    'label' : 'Code of Conduct',
-                    'value' : #{@event.terms.to_json}
-                  },
-                  {
-                    'key' : 'organizationName',
-                    'label' : 'Organization',
-                    'value' : '#{@event.company_name}\\n#{@event.company_address}'
-                  }
-                ]
-              }
-          }".gsub('\'','"')).to_json
+                'formatVersion': 1,
+                'teamIdentifier' : '#{ENV['APPLE_TEAM_IDENTIFIER']}',
+                'passTypeIdentifier' : '#{ENV['PASSBOOK_PASS_TYPE_IDENTIFIER']}',
+                'serialNumber' : '#{@sold_product.id}',
+                'organizationName' : 'foo',
+                'description' : 'foo'
+              }".gsub('\'','"')).to_json
         passbook = Passbook::PKPass.new pass
 
         FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon).path, logo = File.join("public", "icon.png")
