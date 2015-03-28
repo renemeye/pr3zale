@@ -27,22 +27,22 @@ class SoldProductsController < ApplicationController
               }".gsub('\'','"')).to_json
         passbook = Passbook::PKPass.new pass
 
-        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon).path, logo = File.join("public", "icon.png")
-        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon_2x).path, logo2x = File.join("public", "icon@2x.png")
-        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon).path, icon = File.join("public", "logo.png")
-        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon_2x).path, icon2x = File.join("public", "logo@2x.png")
-        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_background).path, background = File.join("public", "background.png")
-        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_background_2x).path, background2x = File.join("public", "background@2x.png")
+        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon).path, icon = File.join("public", "icon.png")
+        FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon_2x).path, icon2x = File.join("public", "icon@2x.png")
+        # FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon).path, logo = File.join("public", "logo.png")
+        # FileUtils.cp Paperclip.io_adapters.for(@event.passbook_icon_2x).path, logo2x = File.join("public", "logo@2x.png")
+        # FileUtils.cp Paperclip.io_adapters.for(@event.passbook_background).path, background = File.join("public", "background.png")
+        # FileUtils.cp Paperclip.io_adapters.for(@event.passbook_background_2x).path, background2x = File.join("public", "background@2x.png")
 
-        FileUtils.cp Paperclip.io_adapters.for(@sold_product.former_product.images.first.image.styles[:thumb]).path, icon = File.join("public", "thumbnail.png") if @sold_product.former_product.images.length > 0
+        FileUtils.cp Paperclip.io_adapters.for(@sold_product.former_product.images.first.image.styles[:thumb]).path, thumbnail = File.join("public", "thumbnail.png") if @sold_product.former_product.images.length > 0
 
         passbook.addFiles [
           icon,
           icon2x,
-          logo,
-          logo2x,
-          background,
-          background2x
+          # logo,
+          # logo2x,
+          # background,
+          # background2x
         ]
         File.open(passbook.file(filename: ['pass', 'pkpass']).path, 'rb') do |f|
           send_data f.read, type: 'application/vnd.apple.pkpass', filename: "pass.pkpass", :disposition => "attachment"
