@@ -18,11 +18,20 @@ class SoldProductsController < ApplicationController
           :verification_token => @sold_product.verification_token,
           :script_name => ENV['RAILS_RELATIVE_URL_ROOT']
         )
+
+        webservice_url = Rails.application.routes.url_helpers.root_url(
+          :host => request.host,
+          :protocol => request.protocol,
+          :script_name => ENV['RAILS_RELATIVE_URL_ROOT']
+        )
+
         pass = JSON.parse("{
               'formatVersion': 1,
               'teamIdentifier' : '#{ENV['APPLE_TEAM_IDENTIFIER']}',
               'passTypeIdentifier' : '#{ENV['PASSBOOK_PASS_TYPE_IDENTIFIER']}',
               'serialNumber' : '#{@sold_product.id}',
+              'webserviceURL' : '#{webservice_url}',
+              'authenticationToken' : '#{@sold_product.verification_token}',
               'barcode' : {
                 'message' : '#{validation_url}',
                 'format' : 'PKBarcodeFormatQR',
