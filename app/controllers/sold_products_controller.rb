@@ -30,7 +30,7 @@ class SoldProductsController < ApplicationController
               'teamIdentifier' : '#{ENV['APPLE_TEAM_IDENTIFIER']}',
               'passTypeIdentifier' : '#{ENV['PASSBOOK_PASS_TYPE_IDENTIFIER']}',
               'serialNumber' : '#{@sold_product.id}',
-              'webserviceURL' : '#{webservice_url}',
+              'webServiceURL' : '#{webservice_url}',
               'authenticationToken' : '#{@sold_product.verification_token}',
               'barcode' : {
                 'message' : '#{validation_url}',
