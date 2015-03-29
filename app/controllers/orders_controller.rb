@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.pdf do
         raise ActionController::RoutingError.new('Not Found') unless @order.paid?
-        pdf = SoldProductPdf.new(@order.sold_products.to_a, @event, request.host)
+        pdf = SoldProductPdf.new(@order.sold_products.to_a, @event, request.host, request.protocol)
         send_data pdf.render, filename: "#{@event.slack}-#{@order.id}.pdf",
                               type: "application/pdf"
       end
