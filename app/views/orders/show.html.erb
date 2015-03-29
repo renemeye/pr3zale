@@ -25,13 +25,13 @@
             </div>
 
             <div class="visible-xs">
-              <%=link_to order_path(@order, format: "pdf"), class: "btn btn-xs btn-default btn-block", style: "margin-bottom:4px;white-space: normal;" do %>
+              <%=link_to order_path(@order, format: "pdf"), class: "btn btn-default btn-block", style: "margin-bottom:4px;white-space: normal;" do %>
                 <span class="fa fa-files-o"></span> <%=t(".PDF ticket collection")%>
               <% end %>
 
               <% unless ENV['ACTIVATE_PASSBOOK'].to_s == '' %>
                 <% @order.sold_products.each do |sold_product| %>
-                  <%=link_to sold_product_path(sold_product, format: "pkpass"), class: "btn btn-xs btn-default btn-block", style: "margin-bottom:4px;white-space: normal;" do %>
+                  <%=link_to sold_product_path(sold_product, format: "pkpass"), class: "btn btn-default btn-block", style: "margin-bottom:4px;white-space: normal;" do %>
                     <span class="fa fa-download"></span> <%=t(".Passbook NAME", name: sold_product.name)%>
                   <% end %>
                 <% end %>
