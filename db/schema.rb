@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322182813) do
+ActiveRecord::Schema.define(version: 20150328233453) do
 
   create_table "cooperators", force: true do |t|
     t.integer  "user_id"
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(version: 20150322182813) do
 
   add_index "orders", ["event_id"], name: "index_orders_on_event_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+
+  create_table "passbook_device_registrations", force: true do |t|
+    t.string  "device_library_identifier"
+    t.string  "push_token"
+    t.integer "sold_product_id"
+  end
+
+  add_index "passbook_device_registrations", ["sold_product_id"], name: "index_passbook_device_registrations_on_sold_product_id"
 
   create_table "products", force: true do |t|
     t.string   "name"
