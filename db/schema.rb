@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328233453) do
+ActiveRecord::Schema.define(version: 20150329203426) do
 
   create_table "cooperators", force: true do |t|
     t.integer  "user_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150328233453) do
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "anti_phishing_secret"
   end
 
   add_index "cooperators", ["event_id"], name: "index_cooperators_on_event_id"

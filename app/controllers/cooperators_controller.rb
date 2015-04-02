@@ -1,6 +1,9 @@
 class CooperatorsController < ApplicationController
+
+  skip_before_filter :check_for_new_cooperators, :only => [:edit_phishing_data, :update_phishing_data]
+
   skip_authorization_check
-  before_filter :set_cooperator, only: [:show, :edit, :update, :destroy]
+  before_filter :set_cooperator, only: [:show, :edit, :update, :destroy, :edit_phishing_data, :update_phishing_data]
 
   respond_to :html
 
@@ -30,6 +33,17 @@ class CooperatorsController < ApplicationController
     @possible_users = [@cooperator.user]
   end
 
+  def edit_phishing_data
+    authorize! :edit_phishing_data, @cooperator
+  end
+
+  def update_phishing_data
+    authorize! :edit_phishing_data, @cooperator
+    @cooperator.update(nickname: cooperator_params[:nickname], anti_phishing_secret: cooperator_params[:anti_phishing_secret])
+
+    redirect_to(root_path)
+  end
+
   def create
     authorize! :mange, @event
     @cooperator = Cooperator.new(cooperator_params)
@@ -56,6 +70,6 @@ class CooperatorsController < ApplicationController
     end
 
     def cooperator_params
-      params.require(:cooperator).permit(:user_id, :event_id, :nickname, :role)
+      params.require(:cooperator).permit(:user_id, :event_id, :nickname, :role, :anti_phishing_secret)
     end
 end

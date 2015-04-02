@@ -1,0 +1,48 @@
+<div class="container sign-in" style="margin-top:40px">
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong><%=t".Insert phishing secret"%></strong><br>
+          <%=t".You are now registred as a cooperator at EVENT_NAME Please insert more information below", event_name: @event.name%>
+        </div>
+        <div class="panel-body">
+          <% unless cookies_accepted? %>
+            <%=render partial: "cookie_policy/alert" %>
+          <% else %>
+            <%= form_for(@cooperator, url: edit_phishing_data_cooperator_path()) do |f| %>
+              <fieldset>
+                <div class="row">
+                  <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-user"></i>
+                        </span>
+                        <%= f.text_field :nickname, placeholder: t(".nickname"), autofocus: true, class:"form-control", value: @cooperator.nickname %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="input-group">
+                        <span class="input-group-addon">
+                          <i class="fa fa-lock"></i>
+                        </span>
+                        <%= f.text_field :anti_phishing_secret, placeholder: t(".anti_phishing_secret"), class:"form-control", value: @cooperator.anti_phishing_secret %>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <i><%= t(".This secret must be shown on every page in ticket issuing process only then you can trust it")%></i>
+                    </div>
+                    <div class="form-group">
+                      <%= f.submit t('.Update'),class:"btn btn-lg btn-primary btn-block" %>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 class ValidationController < ApplicationController
   skip_authorization_check
+  before_filter :get_cooperator
 
   def index
     authorize! :validate_tickets, @event
@@ -34,6 +35,11 @@ class ValidationController < ApplicationController
       sold_product.use
     end
     redirect_to validation_index_path, :notice => "Successfully used '#{sold_product.name}';"
+  end
+
+private
+  def get_cooperator
+    @cooperator = current_user.cooperations.where(event: @event).first if current_user
   end
 
 end

@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :load_event
   before_filter :set_locale
+  before_filter :check_for_new_cooperators
+  skip_before_filter :check_for_new_cooperators, if: :devise_controller?
 
   before_filter do
     resource = controller_name.singularize.to_sym
@@ -36,6 +38,15 @@ class ApplicationController < ActionController::Base
     # request.subdomain
     # request.env["HTTP_ACCEPT_LANGUAGE"]
     # request.remote_ip
+  end
+
+  def check_for_new_cooperators
+    if current_user && current_user.is_cooperator?(@event)
+      cooperation = current_user.cooperations.where(event: @event).first
+      if cooperation && (cooperation.anti_phishing_secret.blank? || cooperation.nickname.blank?)
+        redirect_to edit_phishing_data_cooperator_path(cooperation)
+      end
+    end
   end
 
   def default_url_options(options = {})

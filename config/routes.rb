@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :cooperators
+  resources :cooperators do
+    member {
+      get :edit_phishing_data
+      patch :edit_phishing_data, :action => :update_phishing_data
+    }
+  end
 
   post '/allow_cookies' => 'cookie_policy#allow'
   post '/deny_cookies'  => 'cookie_policy#deny'

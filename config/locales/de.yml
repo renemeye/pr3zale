@@ -69,6 +69,14 @@ de:
     Delete Account: "Account löschen"
     Cancel my account: "Diesen Account löschen"
     Are you sure to cancel this account?: "Willst du diesen Account wirklich löschen?"
+  cooperators:
+    edit_phishing_data:
+      Insert phishing secret: Mitarbeiterdaten eintragen
+      You are now registred as a cooperator at EVENT_NAME Please insert more information below: Du bist jetzt als Helfer beim "%{event_name}" eingetragen. Bitte gib ein paar weitere Informationen ein.
+      nickname: Nickname
+      anti_phishing_secret: Anti-phishing Geheimnis
+      This secret must be shown on every page in ticket issuing process only then you can trust it: Dieses Geheimnis ist frei wählbar und muss auf jeder Seite des Ticket-Entwertungsprozesses zu sehen sein. Nur dann kannst du dem Ticket trauen.
+      Update: Speichern
   products:
     You must select one product at least: "Du musst mindestens ein Produkt auswählen (Mit +/- auf der linken Seite)."
     New product: "Neues Produkt"

@@ -69,6 +69,14 @@ en:
     Delete Account: "Cancel account"
     Cancel my account: "Cancel my account"
     Are you sure to cancel this account?: "Are you sure to cancel this account?"
+  cooperators:
+    edit_phishing_data:
+      Insert phishing secret: Insert coooperator information
+      You are now registred as a cooperator at EVENT_NAME Please insert more information below: You are now registered as Cooperator at "%{event_name}". Please provide some additional information.
+      nickname: Nickname
+      anti_phishing_secret: Anti-phishing Secret
+      This secret must be shown on every page in ticket issuing process only then you can trust it: This secret must be shown on every page in the ticket issueing process, only then you can trust the tickets.
+      Update: Save
   products:
     You must select one product at least: "You must select one product at least. (On the left side with +/-)"
     New product: "New Product"

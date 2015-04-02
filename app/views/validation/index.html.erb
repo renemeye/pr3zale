@@ -1,5 +1,7 @@
 
 <% if current_user %>
+  <h1>[<%=@cooperator.anti_phishing_secret%>]</h1>
+  (<%=t"validation.This_is_your_anti_phishing_secret" %>)
 
   <%=t"validation.Log in on your QR-Device"%>:
 
