@@ -21,7 +21,7 @@ class CooperatorsController < ApplicationController
   def new
     authorize! :mange, @event
     @cooperator = Cooperator.new
-    @possible_users = @event.users.uniq - @event.cooperators
+    @possible_users = @event.users.order(:email).uniq - @event.cooperators
     @possible_roles = Cooperator.ROLES
     @cooperator.event = @event
     respond_with(@cooperator)
