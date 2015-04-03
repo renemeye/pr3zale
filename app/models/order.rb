@@ -87,6 +87,19 @@ class Order < ActiveRecord::Base
     end while Order.where(id: self.id).exists?
   end
 
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << ["Ticket Nr.", "State", "Verification Token", "Bestell Nr.", "Preis", "Ticketart"]
+      all.each do |order|
+        if order.paid?
+          order.sold_products.each do |sold_product|
+            csv << sold_product.attributes.values_at("id", "state", "verification_token", "order_id") + [sold_product.price, sold_product.name]
+          end
+        end
+      end
+    end
+  end
+
   def self.import_payments_from_csv(event, csv_file)
 
     #Forcing CSV to be utf-8

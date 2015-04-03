@@ -11,6 +11,11 @@ class OrdersController < ApplicationController
   def index
     authorize! :mange, @event
     @orders = @event.orders
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @orders.to_csv }
+    end
   end
 
   def create
