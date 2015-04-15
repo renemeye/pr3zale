@@ -42,16 +42,23 @@
               <th><%=User.human_attribute_name(:email)%></th>
               <th><%=t".Products"%></th>
               <th><%=t".Sum"%></th>
+              <th><%=t".Not issued"%></th>
               <th><%=t".Paid?"%></th>
             </tr>
 
             <% @orders.each do |order| %>
             <tr id="order-<%=order.id%>">
-              <td>#<%=order.id%></td>
+              <td>
+                <%=link_to order do
+                  "##{order.id}"
+                end
+                %>
+              </td>
               <td>#<%=order.transfer_token%></td>
               <td><%=mail_to order.user.email if order.user %></td>
               <td><%=order %></td>
               <td><b><%=number_to_currency order.sum %></b></td>
+              <td><b><%=if order.unissued_count == 0 then "-" else order.unissued_count end %></b></td>
               <td class="state">
                 <% if order.reserved? %><span class="label label-warning"><%=t"orders.Reserved"%></span><% end %>
                 <% if order.paid? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"orders.Paid"%></span><% end %>

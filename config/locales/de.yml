@@ -140,6 +140,7 @@ de:
       Products: "Produkte"
       Sum: "Summe"
       Paid?: "Bezahlt?"
+      Not issued: "Ungenutzt"
       Number: "Nummer"
       Import Payments from CSV: "Zahlungsvorgänge aus CSV lesen"
       Import: "Import"

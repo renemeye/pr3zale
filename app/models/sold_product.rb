@@ -1,6 +1,6 @@
 class SoldProduct < ActiveRecord::Base
   belongs_to :product
-  belongs_to :order
+  belongs_to :order, touch: true
   belongs_to :event
   belongs_to :user
   before_create :randomize_id
@@ -8,6 +8,7 @@ class SoldProduct < ActiveRecord::Base
   before_create :ensure_verification_token
   scope :open_orders, -> {with_state(:reserved)}
   scope :paid_orders, -> {with_state([:downloadable, :issued])}
+  scope :unissued_orders, -> {with_state([:downloadable])}
   scope :issued_orders, -> {with_state(:issued)}
 
   def ensure_verification_token

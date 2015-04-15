@@ -140,6 +140,7 @@ en:
       Products: "Products"
       Sum: "Sum"
       Paid?: "Paid?"
+      Not issued: "Not issued"
       Number: "Number"
       Import Payments from CSV: "Import Payments from CSV"
       Import: "Import"

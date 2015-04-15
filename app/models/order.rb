@@ -87,6 +87,16 @@ class Order < ActiveRecord::Base
     end while Order.where(id: self.id).exists?
   end
 
+  def unissued_count
+    Rails.cache.fetch([self, "unissued_count"]) do
+      if self.paid?
+        self.sold_products.unissued_orders.length
+      else
+        0
+      end
+    end
+  end
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << ["Ticket Nr.", "State", "Verification Token", "Bestell Nr.", "Preis", "Ticketart"]
