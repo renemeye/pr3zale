@@ -215,6 +215,12 @@ en:
         payment_iban: "IBAN"
         payment_bic: "BIC"
         payment_receiver: "Receiver"
+  models:
+    order:
+      X products overall:
+        zero: Empty order
+        one: One product
+        other: "%{count} products overall"
   number:
     currency:
       format:

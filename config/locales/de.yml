@@ -215,6 +215,12 @@ de:
         payment_iban: "IBAN"
         payment_bic: "BIC"
         payment_receiver: "Empfänger"
+  models:
+    order:
+      X products overall:
+        zero: Leere Buchung
+        one: Ein Produkt
+        other: "%{count} Produkte insgesamt"
   date:
     abbr_day_names:
     - So

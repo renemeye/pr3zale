@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
   end
 
   def to_s
-    sold_products.collect{|p|p.name}.uniq.join(", ") + " | #{sold_products.length} product#{"s" unless sold_products.length == 1} overall"
+    sold_products.collect{|p|p.name}.uniq.join(", ") + " | #{I18n.t ".models.order.X products overall", count: sold_products.length}"
   end
 
   #states: :reseverd, :paid, :canceled
