@@ -8,10 +8,31 @@ class User < ActiveRecord::Base
   before_create :randomize_id
 
   def is_coordinator? (event)
-    event.cooperators.coordinators.collect{|coordinator|coordinator.user}.include? self
+    cooperation = self.cooperation(event)
+    (not cooperation.nil?) && cooperation.role == "coordinator"
   end
   def is_cooperator? (event)
-    event.cooperators.collect{|cooperator|cooperator.user}.include? self
+    not self.cooperation(event).nil?
+  end
+
+  def cooperation (event)
+    self.cooperations.find_by_event_id(event.id)
+  end
+
+  def to_s(event, visiting_user)
+    if visiting_user.is_coordinator?(event)
+      if cooperation = self.cooperation(event)
+        "#{cooperation.nickname} #{cooperation.role} (#{self.email})"
+      else
+        "User (#{self.email})"
+      end
+    else
+      if cooperation = self.cooperation(event)
+        cooperation.nickname
+      else
+        "User"
+      end
+    end
   end
 
   private

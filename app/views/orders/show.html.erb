@@ -109,15 +109,15 @@
         <dd><%= l @order.created_at, :format => :default %></dd>
         <% unless @order.paid_at.nil? %>
           <dt><%=t".Paid at"%>:</dt>
-          <dd><%=l @order.paid_at%></dd>
+          <dd><%=l @order.paid_at%> (<%=@order.paid_by.to_s(@event, current_user) %>)</dd>
         <% end %>
         <% unless @order.canceled_at.nil? %>
           <dt><%=t".Canceled at"%>:</dt>
-          <dd><%=l @order.canceled_at%></dd>
+          <dd><%=l @order.canceled_at%> (<%=@order.canceled_by %>)</dd>
         <% end %>
         <% unless @order.repaid_at.nil? %>
           <dt><%=t".Repaid at"%>:</dt>
-          <dd><%=l @order.repaid_at%></dd>
+          <dd><%=l @order.repaid_at%> (<%=@order.repaid_by %>)</dd>
         <% end %>
       </dl>
     </div>
