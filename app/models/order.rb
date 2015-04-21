@@ -1,6 +1,11 @@
 class Order < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
+  belongs_to :event
+  belongs_to :paid_by, class_name: User, foreign_key: :paid_by_user_id
+  belongs_to :repaid_by, class_name: User, foreign_key: :repaid_by_user_id
+  belongs_to :canceled_by, class_name: User, foreign_key: :canceled_by_user_id
+
   has_many :sold_products, :dependent => :destroy
   accepts_nested_attributes_for :sold_products
   scope :on_event, ->(event) { where event: event }
@@ -18,7 +23,7 @@ class Order < ActiveRecord::Base
     sold_products.collect{|p|p.name}.uniq.join(", ") + " | #{I18n.t ".models.order.X products overall", count: sold_products.length}"
   end
 
-  #states: :reseverd, :paid, :canceled
+  #states: :reseverd, :paid, :canceled, :repaid
   state_machine initial: :reserved do
     event :purchase do
       transition :reserved => :paid
@@ -28,7 +33,16 @@ class Order < ActiveRecord::Base
       transition :reserved => :canceled
     end
 
+    event :repay do
+      transition :paid => :repaid
+    end
+
+    after_transition any => :repaid do |order, transition|
+      order.update repaid_by: current_user, repaid_at: Time.now
+    end
+
     after_transition any => :paid do |order, transition|
+      order.update paid_by: current_user, paid_at: Time.now
       OrderMailer.purchase_confirmation(order.user, order).deliver
       order.sold_products.each do |sold_product|
         sold_product.purchase
@@ -36,6 +50,7 @@ class Order < ActiveRecord::Base
     end
 
     after_transition any => :canceled do |order, transition|
+      order.update canceled_by: current_user, canceled_at: Time.now
       order.sold_products.each do |sold_product|
         sold_product.cancel
       end

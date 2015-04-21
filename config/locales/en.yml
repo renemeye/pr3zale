@@ -129,6 +129,10 @@ en:
       Sum: "Sum"
       Please be shure to pay until DATE, so we are able to prepare everything:
         html: "Please be shure to <strong>pay until %{date}</strong>, so we are able to prepare everything."
+      Updates: Updates
+      Paid at: Marked as paid
+      Canceled at: Canceled at
+      Repaid at: Repaid at
     root_table:
       Your orders: "Your orders"
       Products: "Products"

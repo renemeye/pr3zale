@@ -129,6 +129,10 @@ de:
       Sum: "Summe"
       Please be shure to pay until DATE, so we are able to prepare everything:
         html: "Bitte stell sicher, dass du <strong>bis zum %{date}</strong> bezahlt hast, damit wir alles vorbereiten können."
+      Updates: Updates
+      Paid at: Bezahlt markiert
+      Canceled at: Storniert
+      Repaid at: Erstattet
     root_table:
       Your orders: "Deine Bestellungen"
       Products: "Produkte"

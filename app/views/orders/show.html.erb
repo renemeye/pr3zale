@@ -5,8 +5,6 @@
     </div>
     <div class="panel-body">
       <dl class="dl-horizontal">
-        <dt><%=Order.human_attribute_name(:ordered_at)%>:</dt>
-        <dd><%= l @order.created_at, :format => :default %></dd>
         <dt><%=Order.human_attribute_name(:state)%>:</dt>
         <dd>
           <% if @order.reserved? %><span class="label label-warning"><%=t"orders.Reserved"%></span><% end %>
@@ -100,6 +98,29 @@
       </div>
       <% end %>
     <% end %>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%=t".Updates"%></h3>
+    </div>
+    <div class="panel-body">
+      <dl class="dl-horizontal">
+        <dt><%=Order.human_attribute_name(:ordered_at)%>:</dt>
+        <dd><%= l @order.created_at, :format => :default %></dd>
+        <% unless @order.paid_at.nil? %>
+          <dt><%=t".Paid at"%>:</dt>
+          <dd><%=l @order.paid_at%></dd>
+        <% end %>
+        <% unless @order.canceled_at.nil? %>
+          <dt><%=t".Canceled at"%>:</dt>
+          <dd><%=l @order.canceled_at%></dd>
+        <% end %>
+        <% unless @order.repaid_at.nil? %>
+          <dt><%=t".Repaid at"%>:</dt>
+          <dd><%=l @order.repaid_at%></dd>
+        <% end %>
+      </dl>
+    </div>
   </div>
 </div>
 <div class="col-sm-6">
