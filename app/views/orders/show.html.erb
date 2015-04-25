@@ -10,6 +10,7 @@
           <% if @order.reserved? %><span class="label label-warning"><%=t"orders.Reserved"%></span><% end %>
           <% if @order.paid? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"orders.Paid"%></span><% end %>
           <% if @order.canceled? %><span class="label label-danger"><%=t"orders.Canceled"%></span><% end %>
+          <% if @order.repaid? %><span class="label label-danger"><%=t"orders.Repaid"%></span><% end %>
         </dd>
 
         <% if @order.paid? %>
@@ -62,7 +63,7 @@
         </div>
     <% end %>
 
-    <% if @order.paid? %>
+    <% if @order.paid? or @order.repaid? %>
       <div class="panel-body">
         <p class="well">
           <%=t".You already purchased this order"%>
@@ -109,15 +110,15 @@
         <dd><%= l @order.created_at, :format => :default %></dd>
         <% unless @order.paid_at.nil? %>
           <dt><%=t".Paid at"%>:</dt>
-          <dd><%=l @order.paid_at%> (<%=@order.paid_by.to_s(@event, current_user) %>)</dd>
+          <dd><%=l @order.paid_at%> (<%=@order.paid_by.to_s(@event, current_user) unless @order.paid_by.nil? %>)</dd>
         <% end %>
         <% unless @order.canceled_at.nil? %>
           <dt><%=t".Canceled at"%>:</dt>
-          <dd><%=l @order.canceled_at%> (<%=@order.canceled_by %>)</dd>
+          <dd><%=l @order.canceled_at%> (<%=@order.canceled_by.to_s(@event, current_user) unless @order.canceled_by.nil? %>)</dd>
         <% end %>
         <% unless @order.repaid_at.nil? %>
           <dt><%=t".Repaid at"%>:</dt>
-          <dd><%=l @order.repaid_at%> (<%=@order.repaid_by %>)</dd>
+          <dd><%=l @order.repaid_at%> (<%=@order.repaid_by.to_s(@event, current_user) unless @order.repaid_by.nil? %>)</dd>
         <% end %>
       </dl>
     </div>
@@ -141,6 +142,7 @@
                   <br> <%=link_to t(".Passbook Ticket"), sold_product_path(sold_product,format: "pkpass") unless ENV['ACTIVATE_PASSBOOK'].to_s == '' %>
                 <% end %>
                 <% if sold_product.canceled? %><span class="label label-danger"><%=t"sold_product.Canceled"%></span><% end %>
+                <% if sold_product.repaid? %><span class="label label-danger"><%=t"sold_product.Repaid"%></span><% end %>
                 <% if sold_product.issued? %><span class="label label-danger"><%=t"sold_product.Already used"%></span>
                   <br> <%=link_to t(".PDF Ticket"), sold_product_path(sold_product,format: "pdf") %>
                   <br> <%=link_to t(".Passbook Ticket"), sold_product_path(sold_product, format: "pkpass") unless ENV['ACTIVATE_PASSBOOK'].to_s == '' %>

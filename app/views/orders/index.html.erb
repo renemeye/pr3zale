@@ -62,8 +62,11 @@
               <td class="state">
                 <% if order.reserved? %><span class="label label-warning"><%=t"orders.Reserved"%></span><% end %>
                 <% if order.paid? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"orders.Paid"%></span><% end %>
+                <% if order.repaid? %><span class="label label-danger"><%=t"orders.Repaid"%></span><% end %>
                 <% if order.canceled? %><span class="label label-danger"><%=t"orders.Canceled"%></span><% end %>
-                <% if order.reserved? %><hr class="small"><%=link_to t(".Mark as purchased"), purchase_order_path(order, format: :json), method: :post, remote: true, data:{confirm: "#{t".Mark ORDER_ID as purchased?", order_id: order.id}"}, class: "btn btn-primary btn-xs mark-as-purchased"%><% end %></td>
+
+                <% if order.reserved? %><hr class="small"><%=link_to t(".Mark as purchased"), purchase_order_path(order, format: :json), method: :post, remote: true, data:{confirm: "#{t".Mark ORDER_ID as purchased?", order_id: order.id}"}, class: "btn btn-primary btn-xs mark-as-purchased"%><% end %>
+              </td>
             </tr>
             <% end %>
           </table>

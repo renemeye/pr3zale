@@ -103,6 +103,7 @@ de:
   orders:
     Canceled: "Storniert"
     Paid: "Bezahlt"
+    Repaid: "Rückerstattet"
     Reserved: "Reserviert"
     Some of the requested products are sold out: "Einige der angefragten Produkte sind bereits ausverkauft."
     show:
@@ -155,11 +156,14 @@ de:
       Mark ORDER_ID as purchased?: "Bestellung #%{order_id} als bezahlt markieren?"
       Remind user on open orders: "Erinnere Nutzer per E-Mail an offene Bestellungen"
       remind open orders: "Erinnere an offene Bestellungen"
+      Mark as repaid: "Rückerstatten"
+      Mark ORDER_ID as repaid?: "Buchung #%{order_id} als rückerstattet markieren?"
   sold_product:
     Downloadable: "Herunterladbar"
     Already used: "Bereits entwertet"
     Canceled: "Storniert"
     Reserved: "Reserviert"
+    Repaid: "Rückerstattet"
   order_mailer:
     event Presale Reservation#order_id: "%{event} Vorverkauf | Reservierung Nr. %{order_id}"
     event Presale Payment confirmation#order_id: "%{event} Vorverkauf | Zahlungsbestätigung für Bestellung Nr. %{order_id}"

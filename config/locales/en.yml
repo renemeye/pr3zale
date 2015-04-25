@@ -103,6 +103,7 @@ en:
   orders:
     Canceled: "Canceled"
     Paid: "Paid"
+    Repaid: "Repaid"
     Reserved: "Reserved"
     Some of the requested products are sold out: "Some of the requested products are sold out."
     show:
@@ -155,11 +156,14 @@ en:
       Mark ORDER_ID as purchased?: "Mark order #%{order_id} as purchased?"
       Remind user on open orders: "Remind user via email of their open orders"
       remind open orders: "Remind of open orders"
+      Mark as repaid: "Repay"
+      Mark ORDER_ID as repaid?: "Mark #%{order_id} as repaied?"
   sold_product:
     Downloadable: "Downloadable"
     Already used: "Already used"
     Canceled: "Canceled"
     Reserved: "Reserved"
+    Repaid: "Repaid"
   order_mailer:
     event Presale Reservation#order_id: "%{event} presale | reservation #%{order_id}"
     event Presale Payment confirmation#order_id: "%{event} presale | payment confirmation for order #%{order_id}"

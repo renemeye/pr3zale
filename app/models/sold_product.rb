@@ -69,7 +69,7 @@ class SoldProduct < ActiveRecord::Base
     end
   end
 
-  #states: :reserved, :downloadable, :issued, :canceled
+  #states: :reserved, :downloadable, :issued, :canceled, :repaid
   state_machine initial: :reserved do
     event :purchase do
       transition :reserved => :downloadable, if: lambda {|sold_product| sold_product.order.paid?}
@@ -81,6 +81,10 @@ class SoldProduct < ActiveRecord::Base
 
     event :use do
       transition :downloadable => :issued
+    end
+
+    event :repay do
+      transition :downloadable => :repaid
     end
 
   end

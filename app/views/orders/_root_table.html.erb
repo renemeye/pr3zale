@@ -19,6 +19,7 @@
                 <% if order.reserved? %><span class="label label-warning"><%=t"orders.Reserved"%></span><% end %>
                 <% if order.paid? %><span class="label label-success"><span class="fa fa-check"></span> <%=t"orders.Paid"%></span> <%=link_to t(".Download Tickets"), order %><% end %>
                 <% if order.canceled? %><span class="label label-danger"><%=t"orders.Canceled"%></span><% end %>
+                <% if order.repaid? %><span class="label label-danger"><%=t"orders.Repaid"%></span><% end %>
               </td>
             </tr>
             <% end %>
