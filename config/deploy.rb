@@ -1,14 +1,15 @@
 # config valid only for Capistrano 3.4.0
 lock '3.4.0'
 
-set :application, 'pr3zale'
+set :application, 'prezale'
 set :repo_url, 'git@github.com:renemeye/pr3zale.git'
+set :branch, "prezale.de"
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, '/srv/pr3zale'
+set :deploy_to, '/var/www/prezale.de'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -38,12 +39,36 @@ set :assets_prefix, 'presale/assets/'
 
 namespace :deploy do
 
+  desc 'Start application'
+  task :start do
+    on roles(:web) do
+      execute "cd #{current_path} && RAILS_ENV=production sudo bundle exec thin start -C config/thin.yml"
+    end
+  end
+
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "sudo /usr/sbin/service thin restart -C /etc/thin/pr3zale"
+      execute "cd #{current_path} && RAILS_ENV=production sudo bundle exec thin restart -C config/thin.yml"
+    end
+  end
+
+  desc 'Stop application'
+  task :stop do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute "cd #{current_path} && RAILS_ENV=production sudo bundle exec thin stop -C config/thin.yml"
     end
   end
 
   after :publishing, :restart
+
+
+  desc "build missing paperclip styles"
+  task :build_missing_paperclip_styles do
+    on roles(:app) do
+      execute "cd #{current_path}; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
+    end
+  end
+
+  after("deploy:compile_assets", "deploy:build_missing_paperclip_styles")
 end

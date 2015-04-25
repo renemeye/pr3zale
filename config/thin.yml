@@ -1,0 +1,16 @@
+---
+environment: production
+timeout: 30
+chdir:    /var/www/prezale.de/current
+log:      /var/www/prezale.de/shared/log/thin.log
+pid:      /var/www/prezale.de/shared/sockets/referenz-db.pid
+socket:   /var/www/prezale.de/shared/sockets/referenz-db.sock
+max_conns: 1024
+max_persistent_conns: 100
+require: []
+wait: 30
+threadpool_size: 20
+servers: 1
+daemonize: true
+user: www-data
+group: www-data
