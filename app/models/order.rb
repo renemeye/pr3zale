@@ -38,7 +38,10 @@ class Order < ActiveRecord::Base
     end
 
     after_transition any => :repaid do |order, transition|
-      order.update repaid_by: current_user, repaid_at: Time.now
+      order.update repaid_by: transition.args.first[:by], repaid_at: Time.now
+      order.sold_products.each do |sold_product|
+        sold_product.repay(by: transition.args.first[:by])
+      end
     end
 
     after_transition any => :paid do |order, transition|
