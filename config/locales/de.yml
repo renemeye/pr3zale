@@ -96,10 +96,12 @@ de:
       incl tax: "inkl. %{tax}% MwSt."
     sold_overview:
       All Products: "Alle Produkte"
-      open_orders: "Nur Reserviert (ohne bezahlte)"
+      open_orders: "Nur Reserviert"
       paid_orders: "Bereits Bezahlt"
       issued_orders: "Davon eingelöst"
       to: "von"
+      canceled_orders: "Storniert"
+      repaid_orders: "Rückerstattet"
   orders:
     Canceled: "Storniert"
     Paid: "Bezahlt"

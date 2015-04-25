@@ -10,6 +10,8 @@ class SoldProduct < ActiveRecord::Base
   scope :paid_orders, -> {with_state([:downloadable, :issued])}
   scope :unissued_orders, -> {with_state([:downloadable])}
   scope :issued_orders, -> {with_state(:issued)}
+  scope :repaid_products, -> {with_state(:repaid)}
+  scope :canceled_products, -> {with_state(:canceled)}
 
   def ensure_verification_token
     if verification_token.blank?

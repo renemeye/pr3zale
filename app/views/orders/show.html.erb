@@ -155,7 +155,12 @@
         </table>
       </div>
     </div>
-    <div class="panel-footer">&nbsp;<b class="pull-right"><%=t".Sum"%>: <%=number_to_currency @order.sum %></b></div>
+    <div class="panel-footer">&nbsp;
+      <% if @order.repaid? %>
+        &nbsp;<span class="pull-right"><%=t"orders.Repaid"%>: -<%=number_to_currency @order.sum_repaid %></span><br>
+      <% end %>
+      &nbsp;<b class="pull-right"><%=t".Sum"%>: <%=number_to_currency @order.sum %></b>
+    </div>
   </div>
 </div>
 

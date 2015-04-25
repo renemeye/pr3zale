@@ -7,25 +7,31 @@
           <table class="table">
             <tr>
               <th><%=Product.model_name.human%></th>
+              <th><%=t".canceled_orders"%></th>
               <th><%=t".open_orders"%></th>
               <th><%=t".paid_orders"%></th>
               <th><%=t".issued_orders"%></th>
+              <th><%=t".repaid_orders"%></th>
             </tr>
 
             <% @products.each do |product| %>
             <tr>
-              <td><%=link_to product.name, product %> <span class="text-muted">(<%=number_to_currency product.price%>)</span></td>
+              <td><%=link_to product.name, product %> <span class="text-muted">(<%=number_to_currency product.price%> | <%=product.sold_products.length %>)</span></td>
+              <td><%=product.sold_products.canceled_products.length %></td>
               <td><%=product.sold_products.open_orders.length %> <span class="text-muted">(<%=number_to_currency product.sold_products.open_orders.collect{|sold_product|sold_product.price}.sum %>)</span></td>
               <td><%=paid = product.sold_products.paid_orders.length %> <span class="text-muted">(<%=number_to_currency product.sold_products.paid_orders.collect{|sold_product|sold_product.price}.sum %>)</span></td>
-              <td><%=issued = product.sold_products.issued_orders.length %> <span class="text-muted">(<%=number_to_percentage (if paid > 0 then (issued*100.0)/paid else 0 end) %>) </span> </td>
+              <td><span class="text-muted"> <%=issued = product.sold_products.issued_orders.length %> (<%=number_to_percentage (if paid > 0 then (issued*100.0)/paid else 0 end) %>) </span> </td>
+              <td><%=repaid = product.sold_products.repaid_products.length %> <span class="text-muted">(<%=number_to_currency product.sold_products.repaid_products.collect{|sold_product|sold_product.price}.sum %>) </span> </td>
             </tr>
             <% end %>
 
             <tr>
               <th></th>
+              <th></th>
               <th><span style="border-top:4px double #333; padding-left: 5px; padding-right: 5px;"><%=number_to_currency @event.sold_products.open_orders.collect{|sold_product|sold_product.price}.sum %></span></th>
               <th><span style="border-top:4px double #333; padding-left: 5px; padding-right: 5px;"><%=number_to_currency @event.sold_products.paid_orders.collect{|sold_product|sold_product.price}.sum %></span></th>
               <th></th>
+              <th><span style="border-top:4px double #333; padding-left: 5px; padding-right: 5px;"><%=number_to_currency @event.sold_products.repaid_products.collect{|sold_product|sold_product.price}.sum %></span></th>
             </tr>
 
           </table>

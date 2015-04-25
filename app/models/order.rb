@@ -16,7 +16,11 @@ class Order < ActiveRecord::Base
   before_create :randomize_id
 
   def sum
-    sold_products.collect{|p|p.price}.sum
+    sold_products.collect{|p|p.price}.sum - sum_repaid()
+  end
+
+  def sum_repaid
+    sold_products.repaid_products.collect{|p|p.price}.sum
   end
 
   def to_s
