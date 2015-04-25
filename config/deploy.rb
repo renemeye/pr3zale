@@ -1,5 +1,5 @@
-# config valid only for Capistrano 3.3.5
-lock '3.3.5'
+# config valid only for Capistrano 3.4.0
+lock '3.4.0'
 
 set :application, 'pr3zale'
 set :repo_url, 'git@github.com:renemeye/pr3zale.git'
