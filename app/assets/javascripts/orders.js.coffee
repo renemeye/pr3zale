@@ -14,11 +14,19 @@ silent_reload = ->
 
 ready = ->
   $("a.mark-as-purchased").on "ajax:success", (e, data, status, xhr) ->
-    #alert "The order ##{data.id} is marked as purchased."
     silent_reload()
 
+  $("a.mark-as-repaid").on "ajax:success", (e, data, status, xhr) ->
+    silent_reload()
+
+  $("a.mark-as-repaid-no-reload").on "ajax:success", (e, data, status, xhr) ->
+    if data.state == "repaid"
+      $("#order-#{data.id} .state").html("<span class='label label-primary'><span class='fa fa-check'></span> Marked as Repaid</span>")
+      $("#order-#{data.id} .mark-button").html("")
+    else
+      $("#order-#{data.id} .state").html("<span class='label label-danger'>Error</span>")
+
   $("a.mark-as-purchased-no-reload").on "ajax:success", (e, data, status, xhr) ->
-    #alert "The order ##{data.id} is marked as purchased (Now: #{data.state})."
     if data.state == "paid"
       $("#order-#{data.id} .state").html("<span class='label label-primary'><span class='fa fa-check'></span> Marked as Paid</span>")
       $("#order-#{data.id} .mark-button").html("")
