@@ -44,6 +44,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def repay
+    respond_to do |format|
+      format.json do
+        @order.repay(by: current_user)
+        render json: @order
+      end
+    end
+  end
+
   def show
     respond_to do |format|
       format.pdf do

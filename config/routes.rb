@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     }
     member {
       post :purchase
+      post :repay
     }
   end
   resources :products,                  constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www'}

@@ -20,6 +20,9 @@ class Ability
       can :purchase, Order do |order|
         user.is_coordinator? order.event
       end
+      can :repay, Order do |order|
+        user.is_coordinator? order.event
+      end
       can :manage, Product do |product|
         user.is_coordinator? product.event
       end
