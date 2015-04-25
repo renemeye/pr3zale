@@ -45,17 +45,17 @@ class Order < ActiveRecord::Base
     end
 
     after_transition any => :paid do |order, transition|
-      order.update paid_by: current_user, paid_at: Time.now
+      order.update paid_by: transition.args.first[:by], paid_at: Time.now
       OrderMailer.purchase_confirmation(order.user, order).deliver
       order.sold_products.each do |sold_product|
-        sold_product.purchase
+        sold_product.purchase(by: transition.args.first[:by])
       end
     end
 
     after_transition any => :canceled do |order, transition|
-      order.update canceled_by: current_user, canceled_at: Time.now
+      order.update canceled_by: transition.args.first[:by], canceled_at: Time.now
       order.sold_products.each do |sold_product|
-        sold_product.cancel
+        sold_product.cancel(by: transition.args.first[:by])
       end
     end
 

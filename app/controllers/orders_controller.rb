@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
   def purchase
     respond_to do |format|
       format.json do
-        @order.purchase
+        @order.purchase(by: current_user)
         render json: @order
       end
     end
@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order.cancel
+    @order.cancel(by: current_user)
     respond_with(@order)
   end
 
