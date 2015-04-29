@@ -1,5 +1,5 @@
-# config valid only for Capistrano 3.4.0
-lock '3.4.0'
+# config valid only for Capistrano 3.3.5
+lock '3.3.5'
 
 set :application, 'prezale'
 set :repo_url, 'git@github.com:renemeye/pr3zale.git'
@@ -27,15 +27,13 @@ set :deploy_to, '/var/www/prezale.de'
 set :linked_files, %w{config/local_env.yml config/database.yml config/WWDR.pem config/passkey.pem config/passcertificate.pem}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-set :assets_prefix, 'presale/assets/'
-
 
 namespace :deploy do
 

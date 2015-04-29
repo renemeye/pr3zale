@@ -15,7 +15,7 @@ preload_images = ->
     imageable_type = $(image_drop.element).data("imageable-type")
     imageable_id = $(image_drop.element).data("imageable-id")
 
-    $.get "/presale/images.json",
+    $.get "/images.json",
     image:
       imageable_type: imageable_type
       imageable_id: imageable_id
@@ -46,7 +46,7 @@ ready = ->
         console.log "DELETE #{id}"
         $.ajax
           type: "DELETE"
-          url: "/presale/images/" + id
+          url: "/images/" + id
           success: (data) ->
             console.log data.message
     paramName: "image[image]"
