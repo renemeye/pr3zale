@@ -40,21 +40,21 @@ namespace :deploy do
   desc 'Start application'
   task :start do
     on roles(:web) do
-      execute "cd #{current_path} && RAILS_ENV=production sudo bundle exec thin start -C config/thin.yml"
+      execute "cd #{current_path} && RAILS_ENV=production bundle exec thin start -C config/thin.yml"
     end
   end
 
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "cd #{current_path} && RAILS_ENV=production sudo bundle exec thin restart -C config/thin.yml"
+      execute "cd #{current_path} && RAILS_ENV=production bundle exec thin restart -C config/thin.yml"
     end
   end
 
   desc 'Stop application'
   task :stop do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "cd #{current_path} && RAILS_ENV=production sudo bundle exec thin stop -C config/thin.yml"
+      execute "cd #{current_path} && RAILS_ENV=production bundle exec thin stop -C config/thin.yml"
     end
   end
 

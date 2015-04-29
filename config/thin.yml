@@ -12,5 +12,3 @@ wait: 30
 threadpool_size: 20
 servers: 1
 daemonize: true
-user: deploy
-group: deploy
