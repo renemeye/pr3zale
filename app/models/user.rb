@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   end
 
   def cooperation (event)
-    self.cooperations.find_by_event_id(event.id)
+    self.cooperations.find_by_event_id(event.id) unless event.nil?
   end
 
   def to_s(event, visiting_user)
