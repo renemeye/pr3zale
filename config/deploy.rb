@@ -27,7 +27,7 @@ set :deploy_to, '/var/www/prezale.de'
 set :linked_files, %w{config/local_env.yml config/database.yml config/WWDR.pem config/passkey.pem config/passcertificate.pem}
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{bin log tmp/pids tmp/cache vendor/bundle public/system}
+set :linked_dirs, %w{log tmp/cache public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
