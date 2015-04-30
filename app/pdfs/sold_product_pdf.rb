@@ -27,8 +27,8 @@ class SoldProductPdf < Prawn::Document
       :host => @host,
       :protocol => @protocol,
       :sold_product_id => @sold_product.id,
-      :verification_token => @sold_product.verification_token,
-      :script_name => ENV['RAILS_RELATIVE_URL_ROOT']
+      :verification_token => @sold_product.verification_token
+      #:script_name => ENV['RAILS_RELATIVE_URL_ROOT']
     )
 
     logo

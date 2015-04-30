@@ -15,14 +15,14 @@ class SoldProductsController < ApplicationController
           :host => request.host,
           :protocol => request.protocol,
           :sold_product_id => @sold_product.id,
-          :verification_token => @sold_product.verification_token,
-          :script_name => ENV['RAILS_RELATIVE_URL_ROOT']
+          :verification_token => @sold_product.verification_token
+          #:script_name => ENV['RAILS_RELATIVE_URL_ROOT']
         )
 
         webservice_url = Rails.application.routes.url_helpers.root_url(
           :host => request.host,
-          :protocol => request.protocol,
-          :script_name => ENV['RAILS_RELATIVE_URL_ROOT']
+          :protocol => request.protocol
+          #:script_name => ENV['RAILS_RELATIVE_URL_ROOT']
         )
 
         pass = JSON.parse("{
