@@ -74,7 +74,7 @@ class SoldProduct < ActiveRecord::Base
   #states: :reserved, :downloadable, :issued, :canceled, :repaid
   state_machine initial: :reserved do
     event :purchase do
-      transition :reserved => :downloadable, if: lambda {|sold_product| sold_product.order.paid?}
+      transition :reserved => :downloadable, if: lambda {|sold_product| sold_product.price == 0 or sold_product.order.paid?}
     end
 
     event :cancel do

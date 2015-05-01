@@ -50,7 +50,7 @@ class Order < ActiveRecord::Base
 
     after_transition any => :paid do |order, transition|
       order.update paid_by: transition.args.first[:by], paid_at: Time.now
-      OrderMailer.purchase_confirmation(order.user, order).deliver
+      OrderMailer.purchase_confirmation(order.user, order).deliver unless order.sum == 0
       order.sold_products.each do |sold_product|
         sold_product.purchase(by: transition.args.first[:by])
       end

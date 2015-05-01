@@ -25,9 +25,12 @@ class OrdersController < ApplicationController
     @order.sold_products.each do |sold_product|
       sold_product.user = current_user
       sold_product.event = @event
+      sold_product.save
+      sold_product.purchase if sold_product.price == 0
     end
     if @order.save
-      OrderMailer.reservation_confirmation(current_user, @order).deliver
+      OrderMailer.reservation_confirmation(current_user, @order).deliver unless @order.sum == 0
+      @order.purchase(by: current_user) if @order.sum == 0
       respond_with(@order)
     else
       flash[:error] = t"orders.Some of the requested products are sold out"
