@@ -28,6 +28,10 @@ de:
     Destroy: "Löschen"
     Are you sure?: "Bist Du sicher?"
   welcome:
+    home1: "Der datensparsame Onlineshop für Veranstaltungen aller Art."
+    home2: "Features: Ticketentwertung via Smartphone, Passbook-Tickets, Überweisungsimport via CSV, Deutsch und Englisch, Open Source uvm..."
+    home3: "In Zukunft soll man sich hier jederzeit eine Veranstaltung erstellen können. Derzeit muss ich noch ein paar Dinge von Hand konfigurieren. In der Zwischenzeit: frag einfach René."
+    home_button: "Neue Veranstaltung anfragen"
     CurrentEvents: "Aktuelle Veranstaltungen"
     Presale: "Vorverkauf"
     Here: "Hier"

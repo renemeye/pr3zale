@@ -28,6 +28,10 @@ en:
     Destroy: "Destroy"
     Are you sure?: "Are you sure?"
   welcome:
+    home1: "The less-data onlineshop for each kind of event."
+    home2: "Features: ticket devaluation with smartphones, Passbook-tickets, account import via csv, german and english, open source and much more..."
+    home3: "In the feature you will be able to create your own event here. Right now, there are some things to be configurated manually. In the meantime: ask René."
+    home_button: "Ask for new event"
     CurrentEvents: "Current Events"
     Presale: "Presale"
     Here: "Here"
