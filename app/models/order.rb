@@ -92,7 +92,8 @@ class Order < ActiveRecord::Base
   #and adds a "-" and a two digits check sum
   def generate_transfer_token
     self.transfer_token = loop do
-      random_token = SecureRandom.random_number(36**12).to_s(36).rjust(12, "0").upcase
+      distinctive_letters = ['A', 'B', 'C', 'D', 'E', 'F', 'H', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'W', 'X', 'Y', '2', '3', '4', '7', '8', '9']
+      random_token = (0...12).map { distinctive_letters[rand(distinctive_letters.length)] }.join
       break random_token unless Order.exists?(transfer_token: random_token)
     end
     self.transfer_token += "-"+Order.generate_check_sum(self.transfer_token)
