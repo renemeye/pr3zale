@@ -16,10 +16,13 @@ module Pr3zale
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.middleware.insert_before Rack::Policy::CookieLimiter, "Rack::Cors" do
+    config.middleware.insert_before "ActionDispatch::Static", "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
       allow do
         origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
+        resource '*',
+          :headers => :any,
+          :methods => [:get, :post, :delete, :put, :options, :head],
+          :max_age => 0
       end
     end
 
