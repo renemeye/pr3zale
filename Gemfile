@@ -105,6 +105,8 @@ gem 'passbook'
 #CSV Import
 gem 'smarter_csv'
 
+#CORS support for cross-domain referencing
+gem 'rack-cors', :require => 'rack/cors'
 
 #Errors
 group :development do
