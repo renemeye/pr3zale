@@ -46,7 +46,6 @@ class SoldProductsController < ApplicationController
                 {
                   'latitude': 52.26955,
                   'longitude': 10.51849,
-                  'relevantText': 'Kinder- und Jugendzentrum Mühle',
                   'maxDistance': 200
                 }
               ],
@@ -68,7 +67,7 @@ class SoldProductsController < ApplicationController
                   {
                     'key' : 'loc',
                     'label' : 'LOCATION',
-                    'value' : '#{@event.event_address}'
+                    'value' : #{@event.event_address.to_json}
                   },
                   {
                     'key' : 'verification',
