@@ -4,7 +4,7 @@
 - <%=t".Order XX", order_no: @order.id%>
 - <%=Order.human_attribute_name(:ordered_at)%>: <%= l @order.created_at, :format => :default %>
 
-<%=t".Please visit ORDER_URL to download your tickets.", order_url:order_url(@order) %>
+<%=t".Please visit ORDER_URL to download your tickets.", order_url:order_url(@order, subdomain: @event.slack) %>
 
 ### <%=t".Ordered products"%>
 <% @order.sold_products.each do |sold_product| %>
