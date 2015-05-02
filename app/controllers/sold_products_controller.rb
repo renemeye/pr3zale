@@ -82,7 +82,6 @@ class SoldProductsController < ApplicationController
                   },
                   {
                     'key' : 'terms',
-                    'label' : 'Code of Conduct',
                     'value' : #{@event.terms.to_json}
                   },
                   {
