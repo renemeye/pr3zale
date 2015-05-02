@@ -17,7 +17,7 @@
 
 <p>
   <strong>Owner:</strong>
-  <%= @event.owner %>
+  <%= @event.owner(@event, current_user) %>
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
