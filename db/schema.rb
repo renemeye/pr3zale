@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418181741) do
+ActiveRecord::Schema.define(version: 20150503141906) do
 
   create_table "cooperators", force: true do |t|
     t.integer  "user_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150418181741) do
     t.datetime "passbook_icon_2x_updated_at"
     t.text     "terms"
     t.text     "event_address"
+    t.string   "transfer_token_prefix"
   end
 
   create_table "images", force: true do |t|

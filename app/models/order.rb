@@ -97,6 +97,7 @@ class Order < ActiveRecord::Base
       break random_token unless Order.exists?(transfer_token: random_token)
     end
     self.transfer_token += "-"+Order.generate_check_sum(self.transfer_token)
+    self.transfer_token = "#{self.event.transfer_token_prefix.upcase} #{self.transfer_token}" unless self.event.transfer_token_prefix.blank?
   end
 
   def self.regex_extracting_transfer_token
