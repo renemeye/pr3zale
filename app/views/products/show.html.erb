@@ -39,5 +39,7 @@
   </p>
 <% end %>
 
-<%= link_to t('scaffold.Edit'), edit_product_path(@product) %> |
+<% if can? :update, @product %>
+  <%= link_to t('scaffold.Edit'), edit_product_path(@product) %> |
+<% end %>
 <%= link_to t('scaffold.Back'), products_path %>
