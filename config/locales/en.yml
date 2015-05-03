@@ -18,7 +18,7 @@ en:
   cookie_policy:
     alert:
       EU cookie policy: "EU cookie policy"
-      cookie_policy: "We are using cookies to store your session and login information between multiple page loads. Cookies are very small files stored in your browser and are used by most websites to store information between page loads. In order to fullfill the eu-cookie-policy we have to inform you about that and ask if we are allowed to use them. For technical reasons you can only use this page after you accepted cookies."
+      cookie_policy: "We are using cookies to store your session and login information among multiple page loads. Cookies are very small files stored in your browser and are used by most websites to store information among page loads. In order to fullfill the eu-cookie-policy we have to inform you about that and ask if we are allowed to use them. For technical reasons you can only use this page after you accepted cookies."
       Accept cookies: "Accept cookies"
       Deny cookies: "Deny cookies"
   scaffold:
@@ -28,9 +28,9 @@ en:
     Destroy: "Destroy"
     Are you sure?: "Are you sure?"
   welcome:
-    home1: "The less-data onlineshop for each kind of event."
-    home2: "Features: ticket devaluation with smartphones, Passbook-tickets, account import via csv, german and english, open source and much more..."
-    home3: "In the feature you will be able to create your own event here. Right now, there are some things to be configurated manually. In the meantime: ask René."
+    home1: "The sparse-on-data Online Shop for every Event."
+    home2: "Features: Ticket validation with smartphones, Passbook tickets, account import via CSV, German and English, open source and much more..."
+    home3: "In the future, you will be able to create your own event here. Right now, there are some things to be configured manually. In the meantime: ask René."
     home_button: "Ask for new event"
     CurrentEvents: "Current Events"
     Presale: "Presale"
@@ -39,7 +39,7 @@ en:
     CreateAccount: "Create Account"
     Login: "Login"
   validation:
-    This_is_your_anti_phishing_secret: "This is your anti phising secret"
+    This_is_your_anti_phishing_secret: "This is your anti phishing secret"
     This is a valid Code: "This is a valid Code"
     Use it: "Use it!"
     Cancel: "Cancel"
@@ -48,7 +48,7 @@ en:
     Log in on your QR-Device: "Log in on your QR-Device"
   users:
     Sign in to continue: "Sign in to continue"
-    your email adress: "your email adress"
+    your email adress: "your email address"
     password: "password"
     Sign in: "Sign in"
     Forgot your password: "Forgot your password"
@@ -124,9 +124,9 @@ en:
       You already purchased this order: "You already purchased this order."
       Are you sure to cancel this reservation?: "Are you sure to cancel this reservation?"
       payment_flow:
-        html: "In order to finish the checkout process, transfer <strong>%{payment_sum}</strong> to us with a SEPA-Transaction."
+        html: "In order to finish the checkout process, transfer <strong>%{payment_sum}</strong> to us with a SEPA transaction."
       REFERENCE: "REFERENCE"
-      payment_not_started: "At the moment payment is not possible. You will receive an E-Mail with further information as we start."
+      payment_not_started: "It is currently not possible to pay. You will receive an E-Mail with further information as we start."
       Ordered products: "Ordered products"
       price_incl_tax:
         html: "<strong>%{price}</strong> <i>(incl. %{tax} tax)</i>"
@@ -135,7 +135,7 @@ en:
       Passbook NAME: "Passbook | %{name}"
       Sum: "Sum"
       Please be shure to pay until DATE, so we are able to prepare everything:
-        html: "Please be shure to <strong>pay until %{date}</strong>, so we are able to prepare everything."
+        html: "Please be sure to <strong>pay until %{date}</strong>, so we are able to prepare everything."
       Updates: Updates
       Paid at: Marked as paid
       Canceled at: Canceled at
@@ -179,14 +179,14 @@ en:
       you succesfully made a reservation for EVENT: "you succesfully made a reservation for %{event}."
       Reservation XX: "Reservation #%{order_no}"
       Payment: "Payment"
-      payment_flow: "In order to finish the checkout process, transfer %{payment_sum} to us with a SEPA-Transaction."
+      payment_flow: "In order to finish the checkout process, transfer %{payment_sum} to us with a SEPA transaction."
       REFERENCE: "REFERENCE"
-      payment_not_started: "At the moment payment is not possible. You will receive an E-Mail with further information as we start."
+      payment_not_started: "It is currently not possible to pay. You will receive an E-Mail with further information as we start."
       Ordered products: "Ordered products"
       price_incl_tax: "%{price} (incl. %{tax} tax)"
       Sum: "Sum"
       Best Regards: "Best regards your %{event} organizers"
-      Please be shure to pay until DATE, so we are able to prepare everything: "Please be shure to pay until %{date}, so we are able to prepare everything."
+      Please be shure to pay until DATE, so we are able to prepare everything: "Please be sure to pay until %{date}, so we are able to prepare everything."
     purchase_confirmation:
       Hello:  "Hello,"
       we received your payment Thanks: "we received your payment. Thanks."
@@ -206,7 +206,7 @@ en:
       Payment: "Payment"
       payment_flow: "In order to finish the checkout process, transfer %{payment_sum}."
       REFERENCE: "REFERENCE"
-      Please be shure to pay until DATE, so we are able to prepare everything: "Please be shure to pay until %{date}, so we are able to prepare everything."
+      Please be sure to pay until DATE, so we are able to prepare everything: "Please be sure to pay until %{date}, so we are able to prepare everything."
       Best Regards: "Best regards your %{event} organizers"
   activerecord:
     models:
