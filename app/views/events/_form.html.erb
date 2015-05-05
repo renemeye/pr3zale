@@ -1,94 +1,146 @@
-<%= form_for @event, :html => { :multipart => true } do |f| %>
+<%= form_for @event, :html => { :multipart => true, :class => "form-horizontal" } do |f| %>
+
   <% if @event.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="s12">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
       <ul>
-      <% @event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :name %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :short_description %><br>
-    <%= f.text_area :short_description %>
+  <div class="form-group">
+    <%= f.label :short_description, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :short_description, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="form-group">
+    <%= f.label :description, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :event_address %><br>
-    <%= f.text_area :event_address %>
+  <div class="form-group">
+    <%= f.label :event_address, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :event_address, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :terms %><br>
-    <%= f.text_area :terms %>
-  </div>
-  <div class="field">
-    <%= f.label :owner_id %><br>
-    <%= f.text_field :owner_id %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_receiver %><br>
-    <%= f.text_field :payment_receiver %>
-  </div>
-  <div class="field">
-    <%= f.label :transfer_token_prefix %><br>
-    <%= f.text_field :transfer_token_prefix %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_iban %><br>
-    <%= f.text_field :payment_iban %>
-  </div>
-  <div class="field">
-    <%= f.label :payment_bic %><br>
-    <%= f.text_field :payment_bic %>
-  </div>
-  <div class="field">
-    <%= f.label :pay_until %><br>
-    <%= f.date_field :pay_until %>
-  </div>
-  <div class="field">
-    <%= f.label :company_name %><br>
-    <%= f.text_field :company_name %>
-  </div>
-  <div class="field">
-    <%= f.label :company_address %><br>
-    <%= f.text_area :company_address %>
-  </div>
-  <div class="field">
-    <%= f.label :bill_logo %> (Only SVG)<br>
-    <%= f.file_field :bill_logo %>
+  <div class="form-group">
+    <%= f.label :terms, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :terms, :class => "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :passbook_icon %> (Only PNG)<br>
-    <%= f.file_field :passbook_icon %>
+  <div class="form-group">
+    <%= f.label :owner_id, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :owner_id, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :payment_receiver, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :payment_receiver, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :transfer_token_prefix, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :transfer_token_prefix, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :payment_iban, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :payment_iban, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :payment_bic, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :payment_bic, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :pay_until, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_field :pay_until, :class => "form-control", placeholder: '2015-05-23' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :company_name, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :company_name, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :company_address, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :company_address, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :bill_logo, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.file_field :bill_logo %>
+    </div>
+    <div class="col-sm-6">
+      (SVG only)
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :passbook_icon, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.file_field :passbook_icon %>
+    </div>
+    <div class="col-sm-6">
+      (PNG only)
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :passbook_icon_2x, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.file_field :passbook_icon_2x %>
+    </div>
+    <div class="col-sm-6">
+      (PNG only)
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :passbook_background, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.file_field :passbook_background %>
+    </div>
+    <div class="col-sm-6">
+      (PNG only)
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :passbook_background_2x, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.file_field :passbook_background_2x %>
+    </div>
+    <div class="col-sm-6">
+      (PNG only)
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :passbook_icon_2x %> (Only PNG)<br>
-    <%= f.file_field :passbook_icon_2x %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :passbook_background %> (Only PNG)<br>
-    <%= f.file_field :passbook_background %>
-  </div>
-
-  <div class="field">
-    <%= f.label :passbook_background_2x %> (Only PNG)<br>
-    <%= f.file_field :passbook_background_2x %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
