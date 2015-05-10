@@ -14,7 +14,7 @@
     <% @cooperators.each do |cooperator| %>
       <tr>
         <td><%= cooperator.nickname %></td>
-        <td><%= mail_to cooperator.user.email %></td>
+        <td><%= mail_to cooperator.user.email unless cooperator.user.nil? %></td>
         <td><%= cooperator.role %></td>
         <td><%= link_to 'Show', cooperator %></td>
         <td><%= link_to 'Edit', edit_cooperator_path(cooperator) %></td>
