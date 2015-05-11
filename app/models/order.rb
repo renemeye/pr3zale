@@ -145,30 +145,35 @@ class Order < ActiveRecord::Base
     problem_entries = Array.new()
     no_token_entries = Array.new()
 
-    SmarterCSV.process(tmpfile.path, col_sep: ";") do |row|
-      if match = has_transfer_token?(row[0])
+    possible_col_seperators = [';',',']
+    try_seperator_nr = 0
 
-        if check_transfer_token(match)
+    begin
 
-          if order = event.orders.find_by_transfer_token(match)
-            row[0][:order] = order
-            matched_entries += row
+      SmarterCSV.process(tmpfile.path, col_sep: possible_col_seperators[try_seperator_nr]) do |row|
+        if match = has_transfer_token?(row[0])
+          if check_transfer_token(match)
+            if order = event.orders.find_by_transfer_token(match)
+              row[0][:order] = order
+              matched_entries += row
+            else
+              row[0][:problem] = I18n.t"Can't find transfer token in Database."
+              problem_entries += row
+            end
           else
-            row[0][:problem] = I18n.t"Can't find transfer token in Database."
+            row[0][:problem] = I18n.t"Invalid transfer token"
             problem_entries += row
           end
         else
-          row[0][:problem] = I18n.t"Invalid transfer token"
-          problem_entries += row
+          no_token_entries+=row
         end
-
-        # if row[0][:waehrung] == "EUR"
-        #
-        # end
-
-      else
-        no_token_entries+=row
       end
+
+    rescue CSV::MalformedCSVError
+      try_seperator_nr += 1
+      raise CSV::MalformedCSVError, "Can't parse CSV, tried: #{possible_col_seperators.join(" ")}" if try_seperator_nr >= possible_col_seperators.length
+
+      retry
     end
     return {matched_entries: matched_entries, problem_entries: problem_entries, no_token_entries: no_token_entries}
   ensure
