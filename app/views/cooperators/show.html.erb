@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @cooperator.user %>
+  <%= @cooperator.user.to_s(@event,current_user) %>
 </p>
 
 <p>

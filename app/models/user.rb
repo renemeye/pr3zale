@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
     self.cooperations.find_by_event_id(event.id) unless event.nil?
   end
 
-  def to_s(event, visiting_user)
-    if visiting_user.is_coordinator?(event)
+  def to_s(event = nil, visiting_user = nil)
+    if event and visiting_user and visiting_user.is_coordinator?(event)
       if cooperation = self.cooperation(event)
         "#{cooperation.nickname} #{cooperation.role} (#{self.email})"
       else
